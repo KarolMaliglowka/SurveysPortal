@@ -1,0 +1,6 @@
+@SurveysPortal.Modules.Surveys.Simple.Api_HostAddress = http://localhost:5074
+
+GET {{SurveysPortal.Modules.Surveys.Simple.Api_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

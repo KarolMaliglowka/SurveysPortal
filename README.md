@@ -1,6 +1,6 @@
 # Survey's Portal
 
-
+[![GitHub license](https://img.shields.io/badge/License-MIT-green.svg)](https://github.com/KarolMaliglowka/SurveysPortal/blob/master/License)
 
 ## About application
 Application, hmm ...
@@ -20,3 +20,5 @@ in frontend web:
 
 in fronted mobile(maybe):
 - [`MAUI`](https://dotnet.microsoft.com/en-us/apps/maui)
+
+

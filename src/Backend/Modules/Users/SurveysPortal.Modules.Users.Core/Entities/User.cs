@@ -4,6 +4,7 @@ namespace SurveysPortal.Modules.Users.Core.Entities;
 
 public sealed class User : IdentityUser<Guid>
 {
+    public User() {}
     public User
     (
         string firstName,

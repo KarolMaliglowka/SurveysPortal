@@ -1,4 +1,4 @@
-> [!NOTE] This project participated in the [100 Commits](https://100commitow.pl/) competition.
+
 
 [![GitHub license](https://img.shields.io/badge/License-MIT-green.svg)](https://github.com/KarolMaliglowka/SurveysPortal/blob/master/License)
 
@@ -28,4 +28,5 @@ in fronted mobile(maybe):
 - [`MAUI`](https://dotnet.microsoft.com/en-us/apps/maui)
 
 
-[![wakatime](https://wakatime.com/badge/github/foksurek/TableSpot.svg)](https://wakatime.com/badge/github/foksurek/TableSpot)
+> [!NOTE]
+> This project participated in the [100 Commits](https://100commitow.pl/) competition.

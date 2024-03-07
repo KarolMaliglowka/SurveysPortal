@@ -1,5 +1,4 @@
-> [!NOTE]
-> This project participated in the [100 Commits](https://100commitow.pl/) competition.
+> [!NOTE] This project participated in the [100 Commits](https://100commitow.pl/) competition.
 
 [![GitHub license](https://img.shields.io/badge/License-MIT-green.svg)](https://github.com/KarolMaliglowka/SurveysPortal/blob/master/License)
 

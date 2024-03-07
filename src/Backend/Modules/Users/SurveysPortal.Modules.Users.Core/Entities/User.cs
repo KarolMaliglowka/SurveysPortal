@@ -89,13 +89,13 @@ public sealed class User : IdentityUser<Guid>
         Update();
     }
 
-    private void Activate()
+    public void Activate()
     {
         IsActive = true;
         Update();
     }
 
-    private void Deactivate()
+    public void Deactivate()
     {
         IsActive = false;
         Update();

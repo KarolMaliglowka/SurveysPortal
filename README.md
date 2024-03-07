@@ -1,5 +1,5 @@
 [![Static Badge](https://img.shields.io/badge/100%20Commits-green?style=for-the-badge&label=The%20project%20participates%20in&link=right%2Fhttps%3A%2F%2F100commitow.pl)](https://100commitow.pl)
-[![Static Badge](https://img.shields.io/badge/MIT-green?style=for-the-badge&label=License)](https://github.com/KarolMaliglowka/SurveysPortal/blob/master/License)
+![Static Badge](https://img.shields.io/badge/MIT-orange?style=for-the-badge&label=License)](https://github.com/KarolMaliglowka/SurveysPortal/blob/master/License)
 
 # Survey's Portal
 
@@ -26,4 +26,3 @@ in frontend web:
 in fronted mobile(maybe):
 
 - [`MAUI`](https://dotnet.microsoft.com/en-us/apps/maui)
-

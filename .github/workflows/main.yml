@@ -1,4 +1,4 @@
-name: Merge any release branch to uat
+name: Merge to master any changes in develop branch
 on:
   push:
     branches:

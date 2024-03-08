@@ -1,9 +1,11 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using System.Diagnostics.CodeAnalysis;
+using Microsoft.AspNetCore.Identity;
 
 namespace SurveysPortal.Modules.Users.Core.Entities;
 
 public sealed class User : IdentityUser<Guid>
 {
+    [ExcludeFromCodeCoverage]
     public User() {}
     public User
     (
@@ -49,7 +51,7 @@ public sealed class User : IdentityUser<Guid>
         Update();
     }
 
-    public string GetFulName() => FirstName + " " + LastName;
+    public string GetFullName() => FirstName + " " + LastName;
 
     private void SetEmail(string email)
     {

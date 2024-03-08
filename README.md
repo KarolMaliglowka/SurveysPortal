@@ -25,5 +25,3 @@ in frontend web:
 in fronted mobile(maybe):
 
 - [`MAUI`](https://dotnet.microsoft.com/en-us/apps/maui)
-testowanie
-dsadsad

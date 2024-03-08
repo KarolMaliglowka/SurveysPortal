@@ -14,5 +14,5 @@ jobs:
         with:
           type: now
           target_branch: develop
-          github_token: ${{ testowanieTokena }}
+          github_token: ${{ TESTOWANIETOKENA }}
 

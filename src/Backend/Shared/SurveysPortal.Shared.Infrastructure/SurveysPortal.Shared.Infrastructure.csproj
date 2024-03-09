@@ -6,4 +6,12 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Scrutor" Version="4.2.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\SurveysPortal.Shared.Abstractions\SurveysPortal.Shared.Abstractions.csproj" />
+  </ItemGroup>
+
 </Project>

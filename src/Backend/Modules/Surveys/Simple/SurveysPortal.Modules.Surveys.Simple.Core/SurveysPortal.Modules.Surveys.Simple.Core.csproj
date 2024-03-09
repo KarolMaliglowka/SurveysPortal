@@ -6,4 +6,9 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\..\Shared\SurveysPortal.Shared.Abstractions\SurveysPortal.Shared.Abstractions.csproj" />
+    <ProjectReference Include="..\..\..\..\Shared\SurveysPortal.Shared.Infrastructure\SurveysPortal.Shared.Infrastructure.csproj" />
+  </ItemGroup>
+
 </Project>

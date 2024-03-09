@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
@@ -10,6 +10,11 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="8.0.0" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\SurveysPortal.Modules.Surveys.QuestionAnswer.Core\SurveysPortal.Modules.Surveys.QuestionAnswer.Core.csproj" />
+    <ProjectReference Include="..\SurveysPortal.Modules.Surveys.QuestionAnswer.Infrastructure\SurveysPortal.Modules.Surveys.QuestionAnswer.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>

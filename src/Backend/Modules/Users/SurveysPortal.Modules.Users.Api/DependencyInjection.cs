@@ -11,6 +11,7 @@ public static class DependencyInjection
         services
             .AddUsersCoreLayer()
             .AddUsersInfrastructureLayer();
+        
         return services;
     }
 }

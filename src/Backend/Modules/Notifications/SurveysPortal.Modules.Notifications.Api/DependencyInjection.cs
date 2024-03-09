@@ -1,5 +1,5 @@
-using Microsoft.Extensions.DependencyInjection;
 using SurveysPortal.Modules.Notifications.Application;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace SurveysPortal.Modules.Notifications.Api;
 

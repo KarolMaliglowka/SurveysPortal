@@ -1,22 +1,15 @@
-// using SurveysPortal.Modules.Users.Core.Entities;
-// using SurveysPortal.Modules.Users.Core.ValueObjects;
-//
-// namespace SurveysPortal.Modules.Users.Tests.Unit.Mocks;
-//
-// public static class UsersMockData
-// {
-//     public static User CreateUser
-//     (
-//         FirstName firstName,
-//         LastName lastName,
-//         Username userName,
-//         Email email,
-//         string displayName
-//     ) => new(firstName, lastName,userName, email, displayName);
-//     //
-//     // private const string Example = nameof(Example);
-//     // private const string EmailExample = "Example@mail.com";
-//     // private static readonly LastName LastName = new LastName("Doie");
-//     private LastName lastName1 = new ("Doe");
-//     
-// }
+using SurveysPortal.Modules.Users.Core.Entities;
+using SurveysPortal.Modules.Users.Core.ValueObjects;
+
+namespace SurveysPortal.Modules.Users.Tests.Unit.Mocks;
+
+public static class UsersMockData
+{
+    private static readonly FirstName FirstName = new ("John");
+    private static readonly LastName LastName = new ("Doe");
+    private static readonly Username UserName = new ("DoeJ");
+    private static readonly Email Email = new ("john.doe@email.com");
+
+    public static readonly User CreateUser = new (FirstName, LastName, UserName,
+        Email, "John Doe");
+}

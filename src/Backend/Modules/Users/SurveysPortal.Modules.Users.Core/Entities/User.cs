@@ -1,5 +1,6 @@
 ﻿using System.Diagnostics.CodeAnalysis;
 using Microsoft.AspNetCore.Identity;
+using SurveysPortal.Modules.Users.Core.ValueObjects;
 
 namespace SurveysPortal.Modules.Users.Core.Entities;
 
@@ -9,26 +10,24 @@ public sealed class User : IdentityUser<Guid>
     public User() {}
     public User
     (
-        string firstName,
-        string lastName,
-        string userName,
-        string email,
+        FirstName firstName,
+        LastName lastName,
+        Username userName,
+        Email email,
         string displayName
     )
     {
-        FirstName = firstName;
-        LastName = lastName;
-        SecurityStamp = Guid.NewGuid().ToString();
         SetFirstName(firstName);
         SetLastName(lastName);
         SetUsername(userName);
         SetEmail(email);
         Activate();
-        CreatedAt = DateTime.UtcNow;
-        EmailConfirmed = true;
         DisplayName = displayName.IsNotEmpty()
             ? displayName
             : $"{firstName} {lastName}";
+        SecurityStamp = Guid.NewGuid().ToString();
+        CreatedAt = DateTime.UtcNow;
+        EmailConfirmed = true;
     }
 
     public string FirstName { get; set; }
@@ -40,53 +39,28 @@ public sealed class User : IdentityUser<Guid>
 
     private void Update() => UpdatedAt = DateTime.UtcNow;
 
-    private void SetUsername(string username)
+    private void SetUsername(Username username)
     {
-        if (string.IsNullOrEmpty(username))
-        {
-            throw new ArgumentNullException(nameof(username), "User name cannot be empty.");
-        }
-
         UserName = username;
         Update();
     }
 
     public string GetFullName() => FirstName + " " + LastName;
 
-    private void SetEmail(string email)
+    private void SetEmail(Email email)
     {
-        if (string.IsNullOrEmpty(email))
-        {
-            throw new ArgumentNullException(nameof(email), "Email cannot be empty.");
-        }
-
-        if (!email.IsEmail())
-        {
-            throw new ArgumentException("Email is not valid.", nameof(email));
-        }
-
         Email = email;
         Update();
     }
 
-    private void SetFirstName(string firstName)
+    private void SetFirstName(FirstName firstName)
     {
-        if (string.IsNullOrEmpty(firstName))
-        {
-            throw new ArgumentNullException(nameof(firstName), "First name cannot be empty.");
-        }
-
         FirstName = firstName;
         Update();
     }
 
-    private void SetLastName(string lastName)
+    private void SetLastName(LastName lastName)
     {
-        if (string.IsNullOrEmpty(lastName))
-        {
-            throw new ArgumentNullException(nameof(lastName), "Last name cannot be empty.");
-        }
-
         LastName = lastName;
         Update();
     }

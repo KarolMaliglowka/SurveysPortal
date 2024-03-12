@@ -1,9 +1,12 @@
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
 using SurveysPortal.Modules.Users.Core.Entities;
 using SurveysPortal.Modules.Users.Core.Repositories;
+using SurveysPortal.Shared.Abstractions.Attributes;
 
 namespace SurveysPortal.Modules.Users.Infrastructure.DAL.Repositories;
 
+[Injectable(ServiceLifetime.Scoped)]
 public class UserRepository(UsersDbContext context) : IUserRepository
 {
     public Task<User?> GetAsync(Guid id)

@@ -1,11 +1,14 @@
+using Microsoft.Extensions.DependencyInjection;
 using SurveysPortal.Modules.Users.Core.DTO;
 using SurveysPortal.Modules.Users.Core.DTO.Extensions;
 using SurveysPortal.Modules.Users.Core.Exceptions;
 using SurveysPortal.Modules.Users.Core.Repositories;
+using SurveysPortal.Shared.Abstractions.Attributes;
 using SurveysPortal.Shared.Abstractions.Queries;
 
 namespace SurveysPortal.Modules.Users.Core.Queries.Handlers;
 
+[Injectable(ServiceLifetime.Scoped)]
 internal sealed class GetUserHandler : IQueryHandler<GetUser, UserDto>
 {
     private readonly IUserRepository _userRepository;

@@ -5,7 +5,11 @@ namespace SurveysPortal.Modules.Users.Core.ValueObjects;
 public sealed record Username
 {
     public string Value { get; }
-        
+
+    public Username()
+    {
+    }
+
     public Username(string value)
     {
         if (string.IsNullOrWhiteSpace(value) || value.Length is > 30 or < 3)

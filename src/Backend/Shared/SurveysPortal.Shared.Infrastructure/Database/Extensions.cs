@@ -2,6 +2,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using SurveysPortal.Shared.Abstractions.Commands;
 using SurveysPortal.Shared.Abstractions.Events;
+using SurveysPortal.Shared.Abstractions.Queries;
 using SurveysPortal.Shared.Infrastructure.Database.Decorators;
 
 namespace SurveysPortal.Shared.Infrastructure.Database;
@@ -62,7 +63,7 @@ public static class Extensions
         services.AddSingleton(options);
         services.AddSingleton(new UnitOfWorkTypeRegistry());
             
-        
+        // Temporary fix for EF Core issue related to https://github.com/npgsql/efcore.pg/issues/2000
         AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
 
         return services;

@@ -2,7 +2,13 @@ using SurveysPortal.Modules.Users.Core.ValueObjects;
 
 namespace SurveysPortal.Modules.Users.Core.Exceptions;
 
-public class InvalidFirstNameException (FirstName firstName) : CustomException($"First name: '{firstName}' is invalid.")
+public class InvalidFirstNameException : CustomException
 {
-    public FirstName LastName { get; } = firstName;
+    public InvalidFirstNameException() : base(null!) {}
+    public InvalidFirstNameException(FirstName firstName) : base($"First name: '{firstName}' is invalid.")
+    {
+        LastName = firstName;
+    }
+
+    public FirstName LastName { get; }
 }

@@ -16,13 +16,15 @@ public class TransactionalCommandHandlerDecorator<T> : ICommandHandler<T> where 
     private readonly ICommandHandler<T> _handler;
     private readonly UnitOfWorkTypeRegistry _unitOfWorkTypeRegistry;
     private readonly IServiceProvider _serviceProvider;
+    private readonly ILogger<TransactionalCommandHandlerDecorator<T>> _logger;
 
     public TransactionalCommandHandlerDecorator(ICommandHandler<T> handler, UnitOfWorkTypeRegistry unitOfWorkTypeRegistry,
-        IServiceProvider serviceProvider)
+        IServiceProvider serviceProvider, ILogger<TransactionalCommandHandlerDecorator<T>> logger)
     {
         _handler = handler;
         _unitOfWorkTypeRegistry = unitOfWorkTypeRegistry;
         _serviceProvider = serviceProvider;
+        _logger = logger;
     }
 
     public async Task HandleAsync(T command, CancellationToken cancellationToken = default)
@@ -37,6 +39,8 @@ public class TransactionalCommandHandlerDecorator<T> : ICommandHandler<T> where 
         var unitOfWork = (IUnitOfWork) _serviceProvider.GetRequiredService(unitOfWorkType);
         var unitOfWorkName = unitOfWorkType.Name;
         var name = command.GetType().Name.Underscore();
+        _logger.LogInformation("Handling: {Name} using TX ({UnitOfWorkName})...", name, unitOfWorkName);
         await unitOfWork.ExecuteAsync(() => _handler.HandleAsync(command, cancellationToken));
+        _logger.LogInformation("Handled: {Name} using TX ({UnitOfWorkName})", name, unitOfWorkName);
     }
 }

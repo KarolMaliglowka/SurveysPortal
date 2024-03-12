@@ -2,7 +2,7 @@ using SurveysPortal.Modules.Users.Core.Repositories;
 
 namespace SurveysPortal.Modules.Users.Core.Exceptions;
 
-public class UserNotFoundException : SurveysPortalException
+public class UserNotFoundException : CustomException
 {
     public Guid UserId { get; }
 

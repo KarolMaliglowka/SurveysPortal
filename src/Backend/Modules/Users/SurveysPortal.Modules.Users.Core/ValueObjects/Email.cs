@@ -12,6 +12,10 @@ public sealed record Email
         
     public string Value { get; }
 
+    public Email()
+    {
+    }
+
     public Email(string value)
     {
         if (string.IsNullOrWhiteSpace(value))

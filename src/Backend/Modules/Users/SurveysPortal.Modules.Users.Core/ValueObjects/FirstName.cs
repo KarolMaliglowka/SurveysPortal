@@ -5,7 +5,11 @@ namespace SurveysPortal.Modules.Users.Core.ValueObjects;
 public record FirstName
 {
     public string Value { get; }
-        
+
+    public FirstName()
+    {
+    }
+
     public FirstName(string value)
     {
         if (string.IsNullOrWhiteSpace(value) || value.Length is > 30 or < 2)

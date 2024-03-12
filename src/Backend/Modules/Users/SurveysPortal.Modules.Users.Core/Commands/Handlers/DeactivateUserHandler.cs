@@ -1,9 +1,12 @@
+using Microsoft.Extensions.DependencyInjection;
 using SurveysPortal.Modules.Users.Core.Exceptions;
 using SurveysPortal.Modules.Users.Core.Repositories;
+using SurveysPortal.Shared.Abstractions.Attributes;
 using SurveysPortal.Shared.Abstractions.Commands;
 
 namespace SurveysPortal.Modules.Users.Core.Commands.Handlers;
 
+[Injectable(ServiceLifetime.Scoped)]
 public class DeactivateUserHandler : ICommandHandler<DeactivateUser>
 {
     private readonly IUserRepository _userRepository;

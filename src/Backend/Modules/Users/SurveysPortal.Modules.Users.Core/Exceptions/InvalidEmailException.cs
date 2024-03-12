@@ -1,7 +1,13 @@
 namespace SurveysPortal.Modules.Users.Core.Exceptions;
 
 
-public sealed class InvalidEmailException(string email) : CustomException($"Email: '{email}' is invalid.")
+public sealed class InvalidEmailException : CustomException
 {
-    public string Email { get; } = email;
+    public InvalidEmailException() : base(null!) {}
+    public InvalidEmailException(string email) : base($"Email: '{email}' is invalid.")
+    {
+        Email = email;
+    }
+
+    public string Email { get; }
 }

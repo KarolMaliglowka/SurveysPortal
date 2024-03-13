@@ -17,8 +17,4 @@
     <ProjectReference Include="..\SurveysPortal.Modules.Users.Core\SurveysPortal.Modules.Users.Core.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Migrations\" />
-  </ItemGroup>
-
 </Project>

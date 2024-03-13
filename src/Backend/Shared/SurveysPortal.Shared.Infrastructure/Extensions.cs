@@ -11,15 +11,18 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Scrutor;
 using SurveysPortal.Shared.Abstractions.Attributes;
+using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc.ApplicationParts;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace SurveysPortal.Shared.Infrastructure;
 
 public static class Extensions
 {
     
-    
-    // public static IServiceCollection AddInitializer<T>(this IServiceCollection services) where T : class, IInitializer
-    //     => services.AddTransient<IInitializer, T>();
+
     
     public static IImplementationTypeSelector InjectableAttributes(this IImplementationTypeSelector selector)
     {
@@ -35,20 +38,28 @@ public static class Extensions
             .WithLifetime(lifeTime);
     }
     
-    public static T GetOptions<T>(this IServiceCollection services, string sectionName) where T : new()
+    public static TOptions GetOptions<TOptions>(this IServiceCollection services, string sectionName)
+        where TOptions : class, new()
     {
         using var serviceProvider = services.BuildServiceProvider();
-        var configuration = serviceProvider.GetRequiredService<IConfiguration>();
-        return configuration.GetOptions<T>(sectionName);
+        {
+            var configuration = serviceProvider.GetRequiredService<IConfiguration>();
+            return configuration.GetOptions<TOptions>(sectionName);
+        }
     }
 
-    public static T GetOptions<T>(this IConfiguration configuration, string sectionName) where T : new()
+    public static TOptions GetOptions<TOptions>(this IConfiguration configuration, string sectionName)
+        where TOptions : class, new()
     {
-        var options = new T();
-        configuration.GetSection(sectionName);
+        var options = new TOptions();
+        var section = configuration.GetSection(sectionName);
+        section.Bind(options);
+
         return options;
     }
-
+    
+    
+    
     public static string GetModuleName(this object value)
         => value?.GetType().GetModuleName() ?? string.Empty;
 

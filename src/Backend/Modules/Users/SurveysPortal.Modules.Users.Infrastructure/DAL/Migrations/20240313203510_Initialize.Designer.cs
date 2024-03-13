@@ -12,7 +12,7 @@ using SurveysPortal.Modules.Users.Infrastructure.DAL;
 namespace SurveysPortal.Modules.Users.Infrastructure.DAL.Migrations
 {
     [DbContext(typeof(UsersDbContext))]
-    [Migration("20240312201948_Initialize")]
+    [Migration("20240313203510_Initialize")]
     partial class Initialize
     {
         /// <inheritdoc />

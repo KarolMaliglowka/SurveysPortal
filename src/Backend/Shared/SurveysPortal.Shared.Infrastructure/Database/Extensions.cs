@@ -1,9 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
-using SurveysPortal.Shared.Abstractions.Commands;
-using SurveysPortal.Shared.Abstractions.Events;
 using SurveysPortal.Shared.Abstractions.Queries;
-using SurveysPortal.Shared.Infrastructure.Database.Decorators;
 
 namespace SurveysPortal.Shared.Infrastructure.Database;
 
@@ -57,25 +54,18 @@ public static class Extensions
         return await data.Skip((page - 1) * results).Take(results).ToListAsync(cancellationToken);
     }
 
-    public static IServiceCollection AddPostgres(this IServiceCollection services)
-    {
-        var options = services.GetOptions<PostgresOptions>("postgres");
-        services.AddSingleton(options);
-        services.AddSingleton(new UnitOfWorkTypeRegistry());
-            
-        // Temporary fix for EF Core issue related to https://github.com/npgsql/efcore.pg/issues/2000
-        AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
+    // public static IServiceCollection AddPostgres(this IServiceCollection services)
+    // {
+    //     var options = services.GetOptions<PostgresOptions>("postgres");
+    //     services.AddSingleton(options);
+    //         
+    //     // Temporary fix for EF Core issue related to https://github.com/npgsql/efcore.pg/issues/2000
+    //     AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
+    //
+    //     return services;
+    // }
 
-        return services;
-    }
 
-    public static IServiceCollection AddTransactionalDecorators(this IServiceCollection services)
-    {
-        services.TryDecorate(typeof(ICommandHandler<>), typeof(TransactionalCommandHandlerDecorator<>));
-        services.TryDecorate(typeof(IEventHandler<>), typeof(TransactionalEventHandlerDecorator<>));
-
-        return services;
-    }
 
     public static IServiceCollection AddPostgres<T>(this IServiceCollection services) where T : DbContext
     {
@@ -85,13 +75,4 @@ public static class Extensions
         return services;
     }
 
-    public static IServiceCollection AddUnitOfWork<T>(this IServiceCollection services) where T : class, IUnitOfWork
-    {
-        services.AddScoped<IUnitOfWork, T>();
-        services.AddScoped<T>();
-        using var serviceProvider = services.BuildServiceProvider();
-        serviceProvider.GetRequiredService<UnitOfWorkTypeRegistry>().Register<T>();
-
-        return services;
-    }
 }

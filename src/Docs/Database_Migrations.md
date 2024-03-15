@@ -8,7 +8,10 @@ Survey's Portal
 
 <p>After each change that affects the database structure, you must create a migration and update the database.
 At this time, there are only one place in the project where you need to update if necessary:
-<ins>Users.Infrastructure</ins> projects.</p>
+
+[Users.Infrastructure](../Backend/Modules/Users/SurveysPortal.Modules.Users.Infrastructure) 
+
+projects.</p>
 <p>In order to migrate, we go to the DAL directory in a given project and execute the commands:</p>
 
 Create ne migration

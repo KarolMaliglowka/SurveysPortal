@@ -9,7 +9,7 @@ namespace SurveysPortal.Modules.Users.Api.Controllers;
 
 [ApiController]
 [Route("[controller]")]
-public class UsersController(IDispatcher dispatcher) : Controller
+public class UsersController(IDispatcher dispatcher) : ControllerBase
 {
     [HttpGet("all")]
     [ProducesResponseType(typeof(List<UserDto>), StatusCodes.Status200OK)]

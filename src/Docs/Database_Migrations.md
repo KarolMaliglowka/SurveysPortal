@@ -30,3 +30,6 @@ or
 dotnet ef database update --startup-project ..\..\..\..\Bootstrapper\SurveysPortal.Bootstrapper\SurveysPortal.Bootstrapper.csproj --project ..\..\SurveysPortal.Modules.Users.Infrastructure\SurveysPortal.Modules.Users.Infrastructure.csproj --context UsersDbContext
 ```
 Information from [entityframeworktutorial.net](https://www.entityframeworktutorial.net/efcore/cli-commands-for-ef-core-migration.aspx).
+
+
+[Back to README](../../README.md)

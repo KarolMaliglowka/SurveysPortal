@@ -24,9 +24,9 @@ public static class UserExtensions
         return null;
     }
 
-    public static IEnumerable<UserDto>? ToUsersListDto(this IEnumerable<User> users)
+    public static IEnumerable<UserDto> ToUsersListDto(this IEnumerable<User> users)
     {
-        return users?.Select
+        return users.Select
         (
             x => new UserDto
             {

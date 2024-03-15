@@ -8,6 +8,4 @@ public abstract class PagedQuery : IPagedQuery
     public string SortOrder { get; set; }
 }
     
-public abstract class PagedQuery<T> : PagedQuery, IPagedQuery<Paged<T>>
-{
-}
+public abstract class PagedQuery<T> : PagedQuery, IPagedQuery<Paged<T>>;

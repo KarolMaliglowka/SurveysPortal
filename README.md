@@ -72,9 +72,9 @@ The set of shared components for the common abstractions & cross-cutting concern
 decoupling, it's split into the separate *Abstractions* and *Infrastructure*, where the former does contain public abstractions and the latter their implementation.
 
 ### Docs
-
 A place to store documentation.
 
+[Database manual migrations](src/Docs/Database_Migrations.md)
 
 ## Application usage
 

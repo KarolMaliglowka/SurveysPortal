@@ -1,1 +1,21 @@
 <p>user-details works!</p>
+<div class="card flex justify-content-center">
+  <p-button label="Check" icon="pi pi-check"></p-button>
+</div>
+<button pButton pRipple label="Submit" class="p-button-success"></button>
+
+
+
+<div class="card flex justify-content-center m-5">
+  <div class="flex flex-column gap-2">
+    <label for="username">Username</label>
+    <input pInputText id="username" aria-describedby="username-help" [(ngModel)]="value" />
+    <small id="username-help">Enter your username to reset your password.</small>
+  </div>
+</div>
+<div class="m-3">
+<span class="p-float-label">
+    <input pInputText id="username1" [(ngModel)]="value" />
+    <label for="username">Username</label>
+</span>
+</div>

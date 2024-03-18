@@ -39,9 +39,9 @@ in frontend web:
 
 | Technology                                      | Version |
 |-------------------------------------------------|---------|
-| [`Angular`](https://angular.io/)                | x.x.x   |
-| [`Typescript`](https://www.typescriptlang.org/) | x.x.x   |
-| [`PrimeNG`](https://primeng.org/)               | x.x.x   |
+| [`Angular`](https://angular.io/)                | 17.3.0  |
+| [`Typescript`](https://www.typescriptlang.org/) | 5.4.2   |
+| [`PrimeNG`](https://primeng.org/)               | 17.11.0 |
 
 in fronted mobile(maybe):
 

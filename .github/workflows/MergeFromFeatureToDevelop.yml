@@ -2,8 +2,10 @@ name: Merge to master any changes in develop branch
 on:
   push:
     branches:
-      - 'feature/*'
+      - 'feature/**'
 jobs:
+  push:
+    
   merge-branch:
     runs-on: ubuntu-latest
     steps:

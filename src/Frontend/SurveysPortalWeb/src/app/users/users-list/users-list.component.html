@@ -1,1 +1,159 @@
-<p>users-list works!</p>
+<div class="grid">
+  <div class="col-12">
+    <div class="card">
+      <div class="text-primary">
+        <h4>Users list</h4>
+      </div>
+      <p-table #dt id="dataTable" dataKey="id" [rowHover]="true" [value]="users"
+               styleClass="p-datatable-gridlines"
+               [globalFilterFields]="['displayName', 'firstName', 'lastName', 'email', 'groupRolesNames']"
+               [totalRecords]="users.length"
+               [filterDelay]="0"
+               [reorderableColumns]="true"
+               [columns]="tableColumns"
+               [rows]="10" [showCurrentPageReport]="true" [rowsPerPageOptions]="[10,25,50]" responsiveLayout="scroll"
+               [paginator]="true" currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+               stateStorage="local">
+
+        <ng-template pTemplate="caption">
+          <div class="flex align-items-center justify-content-between flex-wrap">
+            <div class="mb-2 mr-2">
+              <span class="p-input-icon-left ml-auto">
+                <i class="pi pi-search"></i>
+                <input #globalTableSearch
+                       pInputText type="text"
+                       placeholder="Search keyword"
+                       pTooltip="Searches for users"
+                       tooltipPosition="top"/>
+              </span>
+              <button pButton
+                      pRipple
+                      label="Clear"
+                      class="p-button-outlined ml-2"
+                      icon="pi pi-filter-slash"
+                      pTooltip="Clear all columns filters"
+                      tooltipPosition="top"
+                      type="button">
+              </button>
+            </div>
+          </div>
+          <div class="flex align-items-center justify-content-between">
+            <div class="flex">
+              <div pTooltip="Bulk actions for selected users" tooltipPosition="top">
+                <button (click)="menu.toggle($event)"
+                        pButton
+                        pRipple
+                        class="p-button-outlined mr-2"
+                        icon="pi pi-cog"
+                        type="button"></button>
+                <p-menu #menu [popup]="true" appendTo="body">
+                </p-menu>
+              </div>
+            </div>
+          </div>
+        </ng-template>
+
+        <ng-template pTemplate="header" let-columns>
+          <tr>
+            <th class="w-3rem">
+              <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
+            </th>
+            <ng-container *ngFor="let col of columns" [ngSwitch]="col.field">
+              <th *ngSwitchCase="'groupRolesNames'" pReorderableColumn>
+                {{col.header}}
+              </th>
+              <th *ngSwitchCase="'isActive'" class="w-6rem" pReorderableColumn>
+                {{col.header}}
+              </th>
+              <th *ngSwitchDefault [pSortableColumn]="col.field" pReorderableColumn>
+                {{col.header}}
+                <p-sortIcon [field]="col.field"></p-sortIcon>
+              </th>
+            </ng-container>
+            <th class="min-width-100">Actions</th>
+          </tr>
+          <tr>
+            <th></th>
+            <ng-container *ngFor="let col of columns" [ngSwitch]="col.field">
+              <th *ngSwitchCase="'isActive'" class="text-center clear-button-hidden">
+                <p-columnFilter field="isActive" type="boolean" pStyleClass="clear-width"></p-columnFilter>
+              </th>
+              <th *ngSwitchDefault>
+                <p-columnFilter [field]="col.field" type="text" ></p-columnFilter>
+              </th>
+            </ng-container>
+            <th class="min-width-100"></th>
+          </tr>
+        </ng-template>
+
+        <ng-template pTemplate="body" let-user let-columns="columns">
+          <tr class="p-selectable-row">
+            <td>
+              <p-tableCheckbox [value]="user"></p-tableCheckbox>
+            </td>
+            <ng-container *ngFor="let col of columns" [ngSwitch]="col.field">
+              <td *ngSwitchCase="'isActive'" class="text-center">
+                <span class="p-column-title">Is active</span>
+                <i [ngClass]="{'pi-check-circle': user.isActive, 'pi-times-circle': !user.isActive}" class="pi"></i>
+              </td>
+              <td *ngSwitchCase="'groupRolesNames'">
+                <span class="p-column-title">{{col.header}}</span>
+                {{user[col.field].join(', ')}}
+              </td>
+              <td *ngSwitchDefault>
+                <span class="p-column-title">{{col.header}}</span>
+                {{user[col.field]}}
+              </td>
+            </ng-container>
+            <td>
+              <div class="flex justify-content-center">
+                <button
+                  pButton
+                  pRipple
+                  pTooltip="Show user profile"
+                  tooltipPosition="top"
+                  class="p-button-rounded p-button-outlined"
+                  icon="pi pi-eye"
+                  type="button">
+                </button>
+                <div class="inline-flex ml-2">
+                  <ng-template [ngIf]="user.isActive">
+                    <button pButton
+                            pRipple
+                            pTooltip="Deactivate user"
+                            (click)="deactivateUser(user, $event)"
+                            tooltipPosition="top"
+                            class="p-button-rounded p-button-outlined p-button-danger"
+                            icon="pi pi-times"
+                            type="button">
+                    </button>
+                  </ng-template>
+                  <ng-template [ngIf]="!user.isActive">
+                    <button pButton
+                            pRipple
+                            pTooltip="Activate user"
+                            (click)="activateUser(user, $event)"
+                            tooltipPosition="top"
+                            class="p-button-rounded p-button-outlined p-button-success"
+                            icon="pi pi-check"
+                            type="button">
+                    </button>
+                  </ng-template>
+                </div>
+              </div>
+            </td>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="emptymessage">
+          <tr>
+            <td colspan="100%">No users found.</td>
+          </tr>
+        </ng-template>
+      </p-table>
+    </div>
+  </div>
+</div>
+
+<p-confirmPopup key="ConfirmPopup"></p-confirmPopup>
+<p-confirmDialog key="ConfirmDialog"></p-confirmDialog>
+

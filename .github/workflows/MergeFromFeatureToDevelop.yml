@@ -2,10 +2,7 @@ name: Merge to master any changes in develop branch
 on:
   push:
     branches:
-      - 'develop'
-#  pull_request:
-#    branches:
-#      - 'develop'
+      - 'feature/*'
 jobs:
   merge-branch:
     runs-on: ubuntu-latest
@@ -15,6 +12,6 @@ jobs:
         uses: devmasx/merge-branch@master
         with:
           type: now
-          from_branch: develop
-          target_branch: master
+          from_branch: feature/*
+          target_branch: develop
           github_token: ${{ secrets.TESTOWANIETOKENA }}

@@ -12,6 +12,6 @@ jobs:
         uses: devmasx/merge-branch@master
         with:
           type: now
-          from_branch: feature/*
+          #from_branch: feature/*
           target_branch: develop
           github_token: ${{ secrets.TESTOWANIETOKENA }}

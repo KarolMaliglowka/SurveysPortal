@@ -15,6 +15,7 @@ import {ConfirmDialogModule} from "primeng/confirmdialog";
 import {ApiService} from "./services/api.service";
 import {HttpClientModule} from "@angular/common/http";
 import {ConfirmationService} from "primeng/api";
+import {SelectButtonModule} from "primeng/selectbutton";
 
 @NgModule({
   declarations: [
@@ -22,19 +23,20 @@ import {ConfirmationService} from "primeng/api";
     UsersListComponent,
     UserDetailsComponent
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    ButtonModule,
-    InputTextModule,
-    FormsModule,
-    RippleModule,
-    TableModule,
-    MenuModule,
-    ConfirmPopupModule,
-    ConfirmDialogModule,
-    HttpClientModule
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        ButtonModule,
+        InputTextModule,
+        FormsModule,
+        RippleModule,
+        TableModule,
+        MenuModule,
+        ConfirmPopupModule,
+        ConfirmDialogModule,
+        HttpClientModule,
+        SelectButtonModule
+    ],
   providers: [
     ApiService,
     ConfirmationService

@@ -30,9 +30,10 @@
               "src/assets"
             ],
             "styles": [
+              "src/styles.scss",
+              "node_modules/primeicons/primeicons.css",
               "node_modules/primeng/resources/themes/lara-light-blue/theme.css",
-              "node_modules/primeng/resources/primeng.min.css",
-              "src/styles.scss"
+              "node_modules/primeng/resources/primeng.min.css"
             ],
             "scripts": []
           },
@@ -67,10 +68,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "surveys-portal-web:build:production"
+              "buildTarget": "surveys-portal-web:build:production"
             },
             "development": {
-              "browserTarget": "surveys-portal-web:build:development"
+              "buildTarget": "surveys-portal-web:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -78,7 +79,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "surveys-portal-web:build"
+            "buildTarget": "surveys-portal-web:build"
           }
         },
         "test": {
@@ -95,9 +96,10 @@
               "src/assets"
             ],
             "styles": [
+              "src/styles.scss",
+              "node_modules/primeicons/primeicons.css",
               "node_modules/primeng/resources/themes/lara-light-blue/theme.css",
-              "node_modules/primeng/resources/primeng.min.css",
-              "src/styles.scss"
+              "node_modules/primeng/resources/primeng.min.css"
             ],
             "scripts": []
           }

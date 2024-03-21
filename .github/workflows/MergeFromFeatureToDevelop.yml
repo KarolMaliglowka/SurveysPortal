@@ -2,16 +2,16 @@ name: Merge to master any changes in develop branch
 on:
   push:
     branches:
-      - 'feature/*'
+      - 'feature/**'
 jobs:
   merge-branch:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - name: Merge develop -> master
+      - name: Merge feature/* -> develop
         uses: devmasx/merge-branch@master
         with:
           type: now
-          from_branch: feature/*
+          #from_branch: feature/*
           target_branch: develop
           github_token: ${{ secrets.TESTOWANIETOKENA }}

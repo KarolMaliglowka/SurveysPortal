@@ -39,9 +39,9 @@ in frontend web:
 
 | Technology                                      | Version |
 |-------------------------------------------------|---------|
-| [`Angular`](https://angular.io/)                | x.x.x   |
-| [`Typescript`](https://www.typescriptlang.org/) | x.x.x   |
-| [`PrimeNG`](https://primeng.org/)               | x.x.x   |
+| [`Angular`](https://angular.io/)                | 17.3.0  |
+| [`Typescript`](https://www.typescriptlang.org/) | 5.4.2   |
+| [`PrimeNG`](https://primeng.org/)               | 17.11.0 |
 
 in fronted mobile(maybe):
 
@@ -56,7 +56,7 @@ Web application responsible for interacting with the user and presenting feedbac
 
 ### Backend
 #### Bootstrapper
-<p>Application responsible for initializing and starting all the modules - loading configurations, running DB migrations, exposing public APIs etc.</p>
+Application responsible for initializing and starting all the modules - loading configurations, running DB migrations, exposing public APIs etc.
 
 #### Modules
 Autonomous modules with the different set of responsibilities, highly decoupled from each other - there's no reference between the modules at all (such as shared projects for the common data contracts), and the synchronous communication & asynchronous integration (via events) is based on local contracts approach.

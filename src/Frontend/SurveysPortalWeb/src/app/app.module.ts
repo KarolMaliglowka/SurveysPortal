@@ -1,29 +1,56 @@
 import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
-import { AppRoutingModule } from './app-routing.module';
+import {
+    LocationStrategy, NgClass,
+    NgForOf, NgIf,
+    NgSwitch,
+    NgSwitchCase, NgSwitchDefault,
+    PathLocationStrategy
+} from '@angular/common';
 import { AppComponent } from './app.component';
-import { UsersListComponent } from './users/users-list/users-list.component';
-import { UserDetailsComponent } from './users/user-details/user-details.component';
-import { ButtonModule } from 'primeng/button';
-import { InputTextModule } from 'primeng/inputtext';
-import {FormsModule} from "@angular/forms";
+import { AppRoutingModule } from './app-routing.module';
+import { AppLayoutModule } from './layout/app.layout.module';
+import {ButtonModule} from "primeng/button";
+import {TableModule} from "primeng/table";
+import {InputTextModule} from "primeng/inputtext";
+import {TooltipModule} from "primeng/tooltip";
 import {RippleModule} from "primeng/ripple";
+import {MenuModule} from "primeng/menu";
+import {StyleClassModule} from "primeng/styleclass";
+import {ConfirmPopupModule} from "primeng/confirmpopup";
+import {ConfirmDialogModule} from "primeng/confirmdialog";
+import {UsersListComponent} from "./users/users-list/users-list.component";
+import {ApiService} from "./services/api.service";
+import {ConfirmationService} from "primeng/api";
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    UsersListComponent,
-    UserDetailsComponent
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    ButtonModule,
-    InputTextModule,
-    FormsModule,
-    RippleModule
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
+    declarations: [
+        AppComponent,
+    ],
+    imports: [
+        AppRoutingModule,
+        AppLayoutModule,
+        ButtonModule,
+        TableModule,
+        InputTextModule,
+        TooltipModule,
+        RippleModule,
+        MenuModule,
+        NgSwitch,
+        NgSwitchCase,
+        NgForOf,
+        NgSwitchDefault,
+        StyleClassModule,
+        NgClass,
+        NgIf,
+        ConfirmPopupModule,
+        ConfirmDialogModule,
+        UsersListComponent,
+        InputTextModule
+    ],
+    providers: [
+        { provide: LocationStrategy, useClass: PathLocationStrategy },
+        ApiService, ConfirmationService
+    ],
+    bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

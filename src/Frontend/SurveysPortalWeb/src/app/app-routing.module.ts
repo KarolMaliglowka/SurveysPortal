@@ -1,17 +1,23 @@
-import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
-import {AppComponent} from "./app.component";
+import {RouterModule} from '@angular/router';
+import {NgModule} from '@angular/core';
+import {AppLayoutComponent} from "./layout/app.layout.component";
 import {UsersListComponent} from "./users/users-list/users-list.component";
-import {UserDetailsComponent} from "./users/user-details/user-details.component";
-
-const routes: Routes = [
-  { path: '', component: AppComponent },
-  { path: 'list', component: UsersListComponent },
-  { path: 'details', component: UserDetailsComponent }
-];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+    imports: [
+        RouterModule.forRoot([
+            {
+                path: '', component: AppLayoutComponent,
+                children: [
+
+                    {path: 'list', component: UsersListComponent},
+                ]
+            },
+            //{path: 'notfound', component: NotfoundComponent},
+            {path: '**', redirectTo: '/notfound'},
+        ], {scrollPositionRestoration: 'enabled', anchorScrolling: 'enabled', onSameUrlNavigation: 'reload'})
+    ],
+    exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {
+}

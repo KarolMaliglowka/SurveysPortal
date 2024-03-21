@@ -37,11 +37,12 @@ in backend:
 
 in frontend web:
 
-| Technology                                      | Version |
-|-------------------------------------------------|---------|
-| [`Angular`](https://angular.io/)                | 17.3.0  |
-| [`Typescript`](https://www.typescriptlang.org/) | 5.4.2   |
-| [`PrimeNG`](https://primeng.org/)               | 17.11.0 |
+| Technology                                           | Version |
+|------------------------------------------------------|---------|
+| [`Angular`](https://angular.io/)                     | 17.3.0  |
+| [`Typescript`](https://www.typescriptlang.org/)      | 5.4.2   |
+| [`PrimeNG`](https://primeng.org/)                    | 17.11.0 |
+| [`Sakai-NG`](https://github.com/primefaces/sakai-ng) | 17.0.0  |
 
 in fronted mobile(maybe):
 
@@ -81,3 +82,4 @@ A place to store documentation.
 ### Dependence
 
 ### Clone from GitHub
+test

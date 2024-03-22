@@ -2,6 +2,7 @@ import {RouterModule} from '@angular/router';
 import {NgModule} from '@angular/core';
 import {AppLayoutComponent} from "./layout/app.layout.component";
 import {UsersListComponent} from "./users/users-list/users-list.component";
+import {UserDetailsComponent} from "./users/user-details/user-details.component";
 
 @NgModule({
     imports: [
@@ -9,8 +10,8 @@ import {UsersListComponent} from "./users/users-list/users-list.component";
             {
                 path: '', component: AppLayoutComponent,
                 children: [
-
-                    {path: 'list', component: UsersListComponent},
+                    {path: 'users-list', component: UsersListComponent},
+                    {path: 'user-details', component: UserDetailsComponent},
                 ]
             },
             //{path: 'notfound', component: NotfoundComponent},

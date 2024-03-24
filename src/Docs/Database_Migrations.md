@@ -27,7 +27,7 @@ dotnet ef database update <migrationName> --startup-project <startUpProjectName>
 
 e.g.
 ```bash
-dotnet ef migrations add InitialMigration --startup-project ..\..\..\..\Bootstrapper\SurveysPortal.Bootstrapper\CBST.Bootstrapper.csproj --project ..\..\SurveysPortal.Modules.Users.Infrastructure\SurveysPortal.Modules.Users.Infrastructure.csproj --context UsersDbContext
+dotnet ef migrations add InitialMigration --startup-project ..\..\..\..\Bootstrapper\SurveysPortal.Bootstrapper\SurveysPortal.Bootstrapper.csproj --project ..\..\SurveysPortal.Modules.Users.Infrastructure\SurveysPortal.Modules.Users.Infrastructure.csproj --context UsersDbContext
 ```
 
 ```bash

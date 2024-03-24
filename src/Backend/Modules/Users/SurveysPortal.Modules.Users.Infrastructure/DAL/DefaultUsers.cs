@@ -3,7 +3,7 @@ using SurveysPortal.Modules.Users.Core.Entities;
 
 namespace SurveysPortal.Modules.Users.Infrastructure.DAL;
 
-public abstract class DefaultUsers(UsersDbContext context)
+public class DefaultUsers(UsersDbContext context)
 {
     public async Task SeedUsers()
     {

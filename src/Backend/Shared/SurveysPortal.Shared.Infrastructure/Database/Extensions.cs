@@ -32,10 +32,6 @@ public static class Extensions
         return new Paged<T>(result, page, results, totalPages, totalResults);
     }
 
-    public static Task<List<T>> SkipAndTakeAsync<T>(this IQueryable<T> data, IPagedQuery query,
-        CancellationToken cancellationToken = default)
-        => data.SkipAndTakeAsync(query.Page, query.Results, cancellationToken);
-
     public static async Task<List<T>> SkipAndTakeAsync<T>(this IQueryable<T> data, int page, int results,
         CancellationToken cancellationToken = default)
     {
@@ -53,19 +49,6 @@ public static class Extensions
 
         return await data.Skip((page - 1) * results).Take(results).ToListAsync(cancellationToken);
     }
-
-    // public static IServiceCollection AddPostgres(this IServiceCollection services)
-    // {
-    //     var options = services.GetOptions<PostgresOptions>("postgres");
-    //     services.AddSingleton(options);
-    //         
-    //     // Temporary fix for EF Core issue related to https://github.com/npgsql/efcore.pg/issues/2000
-    //     AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
-    //
-    //     return services;
-    // }
-
-
 
     public static IServiceCollection AddPostgres<T>(this IServiceCollection services) where T : DbContext
     {

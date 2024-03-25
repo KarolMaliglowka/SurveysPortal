@@ -8,13 +8,21 @@ using SurveysPortal.Modules.Users.Core.Entities;
 using SurveysPortal.Modules.Users.Infrastructure;
 using SurveysPortal.Modules.Users.Infrastructure.DAL;
 using SurveysPortal.Shared.Infrastructure;
+using Swashbuckle.AspNetCore.Filters;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services
     .AddEndpointsApiExplorer()
-    .AddSwaggerGen(c =>
+    .AddSwaggerGen(options =>
     {
-        c.SwaggerDoc("v1", new OpenApiInfo
+        options.AddSecurityDefinition("oauth2", new OpenApiSecurityScheme
+        {
+            In = ParameterLocation.Header,
+            Name = "Authorization",
+            Type = SecuritySchemeType.ApiKey
+        });
+        options.OperationFilter<SecurityRequirementsOperationFilter>();
+        options.SwaggerDoc("v1", new OpenApiInfo
         {
             Title = "Survey's Portal API",
             Version = "v1"

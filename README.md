@@ -20,7 +20,7 @@ It can be carried out, for example, on: introducing new products or services, ch
 - [Application usage](#Application-usage)
   - [Dependence](#Dependence)
   - [Clone from GitHub](#Clone-from-GitHub)
-
+- [License](#License)
 
 ## About application
 The application allows you to send the created survey to users registered in the system. You can use [Google](http://google.pl), [LinkedIn](https://linkedin.com) or [Facebook](https://facebook.com) authentication to log in. You can create two types of surveys (eventually more): simple (yes, no) and those requiring a longer, descriptive answer. The person creating and sending the surveys may receive responses after some time.
@@ -83,4 +83,6 @@ A place to store documentation.
 ### Dependence
 
 ### Clone from GitHub
-test
+
+## License
+This project is licensed under the [MIT License](License). Feel free to use, modify, and distribute as per the terms of the license.

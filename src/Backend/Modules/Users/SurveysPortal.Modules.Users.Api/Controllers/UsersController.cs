@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using SurveysPortal.Modules.Users.Core.Commands;
@@ -19,7 +20,7 @@ public class UsersController(IDispatcher dispatcher) : ControllerBase
     [ProducesResponseType(typeof(string), StatusCodes.Status404NotFound)]
     public async Task<ActionResult<List<UserDto>>> GetAllUsers() => Ok(await dispatcher.QueryAsync(new GetAllUsers()));
 
-    [HttpGet("getUserById/{id:Guid}")]
+    [HttpGet("getUserById/{id:Guid}"), Authorize]
     [ProducesResponseType(typeof(UserDto), StatusCodes.Status200OK)]
     [ProducesResponseType(typeof(string), StatusCodes.Status400BadRequest)]
     [ProducesResponseType(typeof(void), StatusCodes.Status401Unauthorized)]

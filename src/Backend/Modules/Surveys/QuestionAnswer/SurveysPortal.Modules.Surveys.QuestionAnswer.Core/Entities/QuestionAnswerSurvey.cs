@@ -29,7 +29,7 @@ public class QuestionAnswerSurvey
     public string Name { get; set; }
     public string Description { get; private set; }
     public string Introduction { get; set; }
-    public DateTime CreatedAt { get; }
+    public DateTime CreatedAt { get; set; }
     public DateTime UpdatedAt { get; private set; }
     public bool IsDeleted { get; private set; }
 

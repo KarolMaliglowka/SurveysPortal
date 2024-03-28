@@ -31,7 +31,7 @@ public class QuestionAnswerAnswer
     public string Answer { get; private set; }
     public DateTime AnsweredAt { get; private set; }
 
-    public void SetBasicAnswer(string userAnswer, bool isSubmitted)
+    public void SetQuestionAnswerAnswer(string userAnswer, bool isSubmitted)
     {
         var isList = QuestionAnswerQuestion.OfferedAnswers.Count != 0;
         var isUserAnswerInOfferedAnswers =

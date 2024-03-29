@@ -23,7 +23,8 @@ public class QuestionAnswerAnswer
                                      "Question cannot be null.");
     }
 
-    [ExcludeFromCodeCoverage] public int Id { get; }
+    [ExcludeFromCodeCoverage] 
+    public int Id { get; set; }
     public Guid UserId { get; set; }
     public int AnswerQuestionSurveyUserId { get; set; }
     public QuestionAnswerSurveyUser QuestionAnswerSurveyUser { get; }

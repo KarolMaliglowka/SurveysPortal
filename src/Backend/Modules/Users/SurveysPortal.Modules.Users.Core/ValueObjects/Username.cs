@@ -1,3 +1,4 @@
+using System.Diagnostics.CodeAnalysis;
 using SurveysPortal.Modules.Users.Core.Exceptions;
 
 namespace SurveysPortal.Modules.Users.Core.ValueObjects;
@@ -6,6 +7,7 @@ public sealed record Username
 {
     public string Value { get; }
 
+    [ExcludeFromCodeCoverage]
     public Username()
     {
     }

@@ -13,6 +13,7 @@
   <ItemGroup>
     <ProjectReference Include="..\..\..\..\Shared\SurveysPortal.Shared.Abstractions\SurveysPortal.Shared.Abstractions.csproj" />
     <ProjectReference Include="..\..\..\..\Shared\SurveysPortal.Shared.Infrastructure\SurveysPortal.Shared.Infrastructure.csproj" />
+    <ProjectReference Include="..\SurveysPortal.Modules.Surveys.QuestionAnswer.Core\SurveysPortal.Modules.Surveys.QuestionAnswer.Core.csproj" />
   </ItemGroup>
 
 </Project>

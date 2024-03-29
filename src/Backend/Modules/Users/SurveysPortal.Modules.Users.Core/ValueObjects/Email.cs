@@ -1,3 +1,4 @@
+using System.Diagnostics.CodeAnalysis;
 using System.Text.RegularExpressions;
 using SurveysPortal.Modules.Users.Core.Exceptions;
 
@@ -12,6 +13,7 @@ public sealed record Email
 
     public string Value { get; }
 
+    [ExcludeFromCodeCoverage]
     public Email()
     {
     }

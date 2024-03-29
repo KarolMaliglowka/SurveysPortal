@@ -1,3 +1,4 @@
+using System.Diagnostics.CodeAnalysis;
 using Microsoft.EntityFrameworkCore;
 using SurveysPortal.Modules.Users.Core.Exceptions;
 
@@ -7,6 +8,7 @@ public class LastName
 {
     public string Value { get; }
 
+    [ExcludeFromCodeCoverage]
     public LastName()
     {
     }

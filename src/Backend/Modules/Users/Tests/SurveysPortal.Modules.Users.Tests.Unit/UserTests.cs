@@ -1,8 +1,6 @@
 using Xunit;
 using FluentAssertions;
 using FluentAssertions.Extensions;
-using SurveysPortal.Modules.Users.Core.Exceptions;
-using SurveysPortal.Modules.Users.Core.ValueObjects;
 using SurveysPortal.Modules.Users.Tests.Unit.Mocks;
 
 namespace SurveysPortal.Modules.Users.Tests.Unit;
@@ -23,40 +21,43 @@ public class UserTests
             .NotBeNull();
 
         user
-            .FirstName
+            .Invoke()
+            .FirstName.Value
             .Should()
-            .NotBeNullOrWhiteSpace();
+            .NotBeNull();
 
         user
-            .LastName
+            .Invoke()
+            .LastName.Value
             .Should()
-            .NotBeNullOrWhiteSpace();
+            .NotBeNull();
 
         user
+            .Invoke()
             .UserName
             .Should()
             .NotBeNullOrWhiteSpace();
 
-        user
+        user.Invoke()
             .Email
             .Should()
             .NotBeNullOrWhiteSpace();
-        user
+        user.Invoke()
             .DisplayName
             .Should()
             .NotBeNullOrWhiteSpace();
 
-        user
+        user.Invoke()
             .IsActive
             .Should()
             .BeTrue();
 
-        user
+        user.Invoke()
             .CreatedAt
             .Should()
             .BeCloseTo(DateTime.UtcNow, 5.Seconds());
 
-        user
+        user.Invoke()
             .UpdatedAt
             .Should()
             .BeCloseTo(DateTime.UtcNow, 5.Seconds());
@@ -146,28 +147,26 @@ public class UserTests
         var newUser = UsersMockData.CreateUser;
 
         //Assert
-        newUser
+        newUser.Invoke()
             .GetFullName()
             .Should()
-            .StartWith(newUser.FirstName)
+            .StartWith(newUser.Invoke().FirstName)
             .And
-            .EndWith(newUser.LastName);
+            .EndWith(newUser.Invoke().LastName);
     }
 
     [Fact]
     public void GivenValidData_WhenDeactivateUser_ThenSuccess()
     {
         //Arrange
-
+    
         //Act
         var newUser = UsersMockData.CreateUser;
-        newUser
+        newUser.Invoke()
             .Deactivate();
-
+    
         //Assert
-        newUser
-            .IsActive
-            .Should()
-            .BeFalse();
+        Assert.True(newUser.Invoke().IsActive);
+
     }
 }

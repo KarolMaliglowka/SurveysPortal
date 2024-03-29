@@ -10,6 +10,6 @@ public static class UsersMockData
     private static readonly Username UserName = new ("DoeJ");
     private static readonly Email Email = new ("john.doe@email.com");
 
-    public static readonly User CreateUser = new (FirstName, LastName, UserName,
+    public static User CreateUser() => new (FirstName,  LastName, UserName,
         Email, "John Doe");
 }

@@ -1,0 +1,15 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net8.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\..\..\..\Shared\SurveysPortal.Shared.Abstractions\SurveysPortal.Shared.Abstractions.csproj" />
+      <ProjectReference Include="..\..\..\..\Shared\SurveysPortal.Shared.Infrastructure\SurveysPortal.Shared.Infrastructure.csproj" />
+      <ProjectReference Include="..\..\..\Users\SurveysPortal.Modules.Users.Core\SurveysPortal.Modules.Users.Core.csproj" />
+    </ItemGroup>
+
+</Project>

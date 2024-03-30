@@ -1,45 +1,45 @@
-using SurveysPortal.Modules.Surveys.QuestionAnswer.Core.Services;
+using SurveysPortal.Modules.Surveys.Standard.Core.Services;
 using SurveysPortal.Modules.Users.Core.Entities;
 
-namespace SurveysPortal.Modules.Surveys.QuestionAnswer.Core.Entities;
+namespace SurveysPortal.Modules.Surveys.Standard.Core.Entities;
 
-public class QuestionAnswerSurveyUser
+public class StandardSurveyUser
 {
-    private readonly List<QuestionAnswerAnswer> _answers = new();
+    private readonly List<StandardAnswer> _answers = new();
 
-    protected QuestionAnswerSurveyUser()
+    protected StandardSurveyUser()
     {
     }
 
-    public QuestionAnswerSurveyUser
+    public StandardSurveyUser
     (
-        QuestionAnswerSurvey questionAnswerSurvey,
+        StandardSurvey standardSurvey,
         User employee,
         DateTime dueDate
     )
     {
-        QuestionAnswerSurvey = questionAnswerSurvey ?? throw new ArgumentNullException(nameof(questionAnswerSurvey));
+        StandardSurvey = standardSurvey ?? throw new ArgumentNullException(nameof(standardSurvey));
         Employee = employee ?? throw new ArgumentNullException(nameof(employee));
         DueDate = dueDate;
     }
 
     public int Id { get; }
-    public int QuestionAnswerSurveyId { get; set; }
-    public QuestionAnswerSurvey QuestionAnswerSurvey { get; set; }
+    public int StandardSurveyId { get; set; }
+    public StandardSurvey StandardSurvey { get; set; }
     public Guid EmployeeId { get; set; }
     public User Employee { get; set; }
     public DateTime DueDate { get; set; }
     public int Completion { get; private set; }
 
-    public IReadOnlyCollection<QuestionAnswerAnswer> Answers => _answers.AsReadOnly();
-
-    public IEnumerable<KeyValuePair<QuestionAnswerQuestion, QuestionAnswerAnswer>> GetAllQuestionsWithAnswers()
+    public IReadOnlyCollection<StandardAnswer> Answers => _answers.AsReadOnly();
+    
+    public IEnumerable<KeyValuePair<StandardQuestion, StandardAnswer>> GetAllQuestionsWithAnswers()
     {
-        return QuestionAnswerSurvey.GetAllQuestions()
+        return StandardSurvey.GetAllQuestions()
             .Select(question =>
             {
-                var answer = Answers.FirstOrDefault(y => y.QuestionAnswerQuestion.Id == question.Id);
-                return new KeyValuePair<QuestionAnswerQuestion, QuestionAnswerAnswer>(question, answer);
+                var answer = Answers.FirstOrDefault(y => y.StandardQuestion.Id == question.Id);
+                return new KeyValuePair<StandardQuestion, StandardAnswer>(question, answer);
             })
             .ToList();
     }
@@ -48,7 +48,7 @@ public class QuestionAnswerSurveyUser
     {
         foreach (var (questionId, answerText) in questionIdsWithAnswers)
         {
-            var question = QuestionAnswerSurvey.GetAllQuestions().FirstOrDefault(x => x.Id == questionId);
+            var question = StandardSurvey.GetAllQuestions().FirstOrDefault(x => x.Id == questionId);
             if (question is null)
             {
                 continue;
@@ -57,21 +57,21 @@ public class QuestionAnswerSurveyUser
             var answer = GetAnswerForQuestion(questionId);
             if (answer is null)
             {
-                answer = new QuestionAnswerAnswer(this, question);
-                answer.SetQuestionAnswerAnswer(answerText, canBeClosed);
+                answer = new StandardAnswer(this, question);
+                answer.SetStandardAnswer(answerText, canBeClosed);
                 _answers.Add(answer);
             }
             else
             {
-                answer.SetQuestionAnswerAnswer(answerText, canBeClosed);
+                answer.SetStandardAnswer(answerText, canBeClosed);
             }
         }
 
         UpdateProgress(canBeClosed);
     }
 
-    private QuestionAnswerAnswer GetAnswerForQuestion(int questionId) =>
-        _answers.FirstOrDefault(x => x.QuestionAnswerQuestion.Id == questionId);
+    private StandardAnswer GetAnswerForQuestion(int questionId) =>
+        _answers.FirstOrDefault(x => x.StandardQuestion.Id == questionId);
 
     private void UpdateProgress(bool canBeClosed)
     {
@@ -84,7 +84,7 @@ public class QuestionAnswerSurveyUser
         _answers.Count(x => !string.IsNullOrWhiteSpace(x.Answer));
 
     private int GetNumberOfQuestions() =>
-        QuestionAnswerSurvey.QuestionAnswerSurveyQuestions.Count;
+        StandardSurvey.StandardSurveyQuestions.Count;
 
     public string GetOverallProgress()
     {

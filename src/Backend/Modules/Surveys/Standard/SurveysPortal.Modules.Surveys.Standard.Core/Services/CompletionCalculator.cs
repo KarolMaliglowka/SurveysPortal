@@ -1,4 +1,4 @@
-namespace SurveysPortal.Modules.Surveys.QuestionAnswer.Core.Services;
+namespace SurveysPortal.Modules.Surveys.Standard.Core.Services;
 
 public static class CompletionCalculator
 {

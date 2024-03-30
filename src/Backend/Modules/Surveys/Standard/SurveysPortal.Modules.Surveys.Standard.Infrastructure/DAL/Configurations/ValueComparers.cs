@@ -2,7 +2,7 @@ using Microsoft.EntityFrameworkCore.ChangeTracking;
 using System.Text.Json;
 using JsonSerializer = System.Text.Json.JsonSerializer;
 
-namespace SurveysPortal.Modules.Surveys.QuestionAnswer.Infrastructure.DAL;
+namespace SurveysPortal.Modules.Surveys.Standard.Infrastructure.DAL.Configurations;
 
 public static class ValueComparers
 {
@@ -16,5 +16,4 @@ public static class ValueComparers
         PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
         WriteIndented = true,
     };
-    
 }

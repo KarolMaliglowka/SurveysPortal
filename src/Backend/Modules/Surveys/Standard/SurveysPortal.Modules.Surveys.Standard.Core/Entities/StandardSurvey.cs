@@ -1,17 +1,17 @@
 using SurveysPortal.Modules.Users.Core.Entities;
 
-namespace SurveysPortal.Modules.Surveys.QuestionAnswer.Core.Entities;
+namespace SurveysPortal.Modules.Surveys.Standard.Core.Entities;
 
-public class QuestionAnswerSurvey
+public class StandardSurvey
 {
-    private List<QuestionAnswerSurveyQuestion> _questionAnswerSurveyQuestions = new();
-    private List<QuestionAnswerSurveyUser> _questionAnswerSurveyParticipants = new();
+    private List<StandardSurveyQuestion> _standardSurveyQuestions = new();
+    private List<StandardSurveyUser> _standardSurveyParticipants = new();
 
-    protected QuestionAnswerSurvey()
+    protected StandardSurvey()
     {
     }
 
-    public QuestionAnswerSurvey
+    public StandardSurvey
     (
         string name,
         string description,
@@ -33,12 +33,10 @@ public class QuestionAnswerSurvey
     public DateTime UpdatedAt { get; private set; }
     public bool IsDeleted { get; private set; }
 
-    public IReadOnlyCollection<QuestionAnswerSurveyUser> QuestionAnswerSurveyParticipants =>
-        _questionAnswerSurveyParticipants.AsReadOnly();
+    public IReadOnlyCollection<StandardSurveyUser> StandardSurveyParticipants =>
+        _standardSurveyParticipants.AsReadOnly();
 
-    public IReadOnlyCollection<QuestionAnswerSurveyQuestion> QuestionAnswerSurveyQuestions =>
-        _questionAnswerSurveyQuestions.AsReadOnly();
-
+    public IReadOnlyCollection<StandardSurveyQuestion> StandardSurveyQuestions => _standardSurveyQuestions.AsReadOnly();
 
     public void SetName(string name)
     {
@@ -65,7 +63,7 @@ public class QuestionAnswerSurvey
 
     public void MarkAsDeleted() => IsDeleted = true;
 
-    public void SetQuestions(IList<QuestionAnswerQuestionOrder> questions)
+    public void SetQuestions(IList<StandardQuestionOrder> questions)
     {
         if (questions is null || !questions.Any())
         {
@@ -73,7 +71,7 @@ public class QuestionAnswerSurvey
                 "Collection of questions must contain at least one question.");
         }
 
-        _questionAnswerSurveyQuestions = questions.Select(x => new QuestionAnswerSurveyQuestion(
+        _standardSurveyQuestions = questions.Select(x => new StandardSurveyQuestion(
                 x.Question,
                 this,
                 x.Index))
@@ -82,28 +80,28 @@ public class QuestionAnswerSurvey
         UpdatedAt = DateTime.UtcNow;
     }
 
-    public IEnumerable<QuestionAnswerQuestion> GetQuestions()
+    public IEnumerable<StandardQuestion> GetQuestions()
     {
-        return _questionAnswerSurveyQuestions
-            .OrderBy(x => x.QuestionAnswerQuestionOrder)
-            .Select(x => x.QuestionAnswerQuestion);
+        return _standardSurveyQuestions
+            .OrderBy(x => x.StandardQuestionOrder)
+            .Select(x => x.StandardQuestion);
     }
 
-    public IEnumerable<QuestionAnswerQuestion> GetAllQuestions()
+    public IEnumerable<StandardQuestion> GetAllQuestions()
     {
-        return _questionAnswerSurveyQuestions
-            .OrderBy(x => x.QuestionAnswerQuestionOrder)
-            .Select(x => x.QuestionAnswerQuestion);
+        return _standardSurveyQuestions
+            .OrderBy(x => x.StandardQuestionOrder)
+            .Select(x => x.StandardQuestion);
     }
 
     public void AssignEmployee(User employee, DateTime dueDate)
     {
-        if (_questionAnswerSurveyParticipants.Any(x => x.EmployeeId == employee.Id))
+        if (_standardSurveyParticipants.Any(x => x.EmployeeId == employee.Id))
         {
             return;
         }
 
-        var assignee = new QuestionAnswerSurveyUser(this, employee, dueDate);
-        _questionAnswerSurveyParticipants.Add(assignee);
+        var assignee = new StandardSurveyUser(this, employee, dueDate);
+        _standardSurveyParticipants.Add(assignee);
     }
 }

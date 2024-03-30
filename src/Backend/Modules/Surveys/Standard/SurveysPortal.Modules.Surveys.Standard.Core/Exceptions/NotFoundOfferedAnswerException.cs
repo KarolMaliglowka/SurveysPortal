@@ -1,4 +1,4 @@
-namespace SurveysPortal.Modules.Surveys.QuestionAnswer.Core.Exceptions;
+namespace SurveysPortal.Modules.Surveys.Standard.Core.Exceptions;
 
 public class NotFoundOfferedAnswerException : Exception
 {

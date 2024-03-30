@@ -8,8 +8,8 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\Modules\Notifications\SurveysPortal.Modules.Notifications.Api\SurveysPortal.Modules.Notifications.Api.csproj" />
-    <ProjectReference Include="..\..\Modules\Surveys\QuestionAnswer\SurveysPortal.Modules.Surveys.QuestionAnswer.Api\SurveysPortal.Modules.Surveys.QuestionAnswer.Api.csproj" />
     <ProjectReference Include="..\..\Modules\Surveys\Simple\SurveysPortal.Modules.Surveys.Simple.Api\SurveysPortal.Modules.Surveys.Simple.Api.csproj" />
+    <ProjectReference Include="..\..\Modules\Surveys\Standard\SurveysPortal.Modules.Surveys.Standard.Api\SurveysPortal.Modules.Surveys.Standard.Api.csproj" />
     <ProjectReference Include="..\..\Modules\Users\SurveysPortal.Modules.Users.Api\SurveysPortal.Modules.Users.Api.csproj" />
   </ItemGroup>
 

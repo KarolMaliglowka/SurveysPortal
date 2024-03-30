@@ -1,8 +1,8 @@
 using System.Text.Json.Serialization;
 using Microsoft.OpenApi.Models;
 using SurveysPortal.Modules.Notifications.Api;
-using SurveysPortal.Modules.Surveys.QuestionAnswer.Api;
 using SurveysPortal.Modules.Surveys.Simple.Api;
+using SurveysPortal.Modules.Surveys.Standard.Api;
 using SurveysPortal.Modules.Users.Api;
 using SurveysPortal.Modules.Users.Core.Entities;
 using SurveysPortal.Modules.Users.Infrastructure;
@@ -37,7 +37,7 @@ builder.Services.AddCors(options => options.AddPolicy("ApiCorsPolicy",
 
 builder.Services
     .AddUsersModule()
-    .AddSurveysQuestionAnswerModule()
+    .AddSurveysStandardApiModule()
     .AddSurveysSimpleModule()
     .AddNotificationsModule()
     .AddInfrastructureModule()
@@ -66,7 +66,6 @@ app.UseCors(corsPolicyBuilder => corsPolicyBuilder
     .AllowAnyMethod()
     .AllowAnyHeader()
 );
-
 
 app.UseHttpsRedirection();
 app.UseExceptionHandler("/error");

@@ -1,18 +1,18 @@
 using System.Diagnostics.CodeAnalysis;
 
-namespace SurveysPortal.Modules.Surveys.QuestionAnswer.Core.Entities;
+namespace SurveysPortal.Modules.Surveys.Standard.Core.Entities;
 
-public class QuestionAnswerQuestion
+public class StandardQuestion
 {
-    private List<QuestionAnswerSurveyQuestion> _questionAnswerSurveyQuestions = new();
+    private List<StandardSurveyQuestion> _standardSurveyQuestions = new();
     private List<string> _offeredAnswers = new();
 
     [ExcludeFromCodeCoverage]
-    protected QuestionAnswerQuestion()
+    protected StandardQuestion()
     {
     }
 
-    public QuestionAnswerQuestion(string text, bool isOfferedAnswers)
+    public StandardQuestion(string text, bool isOfferedAnswers)
     {
         SetQuestion(text);
         IsOfferedAnswers = isOfferedAnswers;
@@ -24,14 +24,11 @@ public class QuestionAnswerQuestion
     public string Text { get; private set; }
     public bool Required { get; private set; }
     public bool IsDeleted { get; private set; }
-
-    public IReadOnlyCollection<QuestionAnswerSurveyQuestion> QuestionAnswerSurveyQuestions =>
-        _questionAnswerSurveyQuestions.AsReadOnly();
-
     public bool IsOfferedAnswers { get; set; }
     public IReadOnlyCollection<string> OfferedAnswers => _offeredAnswers.AsReadOnly();
     public DateTime CreatedAt { get; }
     public DateTime UpdatedAt { get; private set; }
+    public IReadOnlyCollection<StandardSurveyQuestion> StandardSurveyQuestions => _standardSurveyQuestions.AsReadOnly();
 
     public void SetQuestion(string text)
     {
@@ -81,8 +78,7 @@ public class QuestionAnswerQuestion
             throw new ArgumentNullException(nameof(offeredAnswers), "List cannot be empty.");
         }
 
-        var correctOfferedAnswers =
-            offeredAnswers.Where(oa => !string.IsNullOrWhiteSpace(oa)).ToList();
+        var correctOfferedAnswers = offeredAnswers.Where(oa => !string.IsNullOrWhiteSpace(oa)).ToList();
         _offeredAnswers = correctOfferedAnswers;
     }
 

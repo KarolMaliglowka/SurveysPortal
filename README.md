@@ -65,7 +65,7 @@ Autonomous modules with the different set of responsibilities, highly decoupled 
 
 - Surveys - managing surveys
   - Simple surveys
-  - QuestionAnswer surveys
+  - Standard surveys
 - Notifications - notification management (e.g. feedback from API).
 - Users - managing the users/identity (register, login, permissions etc.).
 

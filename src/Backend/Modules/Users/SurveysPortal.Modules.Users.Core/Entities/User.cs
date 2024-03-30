@@ -1,11 +1,14 @@
 ﻿using System.Diagnostics.CodeAnalysis;
 using Microsoft.AspNetCore.Identity;
 using SurveysPortal.Modules.Users.Core.ValueObjects;
+using SurveysPortal.Modules.Surveys.Standard.Core;
 
 namespace SurveysPortal.Modules.Users.Core.Entities;
 
 public sealed class User : IdentityUser<Guid>
 {
+    public List<StandardSurveyUser> _standardSurveyParticipants = new();
+    
     [ExcludeFromCodeCoverage]
     public User() {}
     public User
@@ -36,7 +39,11 @@ public sealed class User : IdentityUser<Guid>
     public string DisplayName { get; set; }
     public DateTime CreatedAt { get; set; }
     public DateTime UpdatedAt { get; set; }
-
+    
+    public IReadOnlyCollection<StandardSurveyUser> StandardSurveyParticipants =>
+        _standardSurveyParticipants.AsReadOnly();
+    
+    
     private void Update() => UpdatedAt = DateTime.UtcNow;
 
     private void SetUsername(Username username)

@@ -10,6 +10,7 @@
       <ProjectReference Include="..\..\..\..\Shared\SurveysPortal.Shared.Abstractions\SurveysPortal.Shared.Abstractions.csproj" />
       <ProjectReference Include="..\..\..\..\Shared\SurveysPortal.Shared.Infrastructure\SurveysPortal.Shared.Infrastructure.csproj" />
       <ProjectReference Include="..\..\..\Users\SurveysPortal.Modules.Users.Core\SurveysPortal.Modules.Users.Core.csproj" />
+      <ProjectReference Include="..\..\..\Users\SurveysPortal.Modules.Users.Infrastructure\SurveysPortal.Modules.Users.Infrastructure.csproj" />
     </ItemGroup>
 
 </Project>

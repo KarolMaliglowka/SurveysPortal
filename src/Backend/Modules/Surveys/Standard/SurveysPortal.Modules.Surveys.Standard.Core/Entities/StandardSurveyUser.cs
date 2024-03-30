@@ -19,15 +19,15 @@ public class StandardSurveyUser
     )
     {
         StandardSurvey = standardSurvey ?? throw new ArgumentNullException(nameof(standardSurvey));
-        Employee = employee ?? throw new ArgumentNullException(nameof(employee));
+        User = employee ?? throw new ArgumentNullException(nameof(employee));
         DueDate = dueDate;
     }
 
     public int Id { get; }
     public int StandardSurveyId { get; set; }
     public StandardSurvey StandardSurvey { get; set; }
-    public Guid EmployeeId { get; set; }
-    public User Employee { get; set; }
+    public Guid UserId { get; set; }
+    public User User { get; set; }
     public DateTime DueDate { get; set; }
     public int Completion { get; private set; }
 

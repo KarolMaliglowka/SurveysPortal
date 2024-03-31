@@ -9,7 +9,6 @@ public class StandardSurveyUserConfiguration : IEntityTypeConfiguration<Standard
     public void Configure(EntityTypeBuilder<StandardSurveyUser> builder)
     {
         builder.HasKey(x => x.Id);
-
         builder.Property(x => x.DueDate).HasConversion(ValueConverters.UtcConverter);
         builder.Property(x => x.Completion);
 

@@ -5,7 +5,7 @@ namespace SurveysPortal.Modules.Surveys.Standard.Core.Entities;
 public class StandardSurveyQuestion
 {
     [ExcludeFromCodeCoverage]
-    protected StandardSurveyQuestion()
+    public StandardSurveyQuestion()
     {
     }
 

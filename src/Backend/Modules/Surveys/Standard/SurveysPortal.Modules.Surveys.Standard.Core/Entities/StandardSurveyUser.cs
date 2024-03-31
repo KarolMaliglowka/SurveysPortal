@@ -7,7 +7,7 @@ public class StandardSurveyUser
 {
     private readonly List<StandardAnswer> _answers = new();
 
-    protected StandardSurveyUser()
+    public StandardSurveyUser()
     {
     }
 

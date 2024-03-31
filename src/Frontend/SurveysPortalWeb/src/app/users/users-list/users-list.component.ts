@@ -48,13 +48,10 @@ import {InputTextModule} from "primeng/inputtext";
 })
 export class UsersListComponent implements OnInit {
 
-    usersList: UserListDto[] = [];
     tableColumns: TableColumn<UserListDto>[] = [];
     users: UserListDto[] = [];
     isLoading$ = new BehaviorSubject(false);
-    sizes!: any[];
 
-    selectedSize: any = '';
     constructor(
         public usersService: UsersService,
         private confirmationService: ConfirmationService,
@@ -70,13 +67,6 @@ export class UsersListComponent implements OnInit {
 
         this.usersService.GetAllUsers().then((value) => {
             this.users = value as unknown as UserListDto[];
-            this.sizes = [
-                { name: 'Small', class: 'p-datatable-sm' },
-                { name: 'Normal', class: '' },
-                { name: 'Large',  class: 'p-datatable-lg' }
-            ];
-
-
         });
     }
 

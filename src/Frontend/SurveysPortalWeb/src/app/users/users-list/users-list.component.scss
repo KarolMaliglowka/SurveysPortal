@@ -1,0 +1,21 @@
+:host ::ng-deep {
+    .text-center {
+        text-align: center;
+    }
+
+    .icon-red::before {
+        color: #D32F2F;
+    }
+
+    .icon-green::before {
+        color: #689F38;
+    }
+
+    .p-column-filter-row {
+        min-width: 170px !important;
+    }
+
+    p-columnFilter[type=boolean] > .p-column-filter-row {
+        min-width: unset !important;
+    }
+}

@@ -22,7 +22,7 @@ public class UserTests
 
         user
             .Invoke()
-            .FirstName.Value
+            .FirstName
             .Should()
             .NotBeNull();
 

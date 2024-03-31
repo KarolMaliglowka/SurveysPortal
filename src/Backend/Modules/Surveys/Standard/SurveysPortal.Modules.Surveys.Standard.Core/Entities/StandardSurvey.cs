@@ -7,7 +7,7 @@ public class StandardSurvey
     private List<StandardSurveyQuestion> _standardSurveyQuestions = new();
     private List<StandardSurveyUser> _standardSurveyParticipants = new();
 
-    protected StandardSurvey()
+    public StandardSurvey()
     {
     }
 

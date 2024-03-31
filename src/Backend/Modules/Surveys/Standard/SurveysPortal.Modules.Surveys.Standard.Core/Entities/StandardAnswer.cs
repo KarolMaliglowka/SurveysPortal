@@ -8,7 +8,7 @@ public class StandardAnswer
     private const string NotRequired = "Question was not required.";
 
     [ExcludeFromCodeCoverage]
-    protected StandardAnswer()
+    public StandardAnswer()
     {
     }
 

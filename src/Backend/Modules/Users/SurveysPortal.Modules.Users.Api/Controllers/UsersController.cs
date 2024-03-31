@@ -20,7 +20,7 @@ public class UsersController(IDispatcher dispatcher) : ControllerBase
     [ProducesResponseType(typeof(string), StatusCodes.Status404NotFound)]
     public async Task<ActionResult<List<UserDto>>> GetAllUsers() => Ok(await dispatcher.QueryAsync(new GetAllUsers()));
 
-    [HttpGet("getUserById/{id:Guid}"), Authorize]
+    [HttpGet("getUserById/{id:Guid}")]
     [ProducesResponseType(typeof(UserDto), StatusCodes.Status200OK)]
     [ProducesResponseType(typeof(string), StatusCodes.Status400BadRequest)]
     [ProducesResponseType(typeof(void), StatusCodes.Status401Unauthorized)]

@@ -14,7 +14,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\SurveysPortal.Modules.Users.Core\SurveysPortal.Modules.Users.Core.csproj" />
     <ProjectReference Include="..\SurveysPortal.Modules.Users.Infrastructure\SurveysPortal.Modules.Users.Infrastructure.csproj" />
   </ItemGroup>
 

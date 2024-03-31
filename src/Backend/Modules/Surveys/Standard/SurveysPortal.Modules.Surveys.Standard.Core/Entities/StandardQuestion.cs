@@ -8,7 +8,7 @@ public class StandardQuestion
     private List<string> _offeredAnswers = new();
 
     [ExcludeFromCodeCoverage]
-    protected StandardQuestion()
+    public StandardQuestion()
     {
     }
 

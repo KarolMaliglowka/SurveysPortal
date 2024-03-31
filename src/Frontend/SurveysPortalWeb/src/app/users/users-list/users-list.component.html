@@ -20,14 +20,14 @@
                 <ng-template pTemplate="caption">
                     <div class="flex align-items-center justify-content-between flex-wrap">
                         <div class="mb-2 mr-2">
-              <span class="p-input-icon-left ml-auto">
-                <i class="pi pi-search"></i>
-                <input #globalTableSearch
-                       pInputText type="text"
-                       placeholder="Search keyword"
-                       pTooltip="Searches for users"
-                       tooltipPosition="top" class="p-inputtext-sm"/>
-              </span>
+                            <span class="p-input-icon-left ml-auto">
+                                <i class="pi pi-search"></i>
+                                <input #globalTableSearch
+                                       pInputText type="text"
+                                       placeholder="Search keyword"
+                                       pTooltip="Searches for users"
+                                       tooltipPosition="top" class="p-inputtext-sm"/>
+                            </span>
                             <button pButton
                                     pRipple
                                     label="Clear"
@@ -39,27 +39,10 @@
                             </button>
                         </div>
                     </div>
-                    <div class="flex align-items-center justify-content-between">
-                        <div class="flex">
-                            <div pTooltip="Bulk actions for selected users" tooltipPosition="top">
-                                <button (click)="menu.toggle($event)"
-                                        pButton
-                                        pRipple
-                                        class="p-button-outlined mr-2 p-button-sm"
-                                        icon="pi pi-cog"
-                                        type="button"></button>
-                                <p-menu #menu [popup]="true" appendTo="body">
-                                </p-menu>
-                            </div>
-                        </div>
-                    </div>
                 </ng-template>
 
                 <ng-template pTemplate="header" let-columns>
                     <tr>
-                        <th class="w-3rem">
-                            <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
-                        </th>
                         <ng-container *ngFor="let col of columns" [ngSwitch]="col.field">
                             <th *ngSwitchCase="'groupRolesNames'" pReorderableColumn>
                                 {{ col.header }}
@@ -75,7 +58,6 @@
                         <th class="min-width-100">Actions</th>
                     </tr>
                     <tr>
-                        <th></th>
                         <ng-container *ngFor="let col of columns" [ngSwitch]="col.field">
                             <th *ngSwitchCase="'isActive'" class="text-center clear-button-hidden">
                                 <p-columnFilter field="isActive" type="boolean"
@@ -91,9 +73,6 @@
 
                 <ng-template pTemplate="body" let-user let-columns="columns">
                     <tr class="p-selectable-row">
-                        <td>
-                            <p-tableCheckbox [value]="user"></p-tableCheckbox>
-                        </td>
                         <ng-container *ngFor="let col of columns" [ngSwitch]="col.field">
                             <td *ngSwitchCase="'isActive'" class="text-center">
                                 <span class="p-column-title">Is active</span>
@@ -160,5 +139,3 @@
 
 <p-confirmPopup key="ConfirmPopup"></p-confirmPopup>
 <p-confirmDialog key="ConfirmDialog"></p-confirmDialog>
-
-

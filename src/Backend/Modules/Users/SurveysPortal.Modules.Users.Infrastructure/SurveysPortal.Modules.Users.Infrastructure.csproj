@@ -14,7 +14,6 @@
   <ItemGroup>
     <ProjectReference Include="..\..\..\Shared\SurveysPortal.Shared.Abstractions\SurveysPortal.Shared.Abstractions.csproj" />
     <ProjectReference Include="..\..\..\Shared\SurveysPortal.Shared.Infrastructure\SurveysPortal.Shared.Infrastructure.csproj" />
-    <ProjectReference Include="..\SurveysPortal.Modules.Users.Auth\SurveysPortal.Modules.Users.Auth.csproj" />
     <ProjectReference Include="..\SurveysPortal.Modules.Users.Core\SurveysPortal.Modules.Users.Core.csproj" />
   </ItemGroup>
 

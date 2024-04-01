@@ -1,4 +1,8 @@
+using System.Text;
 using System.Text.Json.Serialization;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using SurveysPortal.Modules.Notifications.Api;
 using SurveysPortal.Modules.Surveys.Simple.Api;
@@ -15,12 +19,12 @@ builder.Services
     .AddEndpointsApiExplorer()
     .AddSwaggerGen(options =>
     {
-        options.AddSecurityDefinition("oauth2", new OpenApiSecurityScheme
-        {
-            In = ParameterLocation.Header,
-            Name = "Authorization",
-            Type = SecuritySchemeType.ApiKey
-        });
+         options.AddSecurityDefinition("oauth2", new OpenApiSecurityScheme
+         {
+             In = ParameterLocation.Header,
+             Name = "Authorization",
+             Type = SecuritySchemeType.ApiKey
+         });
         options.OperationFilter<SecurityRequirementsOperationFilter>();
         options.SwaggerDoc("v1", new OpenApiInfo
         {
@@ -32,7 +36,10 @@ builder.Services
 builder.Services.AddCors(options => options.AddPolicy("ApiCorsPolicy",
     corsPolicyBuilder =>
     {
-        corsPolicyBuilder.WithOrigins("http://localhost:4200").AllowAnyMethod().AllowAnyHeader();
+        corsPolicyBuilder
+            .WithOrigins("http://localhost:4200")
+            .AllowAnyMethod()
+            .AllowAnyHeader();
     }));
 
 builder.Services
@@ -42,14 +49,35 @@ builder.Services
     .AddNotificationsModule()
     .AddInfrastructureModule()
     .AddControllers()
-    .AddJsonOptions(options =>
+    .AddJsonOptions(options => { options.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter()); });
+
+//add identity and JWT authentication
+builder.Services.AddIdentity<User, IdentityRole<Guid>>()
+    .AddEntityFrameworkStores<UsersDbContext>()
+    .AddSignInManager()
+    .AddRoles<IdentityRole<Guid>>();
+
+builder.Services.AddAuthentication(options =>
+{
+    options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+    options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+}).AddJwtBearer(options =>
+{
+    options.TokenValidationParameters = new TokenValidationParameters
     {
-        options.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter());
-    });
-builder.Services.AddAuthorization();
-builder.Services
-    .AddIdentityApiEndpoints<User>()
-    .AddEntityFrameworkStores<UsersDbContext>();
+        ValidateIssuer = true,
+        ValidateAudience = true,
+        ValidateIssuerSigningKey = true,
+        ValidateLifetime = true,
+        ValidIssuer = builder.Configuration["JwtSettings:Issuer"] ??
+                      throw new InvalidOperationException("Value Issuer in JwtSettings is null."),
+        ValidAudience = builder.Configuration["JwtSettings:Audience"] ??
+                        throw new InvalidOperationException("Value Audience in JwtSettings is null."),
+        IssuerSigningKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(builder.Configuration["JwtSettings:Key"] ??
+                                                                            throw new InvalidOperationException(
+                                                                                "Value Key in JwtSettings is null.")))
+    };
+});
 
 var app = builder.Build();
 await app.SeedData();
@@ -59,7 +87,8 @@ if (app.Environment.IsDevelopment() || app.Environment.IsProduction())
     app.UseSwaggerUI();
 }
 
-app.MapIdentityApi<User>();
+app.UseAuthentication();
+app.UseAuthorization();
 
 app.UseCors(corsPolicyBuilder => corsPolicyBuilder
     .AllowAnyOrigin()

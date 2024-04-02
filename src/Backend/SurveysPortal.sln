@@ -25,7 +25,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SurveysPortal.Modules.Users
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SurveysPortal.Modules.Users.Core", "Modules\Users\SurveysPortal.Modules.Users.Core\SurveysPortal.Modules.Users.Core.csproj", "{CEB4D9D1-7D1C-4505-AF9C-14F9F20AA518}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SurveysPortal.Modules.Users.Auth", "Modules\Users\SurveysPortal.Modules.Users.Auth\SurveysPortal.Modules.Users.Auth.csproj", "{521FD13F-1EF5-480D-AFB0-36D83396B508}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SurveysPortal.Modules.Users.Application", "Modules\Users\SurveysPortal.Modules.Users.Application\SurveysPortal.Modules.Users.Application.csproj", "{521FD13F-1EF5-480D-AFB0-36D83396B508}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SurveysPortal.Modules.Users.Infrastructure", "Modules\Users\SurveysPortal.Modules.Users.Infrastructure\SurveysPortal.Modules.Users.Infrastructure.csproj", "{7195BE51-25CE-4FCD-B198-D91AC49F011F}"
 EndProject

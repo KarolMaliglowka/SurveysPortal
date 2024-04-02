@@ -1,6 +1,0 @@
-@SurveysPortal.Modules.Users.Auth_HostAddress = http://localhost:5048
-
-GET {{SurveysPortal.Modules.Users.Auth_HostAddress}}/weatherforecast/
-Accept: application/json
-
-###

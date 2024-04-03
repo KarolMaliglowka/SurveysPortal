@@ -1,8 +1,8 @@
 namespace SurveysPortal.Modules.Users.Infrastructure.Authorization.DTO;
 
-public class ServiceResponses
+public abstract class ServiceResponses
 {
-    public record GeneralResponse(bool Flag, string Message);
+    public abstract record GeneralResponse(bool Flag, string Message);
 
-    public record LoginResponse(bool Flag, string Token, string Message);
+    public abstract record LoginResponse(bool Flag, string Token, string Message);
 }

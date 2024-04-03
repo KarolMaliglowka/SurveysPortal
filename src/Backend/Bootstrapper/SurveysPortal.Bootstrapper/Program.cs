@@ -19,12 +19,12 @@ builder.Services
     .AddEndpointsApiExplorer()
     .AddSwaggerGen(options =>
     {
-         options.AddSecurityDefinition("oauth2", new OpenApiSecurityScheme
-         {
-             In = ParameterLocation.Header,
-             Name = "Authorization",
-             Type = SecuritySchemeType.ApiKey
-         });
+          options.AddSecurityDefinition("oauth2", new OpenApiSecurityScheme
+          {
+              In = ParameterLocation.Header,
+              Name = "Authorization",
+              Type = SecuritySchemeType.ApiKey
+          });
         options.OperationFilter<SecurityRequirementsOperationFilter>();
         options.SwaggerDoc("v1", new OpenApiInfo
         {

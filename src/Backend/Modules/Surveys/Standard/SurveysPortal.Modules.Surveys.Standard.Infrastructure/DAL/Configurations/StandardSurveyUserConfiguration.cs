@@ -21,5 +21,9 @@ public class StandardSurveyUserConfiguration : IEntityTypeConfiguration<Standard
             .WithOne(x => x.StandardSurveyUser)
             .OnDelete(DeleteBehavior.Cascade);
         
+        builder.HasOne(x => x.User)
+            .WithMany(x => x.)
+            .HasForeignKey(x => x.UserId);
+        
     }  
 }

@@ -43,8 +43,8 @@ builder.Services.AddCors(options => options.AddPolicy("ApiCorsPolicy",
     }));
 
 builder.Services
-    .AddUsersModule()
     .AddSurveysStandardApiModule()
+    .AddUsersModule()
     .AddSurveysSimpleModule()
     .AddNotificationsModule()
     .AddInfrastructureModule()

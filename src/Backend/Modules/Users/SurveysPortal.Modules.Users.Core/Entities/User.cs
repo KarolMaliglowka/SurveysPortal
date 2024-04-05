@@ -1,11 +1,14 @@
 ﻿using System.Diagnostics.CodeAnalysis;
 using Microsoft.AspNetCore.Identity;
+using SurveysPortal.Modules.Surveys.Standard.Core.Entities;
 using SurveysPortal.Modules.Users.Core.ValueObjects;
 
 namespace SurveysPortal.Modules.Users.Core.Entities;
 
 public sealed class User : IdentityUser<Guid>
 {
+    
+    private List<StandardSurveyUser> _standardSurveyParticipants = new();
     [ExcludeFromCodeCoverage]
     public User() {}
     public User

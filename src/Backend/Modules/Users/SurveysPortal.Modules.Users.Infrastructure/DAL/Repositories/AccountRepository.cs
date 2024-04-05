@@ -51,7 +51,6 @@ public class AccountRepository : IUserAccount
             Flag = false,
             Message = "User registered already"
         };
-        //(false, "User registered already");
 
         var createUser = await _userManager.CreateAsync(newUser!, userDto.Password);
         if (!createUser.Succeeded)
@@ -60,7 +59,6 @@ public class AccountRepository : IUserAccount
                 Flag = false,
                 Message = "Error occured.. please try again"
             };
-        //(false, "Error occured.. please try again");
 
         //Assign Default Role : Admin to first registrar; rest is user
         var checkAdmin = await _roleManager.FindByNameAsync("Admin");

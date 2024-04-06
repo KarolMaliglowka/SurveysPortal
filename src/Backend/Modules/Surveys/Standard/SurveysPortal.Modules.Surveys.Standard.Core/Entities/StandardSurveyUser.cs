@@ -1,5 +1,4 @@
 using SurveysPortal.Modules.Surveys.Standard.Core.Services;
-using SurveysPortal.Modules.Users.Core.Entities;
 
 namespace SurveysPortal.Modules.Surveys.Standard.Core.Entities;
 
@@ -14,12 +13,10 @@ public class StandardSurveyUser
     public StandardSurveyUser
     (
         StandardSurvey standardSurvey,
-        //User employee,
         DateTime dueDate
     )
     {
         StandardSurvey = standardSurvey ?? throw new ArgumentNullException(nameof(standardSurvey));
-        //User = employee ?? throw new ArgumentNullException(nameof(employee));
         DueDate = dueDate;
     }
 
@@ -27,7 +24,6 @@ public class StandardSurveyUser
     public int StandardSurveyId { get; set; }
     public StandardSurvey StandardSurvey { get; set; }
     public Guid UserId { get; set; }
-    //public User User { get; set; }
     public DateTime DueDate { get; set; }
     public int Completion { get; private set; }
 

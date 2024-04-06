@@ -94,14 +94,14 @@ public class StandardSurvey
             .Select(x => x.StandardQuestion);
     }
 
-    public void AssignEmployee(User user, DateTime dueDate)
-    {
-        if (_standardSurveyParticipants.Any(x => x.UserId == user.Id))
-        {
-            return;
-        }
-
-        var assignee = new StandardSurveyUser(this, user, dueDate);
-        _standardSurveyParticipants.Add(assignee);
-    }
+    // public void AssignEmployee(User user, DateTime dueDate)
+    // {
+    //     if (_standardSurveyParticipants.Any(x => x.UserId == user.Id))
+    //     {
+    //         return;
+    //     }
+    //
+    //     var assignee = new StandardSurveyUser(this, user, dueDate);
+    //     _standardSurveyParticipants.Add(assignee);
+    // }
 }

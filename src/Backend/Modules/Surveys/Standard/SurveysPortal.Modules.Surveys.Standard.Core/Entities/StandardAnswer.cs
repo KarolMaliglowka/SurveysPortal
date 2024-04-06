@@ -22,7 +22,7 @@ public class StandardAnswer
 
     public int Id { get; set; }
     public Guid UserId { get; set; }
-    public Guid StandardSurveyUserId { get; set; }
+    public int StandardSurveyUserId { get; set; }
     public StandardSurveyUser StandardSurveyUser { get; }
     public StandardQuestion StandardQuestion { get; }
     public string Answer { get; private set; }

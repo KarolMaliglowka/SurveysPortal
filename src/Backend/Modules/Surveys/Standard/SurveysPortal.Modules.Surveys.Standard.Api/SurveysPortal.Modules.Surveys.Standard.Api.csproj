@@ -11,6 +11,7 @@
     </ItemGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\SurveysPortal.Modules.Surveys.Standard.Application\SurveysPortal.Modules.Surveys.Standard.Application.csproj" />
       <ProjectReference Include="..\SurveysPortal.Modules.Surveys.Standard.Infrastructure\SurveysPortal.Modules.Surveys.Standard.Infrastructure.csproj" />
     </ItemGroup>
 

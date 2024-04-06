@@ -1,6 +1,6 @@
 using SurveysPortal.Modules.Users.Core.Entities;
 
-namespace SurveysPortal.Modules.Users.Core.DTO.Extensions;
+namespace SurveysPortal.Modules.Users.Application.DTO.Extensions;
 
 public static class UserExtensions
 {

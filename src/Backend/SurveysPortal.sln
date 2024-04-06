@@ -69,6 +69,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SurveysPortal.Modules.Surve
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SurveysPortal.Modules.Surveys.Standard.Tests.Unit", "Modules\Surveys\Standard\Tests\SurveysPortal.Modules.Surveys.Standard.Tests.Unit\SurveysPortal.Modules.Surveys.Standard.Tests.Unit.csproj", "{8761220F-A92A-4155-B4AB-86822E769715}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SurveysPortal.Modules.Surveys.Standard.Application", "Modules\Surveys\Standard\SurveysPortal.Modules.Surveys.Standard.Application\SurveysPortal.Modules.Surveys.Standard.Application.csproj", "{C386F0B5-1F03-4A2B-9178-4E786A2DA837}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -162,6 +164,10 @@ Global
 		{8761220F-A92A-4155-B4AB-86822E769715}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8761220F-A92A-4155-B4AB-86822E769715}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8761220F-A92A-4155-B4AB-86822E769715}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C386F0B5-1F03-4A2B-9178-4E786A2DA837}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C386F0B5-1F03-4A2B-9178-4E786A2DA837}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C386F0B5-1F03-4A2B-9178-4E786A2DA837}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C386F0B5-1F03-4A2B-9178-4E786A2DA837}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{803D605F-AA06-42ED-B483-4CB33490EBE9} = {9B8877C7-A092-468E-AAEA-9922F38DC5CE}
@@ -194,5 +200,6 @@ Global
 		{F3BF3309-141C-4C41-B6DB-16B0DE27D277} = {B5A23AD0-2791-42E6-97DD-37C289A83B5C}
 		{2A658E1B-A208-472B-9D46-65A7CBB484A2} = {B5A23AD0-2791-42E6-97DD-37C289A83B5C}
 		{8761220F-A92A-4155-B4AB-86822E769715} = {19058866-1B8C-4304-90AE-F62E2C9FDDCA}
+		{C386F0B5-1F03-4A2B-9178-4E786A2DA837} = {B5A23AD0-2791-42E6-97DD-37C289A83B5C}
 	EndGlobalSection
 EndGlobal

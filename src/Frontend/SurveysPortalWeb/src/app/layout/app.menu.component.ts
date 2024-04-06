@@ -34,6 +34,13 @@ export class AppMenuComponent implements OnInit {
                 ]
             },
             {
+                label: 'Standard surveys',
+                items: [
+                    { label: 'Questions', icon: 'pi pi-fw pi-question', routerLink: ['/blocks'], badge: 'NEW' },
+                    { label: 'Surveys', icon: 'pi pi-fw pi-check-square', url: ['https://www.primefaces.org/primeblocks-ng'], target: '_blank' },
+                ]
+            },
+            {
                 label: 'Get Started',
                 items: [
                     {

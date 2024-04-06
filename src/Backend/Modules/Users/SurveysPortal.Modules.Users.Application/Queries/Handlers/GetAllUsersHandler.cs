@@ -1,11 +1,11 @@
 using Microsoft.Extensions.DependencyInjection;
-using SurveysPortal.Modules.Users.Core.DTO;
-using SurveysPortal.Modules.Users.Core.DTO.Extensions;
+using SurveysPortal.Modules.Users.Application.DTO;
+using SurveysPortal.Modules.Users.Application.DTO.Extensions;
 using SurveysPortal.Modules.Users.Core.Repositories;
 using SurveysPortal.Shared.Abstractions.Attributes;
 using SurveysPortal.Shared.Abstractions.Queries;
 
-namespace SurveysPortal.Modules.Users.Core.Queries.Handlers;
+namespace SurveysPortal.Modules.Users.Application.Queries.Handlers;
 
 [Injectable(ServiceLifetime.Scoped)]
 public class GetAllUsersHandler : IQueryHandler<GetAllUsers, IEnumerable<UserDto>>

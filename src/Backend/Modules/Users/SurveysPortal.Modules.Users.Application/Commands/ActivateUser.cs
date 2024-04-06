@@ -1,6 +1,6 @@
 using SurveysPortal.Shared.Abstractions.Commands;
 
-namespace SurveysPortal.Modules.Users.Core.Commands;
+namespace SurveysPortal.Modules.Users.Application.Commands;
 
 public class ActivateUser : ICommand
 {

@@ -1,10 +1,10 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using SurveysPortal.Modules.Users.Core.Commands;
-using SurveysPortal.Modules.Users.Core.DTO;
-using SurveysPortal.Modules.Users.Core.Queries;
+using SurveysPortal.Modules.Users.Application.Commands;
+using SurveysPortal.Modules.Users.Application.Queries;
 using SurveysPortal.Shared.Abstractions.Dispatchers;
+using UserDto = SurveysPortal.Modules.Users.Application.DTO.UserDto;
 
 namespace SurveysPortal.Modules.Users.Api.Controllers;
 

@@ -4,7 +4,7 @@ using SurveysPortal.Modules.Users.Core.Repositories;
 using SurveysPortal.Shared.Abstractions.Attributes;
 using SurveysPortal.Shared.Abstractions.Commands;
 
-namespace SurveysPortal.Modules.Users.Core.Commands.Handlers;
+namespace SurveysPortal.Modules.Users.Application.Commands.Handlers;
 [Injectable(ServiceLifetime.Scoped)]
 public class ActivateUserHandler : ICommandHandler<ActivateUser>
 {

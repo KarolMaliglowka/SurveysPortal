@@ -1,4 +1,4 @@
-namespace SurveysPortal.Modules.Users.Core.DTO;
+namespace SurveysPortal.Modules.Users.Application.DTO;
 
 public record UserDto
 {

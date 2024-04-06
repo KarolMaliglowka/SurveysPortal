@@ -22,7 +22,5 @@ public class StandardSurveysDbContext : DbContext
         base.OnModelCreating(modelBuilder);
         modelBuilder.HasDefaultSchema("standardSurveys");
         modelBuilder.ApplyConfigurationsFromAssembly(GetType().Assembly);
-        //modelBuilder.Entity<StandardQuestionOrder>(x => x.HasNoKey());
-        modelBuilder.Entity<User>(x => x.HasNoKey());
     }
 }

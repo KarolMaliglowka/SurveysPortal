@@ -4,7 +4,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 #nullable disable
 
-namespace SurveysPortal.Modules.Surveys.Standard.Infrastructure.Migrations
+namespace SurveysPortal.Modules.Surveys.Standard.Infrastructure.DAL.Migrations
 {
     /// <inheritdoc />
     public partial class InitialStandardSurveysMigration : Migration
@@ -54,6 +54,25 @@ namespace SurveysPortal.Modules.Surveys.Standard.Infrastructure.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_StandardSurveys", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "StandardUser",
+                schema: "standardSurveys",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "uuid", nullable: false),
+                    UserId = table.Column<Guid>(type: "uuid", nullable: false),
+                    FirstName = table.Column<string>(type: "text", nullable: false),
+                    LastName = table.Column<string>(type: "text", nullable: false),
+                    DisplayName = table.Column<string>(type: "text", nullable: false),
+                    UserName = table.Column<string>(type: "text", nullable: false),
+                    Email = table.Column<string>(type: "text", nullable: false),
+                    UpdatedAt = table.Column<DateTime>(type: "timestamp with time zone", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_StandardUser", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -126,6 +145,13 @@ namespace SurveysPortal.Modules.Surveys.Standard.Infrastructure.Migrations
                         principalTable: "StandardSurveys",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_StandardSurveyUsers_StandardUser_UserId",
+                        column: x => x.UserId,
+                        principalSchema: "standardSurveys",
+                        principalTable: "StandardUser",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -175,6 +201,12 @@ namespace SurveysPortal.Modules.Surveys.Standard.Infrastructure.Migrations
                 schema: "standardSurveys",
                 table: "StandardSurveyUsers",
                 column: "StandardSurveyId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_StandardSurveyUsers_UserId",
+                schema: "standardSurveys",
+                table: "StandardSurveyUsers",
+                column: "UserId");
         }
 
         /// <inheritdoc />
@@ -202,6 +234,10 @@ namespace SurveysPortal.Modules.Surveys.Standard.Infrastructure.Migrations
 
             migrationBuilder.DropTable(
                 name: "StandardSurveys",
+                schema: "standardSurveys");
+
+            migrationBuilder.DropTable(
+                name: "StandardUser",
                 schema: "standardSurveys");
         }
     }

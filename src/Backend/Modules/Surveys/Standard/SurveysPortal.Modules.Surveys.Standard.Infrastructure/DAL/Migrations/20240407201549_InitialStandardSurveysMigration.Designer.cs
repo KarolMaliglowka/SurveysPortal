@@ -9,10 +9,10 @@ using SurveysPortal.Modules.Surveys.Standard.Infrastructure.DAL;
 
 #nullable disable
 
-namespace SurveysPortal.Modules.Surveys.Standard.Infrastructure.Migrations
+namespace SurveysPortal.Modules.Surveys.Standard.Infrastructure.DAL.Migrations
 {
     [DbContext(typeof(StandardSurveysDbContext))]
-    [Migration("20240406171747_InitialStandardSurveysMigration")]
+    [Migration("20240407201549_InitialStandardSurveysMigration")]
     partial class InitialStandardSurveysMigration
     {
         /// <inheritdoc />
@@ -190,7 +190,46 @@ namespace SurveysPortal.Modules.Surveys.Standard.Infrastructure.Migrations
 
                     b.HasIndex("StandardSurveyId");
 
+                    b.HasIndex("UserId");
+
                     b.ToTable("StandardSurveyUsers", "standardSurveys");
+                });
+
+            modelBuilder.Entity("SurveysPortal.Modules.Surveys.Standard.Core.Entities.StandardUser", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid");
+
+                    b.Property<string>("DisplayName")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("FirstName")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("LastName")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<DateTime>("UpdatedAt")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<Guid>("UserId")
+                        .HasColumnType("uuid");
+
+                    b.Property<string>("UserName")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("StandardUser", "standardSurveys");
                 });
 
             modelBuilder.Entity("SurveysPortal.Modules.Surveys.Standard.Core.Entities.StandardAnswer", b =>
@@ -240,7 +279,15 @@ namespace SurveysPortal.Modules.Surveys.Standard.Infrastructure.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("SurveysPortal.Modules.Surveys.Standard.Core.Entities.StandardUser", "User")
+                        .WithMany("StandardSurveyParticipants")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.Navigation("StandardSurvey");
+
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("SurveysPortal.Modules.Surveys.Standard.Core.Entities.StandardQuestion", b =>
@@ -258,6 +305,11 @@ namespace SurveysPortal.Modules.Surveys.Standard.Infrastructure.Migrations
             modelBuilder.Entity("SurveysPortal.Modules.Surveys.Standard.Core.Entities.StandardSurveyUser", b =>
                 {
                     b.Navigation("Answers");
+                });
+
+            modelBuilder.Entity("SurveysPortal.Modules.Surveys.Standard.Core.Entities.StandardUser", b =>
+                {
+                    b.Navigation("StandardSurveyParticipants");
                 });
 #pragma warning restore 612, 618
         }

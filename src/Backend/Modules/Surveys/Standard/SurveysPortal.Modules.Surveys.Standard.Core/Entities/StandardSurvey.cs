@@ -1,5 +1,3 @@
-using SurveysPortal.Modules.Users.Core.Entities;
-
 namespace SurveysPortal.Modules.Surveys.Standard.Core.Entities;
 
 public class StandardSurvey
@@ -92,5 +90,16 @@ public class StandardSurvey
         return _standardSurveyQuestions
             .OrderBy(x => x.StandardQuestionOrder)
             .Select(x => x.StandardQuestion);
+    }
+    
+    public void AssignEmployee(StandardUser user, DateTime dueDate)
+    {
+        if (_standardSurveyParticipants.Any(x => x.UserId == user.Id))
+        {
+            return;
+        }
+
+        var assignee = new StandardSurveyUser(this, user, dueDate);
+        _standardSurveyParticipants.Add(assignee);
     }
 }

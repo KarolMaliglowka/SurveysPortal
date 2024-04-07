@@ -17,8 +17,12 @@ public class StandardSurveyUserConfiguration : IEntityTypeConfiguration<Standard
             .HasForeignKey(x => x.StandardSurveyId)
             .IsRequired();
 
+        builder.HasOne(x => x.User)
+            .WithMany(x => x.StandardSurveyParticipants)
+            .HasForeignKey(x => x.UserId);
+
         builder.HasMany(x => x.Answers)
             .WithOne(x => x.StandardSurveyUser)
             .OnDelete(DeleteBehavior.Cascade);
-    }  
+    }
 }

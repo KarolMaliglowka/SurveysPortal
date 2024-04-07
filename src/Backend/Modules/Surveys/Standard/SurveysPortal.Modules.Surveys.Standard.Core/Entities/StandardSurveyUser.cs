@@ -13,10 +13,12 @@ public class StandardSurveyUser
     public StandardSurveyUser
     (
         StandardSurvey standardSurvey,
+        StandardUser user,
         DateTime dueDate
     )
     {
         StandardSurvey = standardSurvey ?? throw new ArgumentNullException(nameof(standardSurvey));
+        User = user ?? throw new ArgumentNullException(nameof(user));
         DueDate = dueDate;
     }
 
@@ -24,6 +26,7 @@ public class StandardSurveyUser
     public int StandardSurveyId { get; set; }
     public StandardSurvey StandardSurvey { get; set; }
     public Guid UserId { get; set; }
+    public StandardUser User { get; set; }
     public DateTime DueDate { get; set; }
     public int Completion { get; private set; }
 

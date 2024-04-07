@@ -1,6 +1,5 @@
 using Microsoft.EntityFrameworkCore;
 using SurveysPortal.Modules.Surveys.Standard.Core.Entities;
-using SurveysPortal.Modules.Users.Core.Entities;
 
 namespace SurveysPortal.Modules.Surveys.Standard.Infrastructure.DAL;
 

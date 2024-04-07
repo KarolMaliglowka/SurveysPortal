@@ -9,7 +9,6 @@
     <ItemGroup>
       <ProjectReference Include="..\..\..\..\Shared\SurveysPortal.Shared.Abstractions\SurveysPortal.Shared.Abstractions.csproj" />
       <ProjectReference Include="..\..\..\..\Shared\SurveysPortal.Shared.Infrastructure\SurveysPortal.Shared.Infrastructure.csproj" />
-      <ProjectReference Include="..\..\..\Users\SurveysPortal.Modules.Users.Application\SurveysPortal.Modules.Users.Application.csproj" />
       <ProjectReference Include="..\SurveysPortal.Modules.Surveys.Standard.Core\SurveysPortal.Modules.Surveys.Standard.Core.csproj" />
     </ItemGroup>
 

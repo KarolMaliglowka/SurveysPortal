@@ -1,7 +1,7 @@
 using System.Diagnostics.CodeAnalysis;
-using SurveysPortal.Modules.Users.Core.Exceptions;
+using SurveysPortal.Modules.Surveys.Standard.Core.Exceptions;
 
-namespace SurveysPortal.Modules.Users.Core.ValueObjects;
+namespace SurveysPortal.Modules.Surveys.Standard.Core.ValueObjects;
 
 public class LastName
 {

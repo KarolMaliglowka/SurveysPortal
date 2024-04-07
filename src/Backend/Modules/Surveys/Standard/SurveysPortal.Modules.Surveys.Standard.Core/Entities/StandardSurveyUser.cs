@@ -40,11 +40,13 @@ public class StandardSurveyUser
             .ToList();
     }
 
-    public void SetEmployeeAnswers(IEnumerable<KeyValuePair<int, string>> questionIdsWithAnswers, bool canBeClosed)
+    public void SetUserAnswers(IEnumerable<KeyValuePair<int, string>> questionIdsWithAnswers, bool canBeClosed)
     {
         foreach (var (questionId, answerText) in questionIdsWithAnswers)
         {
-            var question = StandardSurvey.GetAllQuestions().FirstOrDefault(x => x.Id == questionId);
+            var question = StandardSurvey
+                .GetAllQuestions()
+                .FirstOrDefault(x => x.Id == questionId);
             if (question is null)
             {
                 continue;

@@ -1,6 +1,6 @@
 using SurveysPortal.Shared.Infrastructure.Exceptions;
 
-namespace SurveysPortal.Modules.Users.Core.Exceptions;
+namespace SurveysPortal.Modules.Surveys.Standard.Core.Exceptions;
 
 public sealed class InvalidFullNameException : CustomException
 {

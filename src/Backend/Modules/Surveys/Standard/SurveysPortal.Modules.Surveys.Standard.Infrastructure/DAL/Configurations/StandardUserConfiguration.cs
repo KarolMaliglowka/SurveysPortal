@@ -9,20 +9,27 @@ public class StandardUserConfiguration : IEntityTypeConfiguration<StandardUser>
 {
     public void Configure(EntityTypeBuilder<StandardUser> builder)
     {
-        builder.HasKey(x => x.Id);
-        builder.Property(x => x.FirstName)
+        builder
+            .HasKey(x => x.Id);
+        builder
+            .Property(x => x.FirstName)
             .HasConversion(x => x.Value,
                 x => new FirstName(x));
-        builder.Property(x => x.LastName)
+        builder
+            .Property(x => x.LastName)
             .HasConversion(x => x.Value,
                 x => new LastName(x));
-        builder.Property(x => x.Email)
+        builder
+            .Property(x => x.Email)
             .HasConversion(x => x.Value,
                 x => new Email(x));
-        builder.Property(x => x.UserName)
+        builder
+            .Property(x => x.UserName)
             .HasConversion(x => x.Value,
                 x => new Username(x));
-        builder.Property(x => x.UserId);
-        builder.Property(x => x.UpdatedAt).HasConversion(ValueConverters.UtcConverter);
+        builder
+            .Property(x => x.UpdatedAt)
+            .HasConversion(ValueConverters.UtcConverter);
+
     }
 }

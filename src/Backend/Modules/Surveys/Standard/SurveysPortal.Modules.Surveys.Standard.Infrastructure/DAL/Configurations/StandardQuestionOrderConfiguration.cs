@@ -8,6 +8,7 @@ public class StandardQuestionOrderConfiguration : IEntityTypeConfiguration<Stand
 {
     public void Configure(EntityTypeBuilder<StandardQuestionOrder> builder)
     {
-        builder.HasKey(order => order.Index);
+        builder
+            .HasKey(order => order.Index);
     }
 }

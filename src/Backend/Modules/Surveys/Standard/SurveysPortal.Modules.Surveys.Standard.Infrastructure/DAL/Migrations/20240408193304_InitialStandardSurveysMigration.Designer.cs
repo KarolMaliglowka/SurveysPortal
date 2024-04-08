@@ -12,7 +12,7 @@ using SurveysPortal.Modules.Surveys.Standard.Infrastructure.DAL;
 namespace SurveysPortal.Modules.Surveys.Standard.Infrastructure.DAL.Migrations
 {
     [DbContext(typeof(StandardSurveysDbContext))]
-    [Migration("20240407201549_InitialStandardSurveysMigration")]
+    [Migration("20240408193304_InitialStandardSurveysMigration")]
     partial class InitialStandardSurveysMigration
     {
         /// <inheritdoc />
@@ -41,6 +41,9 @@ namespace SurveysPortal.Modules.Surveys.Standard.Infrastructure.DAL.Migrations
                     b.Property<DateTime>("AnsweredAt")
                         .HasColumnType("timestamp with time zone");
 
+                    b.Property<int>("StandardQuestionId")
+                        .HasColumnType("integer");
+
                     b.Property<int>("StandardSurveyUserId")
                         .HasColumnType("integer");
 
@@ -48,6 +51,8 @@ namespace SurveysPortal.Modules.Surveys.Standard.Infrastructure.DAL.Migrations
                         .HasColumnType("uuid");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("StandardQuestionId");
 
                     b.HasIndex("StandardSurveyUserId");
 
@@ -220,9 +225,6 @@ namespace SurveysPortal.Modules.Surveys.Standard.Infrastructure.DAL.Migrations
                     b.Property<DateTime>("UpdatedAt")
                         .HasColumnType("timestamp with time zone");
 
-                    b.Property<Guid>("UserId")
-                        .HasColumnType("uuid");
-
                     b.Property<string>("UserName")
                         .IsRequired()
                         .HasColumnType("text");
@@ -234,11 +236,19 @@ namespace SurveysPortal.Modules.Surveys.Standard.Infrastructure.DAL.Migrations
 
             modelBuilder.Entity("SurveysPortal.Modules.Surveys.Standard.Core.Entities.StandardAnswer", b =>
                 {
+                    b.HasOne("SurveysPortal.Modules.Surveys.Standard.Core.Entities.StandardQuestion", "StandardQuestion")
+                        .WithMany()
+                        .HasForeignKey("StandardQuestionId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("SurveysPortal.Modules.Surveys.Standard.Core.Entities.StandardSurveyUser", "StandardSurveyUser")
                         .WithMany("Answers")
                         .HasForeignKey("StandardSurveyUserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("StandardQuestion");
 
                     b.Navigation("StandardSurveyUser");
                 });

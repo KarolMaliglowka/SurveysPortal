@@ -8,17 +8,27 @@ public class StandardSurveyConfiguration : IEntityTypeConfiguration<StandardSurv
 {
     public void Configure(EntityTypeBuilder<StandardSurvey> builder)
     {
-        builder.HasKey(x => x.Id);
-
-        builder.Property(x => x.Name);
-        builder.Property(x => x.Description);
-        builder.Property(x => x.Introduction);
-
-        builder.Property(x => x.CreatedAt).HasConversion(ValueConverters.UtcConverter);
-        builder.Property(x => x.UpdatedAt).HasConversion(ValueConverters.UtcConverter);
-        builder.Property(x => x.IsDeleted);
-
-        builder.Metadata.FindNavigation(nameof(StandardSurvey.StandardSurveyQuestions))
+        builder
+            .HasKey(x => x.Id);
+        builder
+            .Property(x => x.Name);
+        builder
+            .Property(x => x.Description);
+        builder
+            .Property(x => x.Introduction);
+        builder
+            .Property(x => x.CreatedAt)
+            .HasConversion(ValueConverters.UtcConverter);
+        builder
+            .Property(x => x.UpdatedAt)
+            .HasConversion(ValueConverters.UtcConverter);
+        builder
+            .Property(x => x.IsDeleted);
+        builder.Metadata
+            .FindNavigation(nameof(StandardSurvey.StandardSurveyQuestions))
+            ?.SetPropertyAccessMode(PropertyAccessMode.Field);
+        builder.Metadata
+            .FindNavigation(nameof(StandardSurvey.StandardSurveyParticipants))
             ?.SetPropertyAccessMode(PropertyAccessMode.Field);
     }
 }

@@ -8,20 +8,24 @@ public class StandardSurveyUserConfiguration : IEntityTypeConfiguration<Standard
 {
     public void Configure(EntityTypeBuilder<StandardSurveyUser> builder)
     {
-        builder.HasKey(x => x.Id);
-        builder.Property(x => x.DueDate).HasConversion(ValueConverters.UtcConverter);
-        builder.Property(x => x.Completion);
-
-        builder.HasOne(x => x.StandardSurvey)
+        builder
+            .HasKey(x => x.Id);
+        builder
+            .Property(x => x.DueDate)
+            .HasConversion(ValueConverters.UtcConverter);
+        builder
+            .Property(x => x.Completion);
+        builder
+            .HasOne(x => x.StandardSurvey)
             .WithMany(x => x.StandardSurveyParticipants)
             .HasForeignKey(x => x.StandardSurveyId)
             .IsRequired();
-
-        builder.HasOne(x => x.User)
+        builder
+            .HasOne(x => x.User)
             .WithMany(x => x.StandardSurveyParticipants)
             .HasForeignKey(x => x.UserId);
-
-        builder.HasMany(x => x.Answers)
+        builder
+            .HasMany(x => x.Answers)
             .WithOne(x => x.StandardSurveyUser)
             .OnDelete(DeleteBehavior.Cascade);
     }

@@ -62,7 +62,6 @@ namespace SurveysPortal.Modules.Surveys.Standard.Infrastructure.DAL.Migrations
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uuid", nullable: false),
-                    UserId = table.Column<Guid>(type: "uuid", nullable: false),
                     FirstName = table.Column<string>(type: "text", nullable: false),
                     LastName = table.Column<string>(type: "text", nullable: false),
                     DisplayName = table.Column<string>(type: "text", nullable: false),
@@ -163,12 +162,20 @@ namespace SurveysPortal.Modules.Surveys.Standard.Infrastructure.DAL.Migrations
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     UserId = table.Column<Guid>(type: "uuid", nullable: false),
                     StandardSurveyUserId = table.Column<int>(type: "integer", nullable: false),
+                    StandardQuestionId = table.Column<int>(type: "integer", nullable: false),
                     Answer = table.Column<string>(type: "text", nullable: false),
                     AnsweredAt = table.Column<DateTime>(type: "timestamp with time zone", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_StandardAnswers", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_StandardAnswers_StandardQuestion_StandardQuestionId",
+                        column: x => x.StandardQuestionId,
+                        principalSchema: "standardSurveys",
+                        principalTable: "StandardQuestion",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_StandardAnswers_StandardSurveyUsers_StandardSurveyUserId",
                         column: x => x.StandardSurveyUserId,
@@ -177,6 +184,12 @@ namespace SurveysPortal.Modules.Surveys.Standard.Infrastructure.DAL.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_StandardAnswers_StandardQuestionId",
+                schema: "standardSurveys",
+                table: "StandardAnswers",
+                column: "StandardQuestionId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_StandardAnswers_StandardSurveyUserId",

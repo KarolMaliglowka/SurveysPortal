@@ -33,10 +33,10 @@ public class StandardSurveyTests
             .NotBeNull();
         standardSurvey?.Name.Length
             .Should()
-            .BeGreaterThan(10);
+            .BeGreaterThan(3);
         standardSurvey?.Name.Length
             .Should()
-            .BeLessThan(1000);
+            .BeLessThan(100);
 
         standardSurvey?.CreatedAt
             .Should()

@@ -44,5 +44,29 @@ public class StandardSurveyTests
         standardSurvey?.UpdatedAt
             .Should()
             .BeCloseTo(DateTime.UtcNow, FluentTimeSpanExtensions.Seconds(5));
+        standardSurvey?.Introduction
+            .Should()
+            .Be(someStandardSurveyIntroduction);
+        standardSurvey?.Description
+            .Should()
+            .Be(someStandardSurveyDescription);
+    }
+
+    [Test]
+    public void GivenMarkAsDeleted_WhenStandardSurveyExist_ThenSucceeds()
+    {
+        //arrange
+        const string someStandardSurveyName = "Standard survey";
+        const string someStandardSurveyDescription = "Standard description";
+        const string someStandardSurveyIntroduction = "Standard introduction";
+
+        //act
+        var standardSurvey = new StandardSurvey(someStandardSurveyName,
+            someStandardSurveyDescription,
+            someStandardSurveyIntroduction);
+        standardSurvey.MarkAsDeleted();
+
+        //assert
+        standardSurvey.IsDeleted.Should().BeTrue();
     }
 }

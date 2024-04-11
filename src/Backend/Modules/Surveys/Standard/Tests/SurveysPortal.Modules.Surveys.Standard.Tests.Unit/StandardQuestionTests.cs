@@ -144,6 +144,28 @@ public class StandardQuestionTests
             .Be(true);
         standardQuestion.UpdatedAt
             .Should()
-            .BeCloseTo(DateTime.UtcNow, FluentTimeSpanExtensions.Seconds(6));
+            .BeCloseTo(DateTime.UtcNow, 6.Seconds());
+    }
+    
+    [Test]
+    public void GivenClearOfferedQuestions_WhenExistListStandardQuestion_ThenSucceeds()
+    {
+        //arrange
+        const string someStandardQuestionText = "Standard question no 1";
+        var standardQuestion = new StandardQuestion(someStandardQuestionText, IsOfferedAnswers);
+
+        //act
+        standardQuestion.SetOfferedAnswers(_someOfferedAnswersList);
+        standardQuestion.ClearOfferedAnswers();
+        //assert
+        standardQuestion
+            .Should()
+            .NotBeNull();
+        standardQuestion.OfferedAnswers.Count
+            .Should()
+            .Be(0);
+        standardQuestion.UpdatedAt
+            .Should()
+            .BeCloseTo(DateTime.UtcNow, 6.Seconds());
     }
 }

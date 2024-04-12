@@ -157,6 +157,7 @@ public class StandardQuestionTests
         //act
         standardQuestion.SetOfferedAnswers(_someOfferedAnswersList);
         standardQuestion.ClearOfferedAnswers();
+        
         //assert
         standardQuestion
             .Should()

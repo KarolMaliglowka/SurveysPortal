@@ -19,8 +19,9 @@ public class StandardQuestion
         CreatedAt = DateTime.UtcNow;
     }
 
-    [ExcludeFromCodeCoverage] public int Id { get; }
-    public Guid UserId { get; set; }
+    [ExcludeFromCodeCoverage] public int Id { get; set; }
+    
+    [ExcludeFromCodeCoverage]public Guid UserId { get; set; }
     public string Text { get; private set; }
     public bool Required { get; private set; }
     public bool IsDeleted { get; private set; }

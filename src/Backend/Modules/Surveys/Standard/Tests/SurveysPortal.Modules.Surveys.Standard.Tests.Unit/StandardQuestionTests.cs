@@ -187,17 +187,37 @@ public class StandardQuestionTests
     }
 
     [Test]
-    public void GivensToLongQuestion_WhenSetQuestion_ThenError()
+    [TestCase(IsntOfferedAnswers)]
+    [TestCase(IsOfferedAnswers)]
+    public void GivensToLongQuestion_WhenSetQuestion_ThenError(bool answer)
     {
         //arrange
         var someStandardQuestionText = new string('*', 1002);
 
         //act
-        Action act = () => new StandardQuestion(someStandardQuestionText, IsOfferedAnswers);
+        Action act = () => new StandardQuestion(someStandardQuestionText, answer);
 
         //assert
         act
             .Should()
             .Throw<ArgumentException>("*cannot be longer than 1000 characters*");
+    }
+
+    [Test]
+    [TestCase(null)]
+    [TestCase("")]
+    [TestCase(" ")]
+    [Parallelizable(ParallelScope.All)]
+    public void GivensEmptyOrNullQuestion_WhenSetQuestion_ThenError(string value)
+    {
+        //arrange
+
+        //act
+        Action act = () => new StandardQuestion(value, IsOfferedAnswers);
+
+        //assert
+        act
+            .Should()
+            .Throw<ArgumentNullException>("*cannot be empty*");
     }
 }

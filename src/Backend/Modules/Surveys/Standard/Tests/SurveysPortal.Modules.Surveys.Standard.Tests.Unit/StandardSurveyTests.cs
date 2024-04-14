@@ -14,7 +14,7 @@ public class StandardSurveyTests
         const string someStandardSurveyName = "Standard survey";
         const string someStandardSurveyDescription = "Standard description";
         const string someStandardSurveyIntroduction = "Standard introduction";
-        StandardSurvey? standardSurvey = null; 
+        StandardSurvey? standardSurvey = null;
 
         //act
         Action act = () => standardSurvey = new StandardSurvey(someStandardSurveyName,

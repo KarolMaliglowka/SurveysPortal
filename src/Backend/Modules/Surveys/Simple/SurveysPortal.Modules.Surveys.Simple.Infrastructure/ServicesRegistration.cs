@@ -1,11 +1,11 @@
 using Microsoft.Extensions.DependencyInjection;
 using SurveysPortal.Shared.Infrastructure;
 
-namespace SurveysPortal.Modules.Users.Core;
+namespace SurveysPortal.Modules.Surveys.Simple.Infrastructure;
 
-public static class DependencyInjection
+public static class ServicesRegistration
 {
-    public static IServiceCollection AddUsersCoreLayer(this IServiceCollection services)
+    public static IServiceCollection AddSurveysSimpleInfrastructureLayer(this IServiceCollection services)
     {
         services.Scan(s => s
             .FromCallingAssembly()

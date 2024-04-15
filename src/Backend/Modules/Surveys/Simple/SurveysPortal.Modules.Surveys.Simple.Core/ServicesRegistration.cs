@@ -3,7 +3,7 @@ using SurveysPortal.Shared.Infrastructure;
 
 namespace SurveysPortal.Modules.Surveys.Simple.Core;
 
-public static class DependencyInjection
+public static class ServicesRegistration
 {
     public static IServiceCollection AddSurveysSimpleCoreLayer(this IServiceCollection services)
     {

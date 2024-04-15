@@ -146,7 +146,7 @@ public class StandardQuestionTests
             .Should()
             .BeCloseTo(DateTime.UtcNow, 6.Seconds());
     }
-    
+
     [Test]
     public void GivenClearOfferedQuestions_WhenExistListStandardQuestion_ThenSucceeds()
     {
@@ -157,7 +157,7 @@ public class StandardQuestionTests
         //act
         standardQuestion.SetOfferedAnswers(_someOfferedAnswersList);
         standardQuestion.ClearOfferedAnswers();
-        
+
         //assert
         standardQuestion
             .Should()
@@ -184,5 +184,40 @@ public class StandardQuestionTests
         act
             .Should()
             .Throw<ArgumentException>("*cannot be shorter than 10 characters*");
+    }
+
+    [Test]
+    [TestCase(IsntOfferedAnswers)]
+    [TestCase(IsOfferedAnswers)]
+    public void GivensToLongQuestion_WhenSetQuestion_ThenError(bool answer)
+    {
+        //arrange
+        var someStandardQuestionText = new string('*', 1002);
+
+        //act
+        Action act = () => new StandardQuestion(someStandardQuestionText, answer);
+
+        //assert
+        act
+            .Should()
+            .Throw<ArgumentException>("*cannot be longer than 1000 characters*");
+    }
+
+    [Test]
+    [TestCase(null)]
+    [TestCase("")]
+    [TestCase(" ")]
+    [Parallelizable(ParallelScope.All)]
+    public void GivensEmptyOrNullQuestion_WhenSetQuestion_ThenError(string value)
+    {
+        //arrange
+
+        //act
+        Action act = () => new StandardQuestion(value, IsOfferedAnswers);
+
+        //assert
+        act
+            .Should()
+            .Throw<ArgumentNullException>("*cannot be empty*");
     }
 }

@@ -4,7 +4,7 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace SurveysPortal.Modules.Users.Api;
 
-public static class DependencyInjection
+public static class ServicesRegistration
 {
     public static IServiceCollection AddUsersModule(this IServiceCollection services)
     {

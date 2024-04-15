@@ -2,7 +2,7 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace SurveysPortal.Shared.Infrastructure;
 
-public static class DependencyInjection
+public static class ServicesRegistration
 {
     public static IServiceCollection AddInfrastructureModule(this IServiceCollection services)
     {

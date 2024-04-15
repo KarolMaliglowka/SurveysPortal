@@ -15,12 +15,12 @@ public class GetAllQuestionsHandler : IQueryHandler<GetAllQuestions, IEnumerable
     {
     }
     
-    public GetAllQuestionsHandler(IQuestionRepository questionRepository)
+    public GetAllQuestionsHandler(IQuestionRepository? questionRepository)
     {
         _questionRepository = questionRepository;
     }
 
-    public async Task<IEnumerable<QuestionDto>?> HandleAsync(GetAllQuestions query,
+    public async Task<IEnumerable<QuestionDto>> HandleAsync(GetAllQuestions query,
         CancellationToken cancellationToken = default)
     {
         var questionList = await _questionRepository

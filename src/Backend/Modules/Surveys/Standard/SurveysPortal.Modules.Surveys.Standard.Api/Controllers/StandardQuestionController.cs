@@ -6,6 +6,8 @@ using SurveysPortal.Shared.Abstractions.Dispatchers;
 
 namespace SurveysPortal.Modules.Surveys.Standard.Api.Controllers;
 
+[ApiController]
+[Route("[controller]")]
 public class StandardQuestionController(IDispatcher dispatcher) : ControllerBase
 {
     [HttpGet("all")]
@@ -14,7 +16,7 @@ public class StandardQuestionController(IDispatcher dispatcher) : ControllerBase
     [ProducesResponseType(typeof(void), StatusCodes.Status401Unauthorized)]
     [ProducesResponseType(typeof(string), StatusCodes.Status500InternalServerError)]
     [ProducesResponseType(typeof(string), StatusCodes.Status404NotFound)]
-    public async Task<ActionResult<List<QuestionDto>>> GetAllUsers() => Ok(await dispatcher.QueryAsync(new GetAllQuestions()));
+    public async Task<ActionResult<List<QuestionDto>>> GetAllQuestions() => Ok(await dispatcher.QueryAsync(new GetAllQuestions()));
 
     [HttpGet("getQuestionById/{id:Guid}")]
     [ProducesResponseType(typeof(QuestionDto), StatusCodes.Status200OK)]

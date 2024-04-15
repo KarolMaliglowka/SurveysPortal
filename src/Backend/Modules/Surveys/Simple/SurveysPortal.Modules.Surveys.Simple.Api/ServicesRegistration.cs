@@ -4,7 +4,7 @@ using SurveysPortal.Modules.Surveys.Simple.Infrastructure;
 
 namespace SurveysPortal.Modules.Surveys.Simple.Api;
 
-public static class DependencyInjection
+public static class ServicesRegistration
 {
     public static IServiceCollection AddSurveysSimpleModule(this IServiceCollection services)
     {

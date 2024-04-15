@@ -6,7 +6,7 @@ using SurveysPortal.Shared.Infrastructure.Database;
 
 namespace SurveysPortal.Modules.Users.Infrastructure;
 
-public static class DependencyInjection
+public static class ServicesRegistration
 {
     public static IServiceCollection AddUsersInfrastructureLayer(this IServiceCollection services)
     {

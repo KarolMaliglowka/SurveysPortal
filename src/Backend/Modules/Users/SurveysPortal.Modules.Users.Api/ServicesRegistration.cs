@@ -1,6 +1,7 @@
 using SurveysPortal.Modules.Users.Core;
 using SurveysPortal.Modules.Users.Infrastructure;
 using Microsoft.Extensions.DependencyInjection;
+using SurveysPortal.Modules.Users.Application;
 
 namespace SurveysPortal.Modules.Users.Api;
 
@@ -10,7 +11,8 @@ public static class ServicesRegistration
     {
         services
             .AddUsersCoreLayer()
-            .AddUsersInfrastructureLayer();
+            .AddUsersInfrastructureLayer()
+            .AddUsersApplicationLayer();
         
         return services;
     }

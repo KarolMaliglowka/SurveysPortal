@@ -1,4 +1,5 @@
 using Microsoft.Extensions.DependencyInjection;
+using SurveysPortal.Modules.Surveys.Standard.Application;
 using SurveysPortal.Modules.Surveys.Standard.Core;
 using SurveysPortal.Modules.Surveys.Standard.Infrastructure;
 
@@ -10,7 +11,8 @@ public static class ServicesRegistration
     {
         services
             .AddSurveysStandardCoreLayer()
-            .AddSurveysStandardInfrastructureLayer();
+            .AddSurveysStandardInfrastructureLayer()
+            .AddSurveysStandardApplicationLayer();
 
         return services;
     }

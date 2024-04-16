@@ -5,5 +5,5 @@ namespace SurveysPortal.Modules.Surveys.Standard.Application.Queries;
 
 public class GetQuestion : IQuery<QuestionDto>
 {
-    public Guid QuestionId { get; set; }
+    public int QuestionId { get; set; }
 }

@@ -1,5 +1,6 @@
 using Microsoft.Extensions.DependencyInjection;
 using SurveysPortal.Modules.Surveys.Standard.Application.DTO;
+using SurveysPortal.Modules.Surveys.Standard.Application.DTO.Extensions;
 using SurveysPortal.Modules.Surveys.Standard.Core.Exceptions;
 using SurveysPortal.Modules.Surveys.Standard.Core.Repositories;
 using SurveysPortal.Shared.Abstractions.Attributes;
@@ -11,6 +12,7 @@ namespace SurveysPortal.Modules.Surveys.Standard.Application.Queries.Handlers;
 public class GetQuestionHandler : IQueryHandler<GetQuestion, QuestionDto>
 {
     private readonly IQuestionRepository _questionRepository;
+
     public GetQuestionHandler()
     {
     }
@@ -28,10 +30,6 @@ public class GetQuestionHandler : IQueryHandler<GetQuestion, QuestionDto>
             throw new QuestionNotFoundException(query.QuestionId);
         }
 
-        return new QuestionDto
-        {
-            QuestionId = question.Id,
-            Question = question.Text
-        };
+        return question.ToStandardQuestionDto() ?? throw new InvalidOperationException();
     }
 }

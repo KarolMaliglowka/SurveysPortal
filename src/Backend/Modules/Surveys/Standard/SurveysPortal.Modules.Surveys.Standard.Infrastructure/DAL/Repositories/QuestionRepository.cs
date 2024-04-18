@@ -15,4 +15,22 @@ public class QuestionRepository(StandardSurveysDbContext context) : IQuestionRep
 
     public Task<StandardQuestion?> GetStandardQuestionById(int id)
         => context.StandardQuestions.SingleOrDefaultAsync(x => x.Id == id);
+    
+    public async Task Create(StandardQuestion question)
+    {
+        await context.StandardQuestions.AddAsync(question);
+        await context.SaveChangesAsync();
+    }
+
+    public async Task Update(StandardQuestion question)
+    {
+        context.StandardQuestions.Update(question);
+        await context.SaveChangesAsync();
+    }
+
+    public async Task Delete(StandardQuestion question)
+    {
+        question.SetAsDeleted();
+        await Update(question);
+    }
 }

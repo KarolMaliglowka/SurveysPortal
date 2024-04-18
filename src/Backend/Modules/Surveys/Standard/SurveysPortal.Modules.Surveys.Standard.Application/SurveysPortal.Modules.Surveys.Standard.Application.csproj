@@ -10,8 +10,4 @@
       <ProjectReference Include="..\SurveysPortal.Modules.Surveys.Standard.Core\SurveysPortal.Modules.Surveys.Standard.Core.csproj" />
     </ItemGroup>
 
-    <ItemGroup>
-      <Folder Include="Commands\Handlers\" />
-    </ItemGroup>
-
 </Project>

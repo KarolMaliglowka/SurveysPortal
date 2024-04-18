@@ -6,4 +6,7 @@ public interface IQuestionRepository
 {
     Task<IEnumerable<StandardQuestion>> GetAllStandardQuestions();
     Task<StandardQuestion?> GetStandardQuestionById(int id);
+    Task Create(StandardQuestion question);
+    Task Update(StandardQuestion question);
+    Task Delete(StandardQuestion question);
 }

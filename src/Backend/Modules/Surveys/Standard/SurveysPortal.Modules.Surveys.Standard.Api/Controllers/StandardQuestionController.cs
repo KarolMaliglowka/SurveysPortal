@@ -28,4 +28,37 @@ public class StandardQuestionController(IDispatcher dispatcher) : ControllerBase
     {
         return await dispatcher.QueryAsync(new GetQuestion { QuestionId = id });
     }
+    
+    [HttpGet("deleteQuestion/{id:int}")]
+    [ProducesResponseType(typeof(QuestionDto), StatusCodes.Status200OK)]
+    [ProducesResponseType(typeof(string), StatusCodes.Status400BadRequest)]
+    [ProducesResponseType(typeof(void), StatusCodes.Status401Unauthorized)]
+    [ProducesResponseType(typeof(string), StatusCodes.Status500InternalServerError)]
+    [ProducesResponseType(typeof(string), StatusCodes.Status404NotFound)]
+    public async Task<ActionResult<QuestionDto>> GeteleteQuestion(int id)
+    {
+        return await dispatcher.QueryAsync(new GetQuestion { QuestionId = id });
+    }
+    
+    [HttpGet("createQuestion")]
+    [ProducesResponseType(typeof(QuestionDto), StatusCodes.Status200OK)]
+    [ProducesResponseType(typeof(string), StatusCodes.Status400BadRequest)]
+    [ProducesResponseType(typeof(void), StatusCodes.Status401Unauthorized)]
+    [ProducesResponseType(typeof(string), StatusCodes.Status500InternalServerError)]
+    [ProducesResponseType(typeof(string), StatusCodes.Status404NotFound)]
+    public async Task<ActionResult<QuestionDto>> CreateQuestion()
+    {
+        return await dispatcher.QueryAsync(new GetQuestion { });
+    }
+    
+    [HttpGet("updateQuestion/{id:int}")]
+    [ProducesResponseType(typeof(QuestionDto), StatusCodes.Status200OK)]
+    [ProducesResponseType(typeof(string), StatusCodes.Status400BadRequest)]
+    [ProducesResponseType(typeof(void), StatusCodes.Status401Unauthorized)]
+    [ProducesResponseType(typeof(string), StatusCodes.Status500InternalServerError)]
+    [ProducesResponseType(typeof(string), StatusCodes.Status404NotFound)]
+    public async Task<ActionResult<QuestionDto>> UpdateQuestion(int id)
+    {
+        return await dispatcher.QueryAsync(new GetQuestion { QuestionId = id });
+    }
 }

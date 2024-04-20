@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using SurveysPortal.Modules.Surveys.Standard.Application.Commands;
 using SurveysPortal.Modules.Surveys.Standard.Application.DTO;
 using SurveysPortal.Modules.Surveys.Standard.Application.Queries;
 using SurveysPortal.Shared.Abstractions.Dispatchers;
@@ -18,26 +19,26 @@ public class StandardQuestionController(IDispatcher dispatcher) : ControllerBase
     [ProducesResponseType(typeof(string), StatusCodes.Status404NotFound)]
     public async Task<ActionResult<List<QuestionDto>>> GetAllQuestions() => Ok(await dispatcher.QueryAsync(new GetAllQuestions()));
 
-    [HttpGet("getQuestionById/{id:int}")]
+    [HttpGet("getQuestionById/{questionId:int}")]
     [ProducesResponseType(typeof(QuestionDto), StatusCodes.Status200OK)]
     [ProducesResponseType(typeof(string), StatusCodes.Status400BadRequest)]
     [ProducesResponseType(typeof(void), StatusCodes.Status401Unauthorized)]
     [ProducesResponseType(typeof(string), StatusCodes.Status500InternalServerError)]
     [ProducesResponseType(typeof(string), StatusCodes.Status404NotFound)]
-    public async Task<ActionResult<QuestionDto>> GetQuestion(int id)
+    public async Task<ActionResult<QuestionDto>> GetQuestion(int questionId)
     {
-        return await dispatcher.QueryAsync(new GetQuestion { QuestionId = id });
+        return await dispatcher.QueryAsync(new GetQuestion { QuestionId = questionId });
     }
     
-    [HttpGet("deleteQuestion/{id:int}")]
+    [HttpGet("deleteQuestion/{questionId:int}")]
     [ProducesResponseType(typeof(QuestionDto), StatusCodes.Status200OK)]
     [ProducesResponseType(typeof(string), StatusCodes.Status400BadRequest)]
     [ProducesResponseType(typeof(void), StatusCodes.Status401Unauthorized)]
     [ProducesResponseType(typeof(string), StatusCodes.Status500InternalServerError)]
     [ProducesResponseType(typeof(string), StatusCodes.Status404NotFound)]
-    public async Task<ActionResult<QuestionDto>> GeteleteQuestion(int id)
+    public async Task DeleteQuestion(int questionId)
     {
-        return await dispatcher.QueryAsync(new GetQuestion { QuestionId = id });
+        await dispatcher.SendAsync(new DeleteQuestion{ QuestionId = questionId });
     }
     
     [HttpGet("createQuestion")]
@@ -51,14 +52,14 @@ public class StandardQuestionController(IDispatcher dispatcher) : ControllerBase
         return await dispatcher.QueryAsync(new GetQuestion { });
     }
     
-    [HttpGet("updateQuestion/{id:int}")]
+    [HttpGet("updateQuestion/{questionId:int}")]
     [ProducesResponseType(typeof(QuestionDto), StatusCodes.Status200OK)]
     [ProducesResponseType(typeof(string), StatusCodes.Status400BadRequest)]
     [ProducesResponseType(typeof(void), StatusCodes.Status401Unauthorized)]
     [ProducesResponseType(typeof(string), StatusCodes.Status500InternalServerError)]
     [ProducesResponseType(typeof(string), StatusCodes.Status404NotFound)]
-    public async Task<ActionResult<QuestionDto>> UpdateQuestion(int id)
+    public async Task<ActionResult<QuestionDto>> UpdateQuestion(int questionId)
     {
-        return await dispatcher.QueryAsync(new GetQuestion { QuestionId = id });
+        return await dispatcher.QueryAsync(new GetQuestion { QuestionId = questionId });
     }
 }

@@ -7,6 +7,7 @@
     </PropertyGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\..\..\Users\SurveysPortal.Modules.Users.Core\SurveysPortal.Modules.Users.Core.csproj" />
       <ProjectReference Include="..\SurveysPortal.Modules.Surveys.Standard.Core\SurveysPortal.Modules.Surveys.Standard.Core.csproj" />
     </ItemGroup>
 

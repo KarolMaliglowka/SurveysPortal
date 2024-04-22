@@ -26,28 +26,28 @@ export class AppMenuComponent implements OnInit {
                     { label: 'Users', icon: 'pi pi-fw pi-users', routerLink: ['/users-list'] },
                 ]
             },
-            {
-                label: 'Basic surveys',
-                items: [
-                    { label: 'Questions', icon: 'pi pi-fw pi-question', routerLink: ['/blocks'], badge: 'NEW' },
-                    { label: 'Surveys', icon: 'pi pi-fw pi-check-square', url: ['https://www.primefaces.org/primeblocks-ng'], target: '_blank' },
-                ]
-            },
+            // {
+            //     label: 'Basic surveys',
+            //     items: [
+            //         { label: 'Questions', icon: 'pi pi-fw pi-question', routerLink: ['/blocks'], badge: 'NEW' },
+            //         { label: 'Surveys', icon: 'pi pi-fw pi-check-square', url: ['https://www.primefaces.org/primeblocks-ng'], target: '_blank' },
+            //     ]
+            // },
             {
                 label: 'Standard surveys',
                 items: [
-                    { label: 'Questions', icon: 'pi pi-fw pi-question', routerLink: ['/blocks'], badge: 'NEW' },
+                    { label: 'Questions', icon: 'pi pi-fw pi-question', routerLink: ['/standard-question-list'] },
                     { label: 'Surveys', icon: 'pi pi-fw pi-check-square', url: ['https://www.primefaces.org/primeblocks-ng'], target: '_blank' },
                 ]
             },
-            {
-                label: 'Get Started',
-                items: [
-                    {
-                        label: 'Documentation', icon: 'pi pi-fw pi-book', routerLink: ['/documentation']
-                    }
-                ]
-            }
+            // {
+            //     label: 'Get Started',
+            //     items: [
+            //         {
+            //             label: 'Documentation', icon: 'pi pi-fw pi-book', routerLink: ['/documentation']
+            //         }
+            //     ]
+            // }
         ];
     }
 }

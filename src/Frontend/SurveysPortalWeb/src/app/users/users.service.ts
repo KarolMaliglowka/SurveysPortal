@@ -15,7 +15,7 @@ export class UsersService {
 
   GetAllUsers() {
     let apiRequest = <ApiRequestData>{
-      Url: 'users/all'
+      Url: `${this.url}/all`
     };
     return firstValueFrom(this.httpService.get(apiRequest));
   }

@@ -21,6 +21,9 @@ import {ConfirmDialogModule} from "primeng/confirmdialog";
 import {UsersListComponent} from "./users/users-list/users-list.component";
 import {ApiService} from "./services/api.service";
 import {ConfirmationService} from "primeng/api";
+import {
+    StandardQuestionsListComponent
+} from "./surveys/standard/standard-questions-list/standard-questions-list.component";
 
 @NgModule({
     declarations: [
@@ -45,7 +48,9 @@ import {ConfirmationService} from "primeng/api";
         ConfirmPopupModule,
         ConfirmDialogModule,
         UsersListComponent,
-        InputTextModule
+        InputTextModule,
+        StandardQuestionsListComponent
+
     ],
     providers: [
         { provide: LocationStrategy, useClass: PathLocationStrategy },

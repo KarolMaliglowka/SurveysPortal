@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {UsersService} from "../users.service";
-import {UserListDto} from "../models/UserDto";
+import {User} from "../models/user";
 import {BehaviorSubject} from "rxjs";
 import {ConfirmationService} from "primeng/api";
 import {TableModule} from "primeng/table";
@@ -48,8 +48,8 @@ import {InputTextModule} from "primeng/inputtext";
 })
 export class UsersListComponent implements OnInit {
 
-    tableColumns: TableColumn<UserListDto>[] = [];
-    users: UserListDto[] = [];
+    tableColumns: TableColumn<User>[] = [];
+    users: User[] = [];
     isLoading$ = new BehaviorSubject(false);
 
     constructor(
@@ -66,11 +66,11 @@ export class UsersListComponent implements OnInit {
         ];
 
         this.usersService.GetAllUsers().then((value) => {
-            this.users = value as unknown as UserListDto[];
+            this.users = value as unknown as User[];
         });
     }
 
-    activateUser(user: UserListDto, event: Event) {
+    activateUser(user: User, event: Event) {
         this.isLoading$.next(true);
         this.confirmationService.confirm({
             message: 'Are you sure you want to activate selected user?',
@@ -92,7 +92,7 @@ export class UsersListComponent implements OnInit {
         });
     }
 
-    deactivateUser(user: UserListDto, event: Event) {
+    deactivateUser(user: User, event: Event) {
         this.confirmationService.confirm({
             message: 'Are you sure you want to deactivate selected user?',
             header: 'Confirm',

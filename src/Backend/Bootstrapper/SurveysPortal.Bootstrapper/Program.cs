@@ -90,11 +90,7 @@ if (app.Environment.IsDevelopment() || app.Environment.IsProduction())
 app.UseAuthentication();
 app.UseAuthorization();
 
-app.UseCors(corsPolicyBuilder => corsPolicyBuilder
-    .AllowAnyOrigin()
-    .AllowAnyMethod()
-    .AllowAnyHeader()
-);
+app.UseCors("ApiCorsPolicy");
 
 app.UseHttpsRedirection();
 app.UseExceptionHandler("/error");

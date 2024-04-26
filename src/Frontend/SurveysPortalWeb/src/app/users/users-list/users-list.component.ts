@@ -11,6 +11,7 @@ import {MenuModule} from "primeng/menu";
 import {RippleModule} from "primeng/ripple";
 import {StyleClassModule} from "primeng/styleclass";
 import {InputTextModule} from "primeng/inputtext";
+import {TableStructure} from "../../shared/models/table-structure";
 
 @Component({
     selector: 'app-users-list',
@@ -48,14 +49,16 @@ import {InputTextModule} from "primeng/inputtext";
 })
 export class UsersListComponent implements OnInit {
 
-    tableColumns: TableColumn<User>[] = [];
+    tableColumns: TableStructure<User>[] = [];
     users: User[] = [];
     isLoading$ = new BehaviorSubject(false);
 
     constructor(
         public usersService: UsersService,
         private confirmationService: ConfirmationService,
-    ) { }
+    ) {
+    }
+
     ngOnInit(): void {
         this.tableColumns = [
             {field: 'displayName', header: 'Display name'},
@@ -112,9 +115,3 @@ export class UsersListComponent implements OnInit {
         window.location.reload();
     }
 }
-
-export type TableColumn<T> = {
-    field: keyof T,
-    header: string,
-    order?: number
-};

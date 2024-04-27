@@ -4,7 +4,7 @@
             <div class="text-primary">
                 <h4>Users list</h4>
             </div>
-            <p-table #dt id="dataTable" dataKey="id" [rowHover]="true" [value]="users"
+            <p-table id="dataTable" dataKey="id" [rowHover]="true" [value]="users"
                      [tableStyle]="{ 'min-width': '50rem' }"
                      styleClass="p-datatable-sm"
                      [globalFilterFields]="['displayName', 'firstName', 'lastName', 'email', 'groupRolesNames']"
@@ -22,7 +22,7 @@
                         <div class="mb-2 mr-2">
                             <span class="p-input-icon-left ml-auto">
                                 <i class="pi pi-search"></i>
-                                <input #globalTableSearch
+                                <input
                                        pInputText type="text"
                                        placeholder="Search keyword"
                                        pTooltip="Searches for users"

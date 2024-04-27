@@ -46,12 +46,4 @@ export class ApiService {
       headers: this.headers
     }).pipe(catchError(this.handleError));
   }
-
-  public patch(data: ApiRequestData): Observable<Response> {
-    return this.httpClient.patch<Response>(`${this.baseUrl}/${data.Url}`, data.RequestBody, {
-      headers: this.headers,
-      params: data.Params
-    }).pipe(retry(3),
-      catchError(this.handleError));
-  }
 }

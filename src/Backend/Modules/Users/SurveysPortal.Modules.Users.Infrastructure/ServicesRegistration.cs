@@ -19,7 +19,7 @@ public static class ServicesRegistration
         return services;
     }
     
-    public static async Task SeedData(this IHost app)
+    public static async Task SeedUsersData(this IHost app)
     {
         var scopedFactory = app.Services.GetService<IServiceScopeFactory>();
 

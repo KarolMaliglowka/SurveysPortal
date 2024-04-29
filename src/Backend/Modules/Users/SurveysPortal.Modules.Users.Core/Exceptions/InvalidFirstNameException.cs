@@ -8,8 +8,8 @@ public class InvalidFirstNameException : CustomException
     public InvalidFirstNameException() : base(null!) {}
     public InvalidFirstNameException(FirstName firstName) : base($"First name: '{firstName}' is invalid.")
     {
-        LastName = firstName;
+        FirstName = firstName;
     }
 
-    public FirstName LastName { get; }
+    public FirstName FirstName { get; }
 }

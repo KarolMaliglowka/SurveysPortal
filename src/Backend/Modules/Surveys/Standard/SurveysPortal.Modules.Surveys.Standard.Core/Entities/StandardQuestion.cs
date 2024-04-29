@@ -4,25 +4,25 @@ namespace SurveysPortal.Modules.Surveys.Standard.Core.Entities;
 
 public class StandardQuestion
 {
-    private List<StandardSurveyQuestion> _standardSurveyQuestions = new();
-    private List<string> _offeredAnswers = new();
+    private List<StandardSurveyQuestion> _standardSurveyQuestions = [];
+    private List<string> _offeredAnswers = [];
 
     [ExcludeFromCodeCoverage]
     public StandardQuestion()
     {
     }
 
-    public StandardQuestion(string text, bool isOfferedAnswers)
+    public StandardQuestion(string text, bool required)
     {
         SetQuestion(text);
-        IsOfferedAnswers = isOfferedAnswers;
+        Required = required;
         CreatedAt = DateTime.UtcNow;
     }
 
     [ExcludeFromCodeCoverage] public int Id { get; set; }
-    
-    [ExcludeFromCodeCoverage]public Guid UserId { get; set; }
-    public string Text { get; private set; }
+
+    [ExcludeFromCodeCoverage] public Guid UserId { get; set; }
+    public string? Text { get; private set; }
     public bool Required { get; private set; }
     public bool IsDeleted { get; private set; }
     public bool IsOfferedAnswers { get; set; }
@@ -31,7 +31,7 @@ public class StandardQuestion
     public DateTime UpdatedAt { get; private set; }
     public IReadOnlyCollection<StandardSurveyQuestion> StandardSurveyQuestions => _standardSurveyQuestions.AsReadOnly();
 
-    public void SetQuestion(string text)
+    private void SetQuestion(string text)
     {
         if (string.IsNullOrWhiteSpace(text))
         {
@@ -40,13 +40,15 @@ public class StandardQuestion
 
         switch (text.Length)
         {
-            case < 10: throw new ArgumentException("Question cannot be shorter than 10 characters.");
-
-            case > 1000: throw new ArgumentException("Question cannot be longer than 1000 characters.");
+            case > 1000:
+                throw new ArgumentException("Question cannot be longer than 1000 characters.");
+            case < 2:
+                throw new ArgumentException("Question cannot be shorter than 2 characters.");
+            default:
+                Text = text;
+                UpdateAt();
+                break;
         }
-
-        Text = text;
-        UpdateAt();
     }
 
     private void UpdateAt()

@@ -7,6 +7,7 @@ using Microsoft.OpenApi.Models;
 using SurveysPortal.Modules.Notifications.Api;
 using SurveysPortal.Modules.Surveys.Simple.Api;
 using SurveysPortal.Modules.Surveys.Standard.Api;
+using SurveysPortal.Modules.Surveys.Standard.Infrastructure;
 using SurveysPortal.Modules.Users.Api;
 using SurveysPortal.Modules.Users.Core.Entities;
 using SurveysPortal.Modules.Users.Infrastructure;
@@ -80,7 +81,8 @@ builder.Services.AddAuthentication(options =>
 });
 
 var app = builder.Build();
-await app.SeedData();
+await app.SeedUsersData();
+await app.SeedStandardQuestionsData();
 if (app.Environment.IsDevelopment() || app.Environment.IsProduction())
 {
     app.UseSwagger();

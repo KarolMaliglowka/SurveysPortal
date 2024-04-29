@@ -1,4 +1,5 @@
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
 using SurveysPortal.Modules.Surveys.Standard.Infrastructure.DAL;
 using SurveysPortal.Shared.Infrastructure;
 using SurveysPortal.Shared.Infrastructure.Database;
@@ -16,5 +17,20 @@ public static class ServicesRegistration
             .InjectableAttributes());
 
         return services;
+    }
+
+    public static async Task SeedStandardQuestionsData(this IHost app)
+    {
+        var scopedFactory = app.Services.GetService<IServiceScopeFactory>();
+
+        using var scope = scopedFactory?.CreateScope();
+        var service = scope?.ServiceProvider.GetService<DefaultQuestions>();
+        if (service is null)
+        {
+            throw new InvalidOperationException
+                ("Could not seed data due to issue with resolving service DefaultStandardQuestions");
+        }
+
+        await service.SeedStandardQuestions();
     }
 }

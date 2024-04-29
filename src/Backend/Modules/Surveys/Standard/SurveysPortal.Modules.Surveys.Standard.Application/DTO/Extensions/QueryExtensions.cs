@@ -16,7 +16,8 @@ public static class QueryExtensions
             return new QuestionDto
             {
                 QuestionId = question.Id,
-                Question = question.Text
+                Question = question.Text,
+                Required = question.Required
             };
         }
 
@@ -34,7 +35,8 @@ public static class QueryExtensions
             .Select(x => new QuestionDto
             {
                 QuestionId = x.Id,
-                Question = x.Text
+                Question = x.Text,
+                Required = x.Required
             })
             .ToList();
     }

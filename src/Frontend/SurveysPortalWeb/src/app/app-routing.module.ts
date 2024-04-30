@@ -6,6 +6,7 @@ import {UserDetailsComponent} from "./users/user-details/user-details.component"
 import {
     StandardQuestionsListComponent
 } from "./surveys/standard/standard-questions-list/standard-questions-list.component";
+import {StandardQuestionAddComponent} from "./surveys/standard/standard-question-add/standard-question-add.component";
 
 @NgModule({
     imports: [
@@ -16,6 +17,7 @@ import {
                     {path: 'users-list', component: UsersListComponent},
                     {path: 'user-details', component: UserDetailsComponent},
                     {path: 'standard-question-list', component: StandardQuestionsListComponent},
+                    {path: 'standard-question-add', component: StandardQuestionAddComponent},
                 ]
             },
             //{path: 'notfound', component: NotfoundComponent},

@@ -8,9 +8,7 @@ public class StandardQuestion
     private List<string> _offeredAnswers = [];
 
     [ExcludeFromCodeCoverage]
-    public StandardQuestion()
-    {
-    }
+    public StandardQuestion() {}
 
     public StandardQuestion(string text, bool required)
     {

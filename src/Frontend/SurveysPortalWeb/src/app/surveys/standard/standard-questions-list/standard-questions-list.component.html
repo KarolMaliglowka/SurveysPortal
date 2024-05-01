@@ -4,6 +4,28 @@
             <div class="text-primary">
                 <h4>Standard questions list</h4>
             </div>
+            <!--            <p-toast></p-toast>-->
+            <p-toolbar styleClass="mb-4 gap-2">
+                <ng-template pTemplate="left">
+                    <button pButton
+                            pRipple
+                            label="Add question"
+                            class="p-button-outlined mr-2 p-button-sm"
+                            icon="pi pi-plus"
+                            pTooltip="Add standard question"
+                            tooltipPosition="top"
+                            type="button"
+                            (click)="openNew()">
+                    </button>
+                </ng-template>
+
+                <ng-template pTemplate="right">
+                    <p-fileUpload mode="basic" accept="image/*" [maxFileSize]="1000000" label="Import"
+                                  chooseLabel="Import" class="mr-2 inline-block"></p-fileUpload>
+                    <button pButton pRipple label="Export" icon="pi pi-upload" class="p-button-help"></button>
+                </ng-template>
+            </p-toolbar>
+
             <p-table #dt id="dataTable" dataKey="id" [rowHover]="true" [value]="standardQuestions"
                      [tableStyle]="{ 'min-width': '50rem' }"
                      styleClass="p-datatable-sm"
@@ -17,21 +39,21 @@
                      [paginator]="true" currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
                      stateStorage="local">
 
-                <ng-template pTemplate="caption">
-                    <div class="flex align-items-center justify-content-between flex-wrap">
-                        <div class="mb-2 mr-2">
-                            <button pButton
-                                    pRipple
-                                    label="Add question"
-                                    class="p-button-outlined ml-2 p-button-sm"
-                                    icon="pi pi-new"
-                                    pTooltip="Add standard question"
-                                    tooltipPosition="top"
-                                    type="button">
-                            </button>
-                        </div>
-                    </div>
-                </ng-template>
+                <!--                <ng-template pTemplate="caption">-->
+                <!--                    <div class="flex align-items-center justify-content-between flex-wrap">-->
+                <!--                        <div class="mb-2 mr-2">-->
+                <!--                            <button pButton-->
+                <!--                                    pRipple-->
+                <!--                                    label="Add question"-->
+                <!--                                    class="p-button-outlined ml-2 p-button-sm"-->
+                <!--                                    icon="pi pi-new"-->
+                <!--                                    pTooltip="Add standard question"-->
+                <!--                                    tooltipPosition="top"-->
+                <!--                                    type="button">-->
+                <!--                            </button>-->
+                <!--                        </div>-->
+                <!--                    </div>-->
+                <!--                </ng-template>-->
 
                 <ng-template pTemplate="header" let-columns>
                     <tr>

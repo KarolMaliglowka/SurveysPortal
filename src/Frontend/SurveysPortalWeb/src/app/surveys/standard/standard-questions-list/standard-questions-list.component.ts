@@ -11,6 +11,9 @@ import {TooltipModule} from "primeng/tooltip";
 import {RippleModule} from "primeng/ripple";
 import {StandardQuestionsService} from "../standard-questions.service";
 import {TableStructure} from "../../../shared/models/table-structure";
+import {ToastModule} from "primeng/toast";
+import {ToolbarModule} from "primeng/toolbar";
+import {FileUploadModule} from "primeng/fileupload";
 
 @Component({
     selector: 'app-standard-questions-list',
@@ -25,7 +28,10 @@ import {TableStructure} from "../../../shared/models/table-structure";
         RippleModule,
         NgSwitchCase,
         NgSwitchDefault,
-        NgForOf
+        NgForOf,
+        ToastModule,
+        ToolbarModule,
+        FileUploadModule
     ],
     templateUrl: './standard-questions-list.component.html',
     styleUrl: './standard-questions-list.component.scss'
@@ -33,8 +39,15 @@ import {TableStructure} from "../../../shared/models/table-structure";
 export class StandardQuestionsListComponent implements OnInit {
 
     tableColumns: TableStructure<Question>[] = [];
-    standardQuestions: Question[] = [];
+    standardQuestions!: Question[];
     isLoading$ = new BehaviorSubject(false);
+    standardQuestionDialog: boolean = false;
+
+    standardQuestion!: {};
+
+    selectedQuestions!: Question[] | null;
+
+    submitted: boolean = false;
 
     constructor(
         public standardQuestionsService: StandardQuestionsService,
@@ -53,4 +66,11 @@ export class StandardQuestionsListComponent implements OnInit {
             console.log(this.standardQuestions);
         });
     }
+
+    openNew() {
+        this.standardQuestion = {};
+        this.submitted = false;
+        this.standardQuestionDialog = true;
+    }
+
 }

@@ -14,6 +14,7 @@ import {TableStructure} from "../../../shared/models/table-structure";
 import {ToastModule} from "primeng/toast";
 import {ToolbarModule} from "primeng/toolbar";
 import {FileUploadModule} from "primeng/fileupload";
+import {RouterLink} from "@angular/router";
 
 @Component({
     selector: 'app-standard-questions-list',
@@ -31,7 +32,8 @@ import {FileUploadModule} from "primeng/fileupload";
         NgForOf,
         ToastModule,
         ToolbarModule,
-        FileUploadModule
+        FileUploadModule,
+        RouterLink
     ],
     templateUrl: './standard-questions-list.component.html',
     styleUrl: './standard-questions-list.component.scss'

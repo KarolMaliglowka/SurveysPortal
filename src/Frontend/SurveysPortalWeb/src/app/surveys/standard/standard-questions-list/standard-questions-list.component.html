@@ -17,30 +17,37 @@
                             [routerLink]="'../standard-question-add'">
                     </button>
                 </ng-template>
-
                 <ng-template pTemplate="right">
-                    <p-fileUpload mode="basic" accept="image/*" [maxFileSize]="1000000" label="Import"
-                                  chooseLabel="Import" class="mr-2 inline-block"></p-fileUpload>
+                    <p-fileUpload
+                        mode="basic"
+                        accept="image/*"
+                        [maxFileSize]="1000000"
+                        label="Import"
+                        chooseLabel="Import"
+                        class="mr-2 inline-block">
+                    </p-fileUpload>
                     <button pButton pRipple label="Export" icon="pi pi-upload" class="p-button-help"></button>
                 </ng-template>
             </p-toolbar>
-
             <p-table
                 #dt
                 id="dataTable"
+                dataKey="id"
+                [rowHover]="true"
                 [value]="standardQuestions"
                 [tableStyle]="{ 'min-width': '50rem' }"
                 styleClass="p-datatable-sm"
-
+                [globalFilterFields]="['text', 'required']"
                 [totalRecords]="standardQuestions.length"
                 [filterDelay]="0"
                 [reorderableColumns]="true"
                 [columns]="tableColumns"
-                [rows]="10" [showCurrentPageReport]="true" [rowsPerPageOptions]="[10,25,50]"
+                [rows]="10" [showCurrentPageReport]="true"
+                [rowsPerPageOptions]="[10,25,50]"
                 responsiveLayout="scroll"
-                [paginator]="true" currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+                [paginator]="true"
+                currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
                 stateStorage="local">
-
                 <ng-template pTemplate="header" let-columns>
                     <tr>
                         <ng-container *ngFor="let col of columns" [ngSwitch]="col.field">

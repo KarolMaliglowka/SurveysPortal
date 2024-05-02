@@ -41,15 +41,9 @@ import {RouterLink} from "@angular/router";
 export class StandardQuestionsListComponent implements OnInit {
 
     tableColumns: TableStructure<Question>[] = [];
-    standardQuestions!: Question[];
+    standardQuestions: Question[] = [];
     isLoading$ = new BehaviorSubject(false);
-    standardQuestionDialog: boolean = false;
-
-    standardQuestion!: {};
-
-    selectedQuestions!: Question[] | null;
-
-    submitted: boolean = false;
+    standardQuestion: Question;
 
     constructor(
         public standardQuestionsService: StandardQuestionsService,
@@ -65,14 +59,6 @@ export class StandardQuestionsListComponent implements OnInit {
 
         this.standardQuestionsService.GetAllStandardQuestions().then((value) => {
             this.standardQuestions = value as unknown as Question[];
-            console.log(this.standardQuestions);
         });
     }
-
-    openNew() {
-        this.standardQuestion = {};
-        this.submitted = false;
-        this.standardQuestionDialog = true;
-    }
-
 }

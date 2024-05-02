@@ -25,18 +25,22 @@
                 </ng-template>
             </p-toolbar>
 
-            <p-table #dt id="dataTable" dataKey="id" [rowHover]="true" [value]="standardQuestions"
-                     [tableStyle]="{ 'min-width': '50rem' }"
-                     styleClass="p-datatable-sm"
-                     [globalFilterFields]="['text', 'required']"
-                     [totalRecords]="standardQuestions.length"
-                     [filterDelay]="0"
-                     [reorderableColumns]="true"
-                     [columns]="tableColumns"
-                     [rows]="10" [showCurrentPageReport]="true" [rowsPerPageOptions]="[10,25,50]"
-                     responsiveLayout="scroll"
-                     [paginator]="true" currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
-                     stateStorage="local">
+            <p-table
+                #dt
+                id="dataTable"
+                [value]="standardQuestions"
+                [tableStyle]="{ 'min-width': '50rem' }"
+                styleClass="p-datatable-sm"
+
+                [totalRecords]="standardQuestions.length"
+                [filterDelay]="0"
+                [reorderableColumns]="true"
+                [columns]="tableColumns"
+                [rows]="10" [showCurrentPageReport]="true" [rowsPerPageOptions]="[10,25,50]"
+                responsiveLayout="scroll"
+                [paginator]="true" currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+                stateStorage="local">
+
                 <ng-template pTemplate="header" let-columns>
                     <tr>
                         <ng-container *ngFor="let col of columns" [ngSwitch]="col.field">
@@ -62,7 +66,6 @@
                         <th class="min-width-100"></th>
                     </tr>
                 </ng-template>
-
                 <ng-template pTemplate="body" let-question let-columns="columns">
                     <tr class="p-selectable-row">
                         <ng-container *ngFor="let col of columns" [ngSwitch]="col.field">
@@ -104,6 +107,7 @@
                         <td colspan="100%">No standard questions found.</td>
                     </tr>
                 </ng-template>
+
             </p-table>
         </div>
     </div>

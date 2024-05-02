@@ -16,6 +16,7 @@ export class StandardQuestionsService {
         let apiRequest = <ApiRequestData>{
             Url: `${this.url}/all`
         };
+        console.log('trestdsgsdfsdfds')
         return firstValueFrom(this.httpService.get(apiRequest));
     }
 

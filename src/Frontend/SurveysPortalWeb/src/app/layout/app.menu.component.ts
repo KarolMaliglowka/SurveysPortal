@@ -21,33 +21,31 @@ export class AppMenuComponent implements OnInit {
                 ]
             },
             {
+                label: 'Basic surveys',
+                items: [
+                    { label: 'Questions', icon: 'pi pi-fw pi-question', routerLink: ['/'] },
+                    { label: 'Surveys', icon: 'pi pi-fw pi-check-square', routerLink: ['/']},
+                ]
+            },
+            {
+                label: 'Standard surveys',
+                items: [
+                    { label: 'Questions', icon: 'pi pi-fw pi-question', routerLink: ['/standard-question-list'] },
+                    { label: 'Surveys', icon: 'pi pi-fw pi-check-square',  routerLink: ['/'] },
+                ]
+            },
+            {
                 label: 'Managements',
                 items: [
                     { label: 'Users', icon: 'pi pi-fw pi-users', routerLink: ['/users-list'] },
                 ]
             },
-            // {
-            //     label: 'Basic surveys',
-            //     items: [
-            //         { label: 'Questions', icon: 'pi pi-fw pi-question', routerLink: ['/blocks'], badge: 'NEW' },
-            //         { label: 'Surveys', icon: 'pi pi-fw pi-check-square', url: ['https://www.primefaces.org/primeblocks-ng'], target: '_blank' },
-            //     ]
-            // },
             {
-                label: 'Standard surveys',
+                label: 'Settings',
                 items: [
-                    { label: 'Questions', icon: 'pi pi-fw pi-question', routerLink: ['/standard-question-list'] },
-                    { label: 'Surveys', icon: 'pi pi-fw pi-check-square', url: ['https://www.primefaces.org/primeblocks-ng'], target: '_blank' },
+                    { label: 'Settings', icon: 'pi pi-fw pi-gear', routerLink: ['/users-list'] },
                 ]
             },
-            // {
-            //     label: 'Get Started',
-            //     items: [
-            //         {
-            //             label: 'Documentation', icon: 'pi pi-fw pi-book', routerLink: ['/documentation']
-            //         }
-            //     ]
-            // }
         ];
     }
 }

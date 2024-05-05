@@ -98,5 +98,6 @@ app.UseHttpsRedirection();
 app.UseExceptionHandler("/error");
 app.UseRouting();
 app.MapControllers();
+app.UsePathBase("/");
 
 app.Run();

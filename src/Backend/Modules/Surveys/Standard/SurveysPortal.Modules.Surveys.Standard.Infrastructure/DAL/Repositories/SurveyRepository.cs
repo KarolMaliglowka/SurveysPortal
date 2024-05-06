@@ -12,4 +12,7 @@ public class SurveyRepository(StandardSurveysDbContext context) : ISurveyReposit
     public async Task<IEnumerable<StandardSurvey>> GetAllStandardSurveys() =>
         await context.StandardSurveys
             .ToListAsync();
+    
+    public Task<StandardSurvey?> GetStandardSurveyById(int id)
+        => context.StandardSurveys.SingleOrDefaultAsync(x => x.Id == id);
 }

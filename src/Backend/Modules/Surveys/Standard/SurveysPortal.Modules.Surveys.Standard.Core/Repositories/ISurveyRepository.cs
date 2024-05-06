@@ -5,4 +5,5 @@ namespace SurveysPortal.Modules.Surveys.Standard.Core.Repositories;
 public interface ISurveyRepository
 {
     Task<IEnumerable<StandardSurvey>> GetAllStandardSurveys();
+    Task<StandardSurvey?> GetStandardSurveyById(int id);
 }

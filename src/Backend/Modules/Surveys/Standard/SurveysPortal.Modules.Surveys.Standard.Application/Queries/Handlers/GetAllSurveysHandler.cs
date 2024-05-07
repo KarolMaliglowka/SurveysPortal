@@ -1,5 +1,6 @@
 using Microsoft.Extensions.DependencyInjection;
 using SurveysPortal.Modules.Surveys.Standard.Application.DTO;
+using SurveysPortal.Modules.Surveys.Standard.Application.DTO.Extensions;
 using SurveysPortal.Modules.Surveys.Standard.Core.Repositories;
 using SurveysPortal.Shared.Abstractions.Attributes;
 using SurveysPortal.Shared.Abstractions.Queries;
@@ -11,9 +12,7 @@ public class GetAllSurveysHandler : IQueryHandler<GetAllSurveys, IEnumerable<Sur
 {
     private readonly ISurveyRepository _surveyRepository;
     
-    public GetAllSurveysHandler()
-    {
-    }
+    public GetAllSurveysHandler() {}
     
     public GetAllSurveysHandler(ISurveyRepository surveyRepository)
     {
@@ -25,12 +24,6 @@ public class GetAllSurveysHandler : IQueryHandler<GetAllSurveys, IEnumerable<Sur
     {
         var questionList = await _surveyRepository
             .GetAllStandardSurveys();
-        return questionList.Select(x => new SurveyDto
-            {
-                SurveyId = x.Id,
-                Name = x.Name,
-                Description = x.Description
-            })
-            .ToList();;
+        return questionList.ToStandardSurveysListDto();
     }
 }

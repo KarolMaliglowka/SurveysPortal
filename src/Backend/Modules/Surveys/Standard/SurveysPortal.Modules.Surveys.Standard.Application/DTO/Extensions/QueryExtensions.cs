@@ -40,4 +40,42 @@ public static class QueryExtensions
             })
             .ToList();
     }
+    
+    /// <summary>
+    /// Mapping StandardSurvey list to SurveyDto list
+    /// </summary>
+    /// <param name="surveys">like extension IEnumerable StandardSurveys</param>
+    /// <returns>new SurveyDto list</returns>
+    public static IEnumerable<SurveyDto> ToStandardSurveysListDto(this IEnumerable<StandardSurvey> surveys)
+    {
+        return surveys
+            .Select(x => new SurveyDto
+            {
+                SurveyId = x.Id,
+                Name = x.Name,
+                Description = x.Description
+            })
+            .ToList();
+    }
+    
+    /// <summary>
+    /// Mapping StandardSurvey to SurveyDto
+    /// </summary>
+    /// <param name="survey">like extension StandardSurvey</param>
+    /// <returns>new SurveyDto or null</returns>
+    public static SurveyDto? ToStandardSurveyDto(this StandardSurvey? survey)
+    {
+        if (survey != null)
+        {
+            return new SurveyDto
+            {
+                SurveyId = survey.Id,
+                Name = survey.Name,
+                Description = survey.Description
+            };
+        }
+
+        return null;
+    }
+    
 }

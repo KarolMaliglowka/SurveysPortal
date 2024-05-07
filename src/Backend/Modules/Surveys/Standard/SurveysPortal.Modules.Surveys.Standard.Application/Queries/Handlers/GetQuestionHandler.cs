@@ -13,9 +13,7 @@ public class GetQuestionHandler : IQueryHandler<GetQuestion, QuestionDto>
 {
     private readonly IQuestionRepository _questionRepository;
 
-    public GetQuestionHandler()
-    {
-    }
+    public GetQuestionHandler() {}
 
     public GetQuestionHandler(IQuestionRepository questionRepository)
     {

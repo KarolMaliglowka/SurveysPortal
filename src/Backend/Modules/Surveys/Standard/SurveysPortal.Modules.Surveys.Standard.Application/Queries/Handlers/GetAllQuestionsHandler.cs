@@ -12,9 +12,7 @@ public class GetAllQuestionsHandler : IQueryHandler<GetAllQuestions, IEnumerable
 {
     private readonly IQuestionRepository _questionRepository;
     
-    public GetAllQuestionsHandler()
-    {
-    }
+    public GetAllQuestionsHandler() {}
     
     public GetAllQuestionsHandler(IQuestionRepository questionRepository)
     {

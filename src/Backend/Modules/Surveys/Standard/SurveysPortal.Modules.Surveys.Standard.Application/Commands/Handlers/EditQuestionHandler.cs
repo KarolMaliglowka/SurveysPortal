@@ -11,9 +11,7 @@ public class EditQuestionHandler : ICommandHandler<EditQuestion>
 {
     private readonly IQuestionRepository _questionRepository;
 
-    public EditQuestionHandler()
-    {
-    }
+    public EditQuestionHandler() {}
 
     public EditQuestionHandler(IQuestionRepository questionRepository)
     {

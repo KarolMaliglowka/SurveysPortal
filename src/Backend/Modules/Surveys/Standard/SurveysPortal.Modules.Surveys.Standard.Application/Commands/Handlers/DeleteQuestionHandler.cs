@@ -11,9 +11,7 @@ public class DeleteQuestionHandler : ICommandHandler<DeleteQuestion>
 {
     private readonly IQuestionRepository _questionRepository;
 
-    public DeleteQuestionHandler()
-    {
-    }
+    public DeleteQuestionHandler() {}
 
     public DeleteQuestionHandler(IQuestionRepository questionRepository)
     {

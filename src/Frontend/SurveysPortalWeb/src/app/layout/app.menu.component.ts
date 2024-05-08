@@ -30,8 +30,8 @@ export class AppMenuComponent implements OnInit {
             {
                 label: 'Standard surveys',
                 items: [
-                    { label: 'Questions', icon: 'pi pi-fw pi-question', routerLink: ['/standard-question-list'] },
-                    { label: 'Surveys', icon: 'pi pi-fw pi-check-square',  routerLink: ['/'] },
+                    { label: 'Questions', icon: 'pi pi-fw pi-question', routerLink: ['/standard-questions-list'] },
+                    { label: 'Surveys', icon: 'pi pi-fw pi-check-square',  routerLink: ['/standard-surveys-list'] },
                 ]
             },
             {

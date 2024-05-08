@@ -24,6 +24,7 @@ import {ConfirmationService} from "primeng/api";
 import {
     StandardQuestionsListComponent
 } from "./surveys/standard/standard-questions-list/standard-questions-list.component";
+import {StandardSurveysListComponent} from "./surveys/standard/standard-surveys-list/standard-surveys-list.component";
 
 @NgModule({
     declarations: [
@@ -49,7 +50,8 @@ import {
         ConfirmDialogModule,
         UsersListComponent,
         InputTextModule,
-        StandardQuestionsListComponent
+        StandardQuestionsListComponent,
+        StandardSurveysListComponent
 
     ],
     providers: [

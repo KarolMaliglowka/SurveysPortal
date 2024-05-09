@@ -1,1 +1,124 @@
-<p>standard-surveys-list works!111</p>
+<div class="grid">
+    <div class="col-12">
+        <div class="card">
+            <div class="text-primary">
+                <h4>Standard surveys list</h4>
+            </div>
+            <p-toolbar styleClass="mb-4 gap-2">
+                <ng-template pTemplate="left">
+                    <button pButton
+                            pRipple
+                            label="Add question"
+                            class="p-button-outlined mr-2 p-button-sm p-button-success"
+                            icon="pi pi-plus"
+                            pTooltip="Add standard question"
+                            tooltipPosition="top"
+                            type="button"
+                            [routerLink]="'../standard-survey-add'">
+                    </button>
+                </ng-template>
+                <ng-template pTemplate="right">
+                    <p-fileUpload
+                        mode="basic"
+                        accept="image/*"
+                        [maxFileSize]="1000000"
+                        label="Import"
+                        chooseLabel="Import"
+                        class="mr-2 inline-block">
+                    </p-fileUpload>
+                    <button pButton pRipple label="Export" icon="pi pi-upload" class="p-button-help"></button>
+                </ng-template>
+            </p-toolbar>
+            <p-table
+                #dt
+                id="dataTable"
+                dataKey="id"
+                [rowHover]="true"
+                [value]="standardSurveys"
+                [tableStyle]="{ 'min-width': '50rem' }"
+                styleClass="p-datatable-sm"
+                [globalFilterFields]="['text', 'required']"
+                [totalRecords]="standardSurveys.length"
+                [filterDelay]="0"
+                [reorderableColumns]="true"
+                [columns]="tableColumns"
+                [rows]="10" [showCurrentPageReport]="true"
+                [rowsPerPageOptions]="[10,25,50]"
+                responsiveLayout="scroll"
+                [paginator]="true"
+                currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+                stateStorage="local">
+                <ng-template pTemplate="header" let-columns>
+                    <tr>
+                        <ng-container *ngFor="let col of columns" [ngSwitch]="col.field">
+                            <th pReorderableColumn>
+                                {{ col.header }}
+                            </th>
+                            <th *ngSwitchCase="'isActive'" class="w-6rem" pReorderableColumn>
+                                {{ col.header }}
+                            </th>
+                            <th *ngSwitchDefault [pSortableColumn]="col.field" pReorderableColumn>
+                                {{ col.header }}
+                                <p-sortIcon [field]="col.field"></p-sortIcon>
+                            </th>
+                        </ng-container>
+                        <th class="min-width-100">Actions</th>
+                    </tr>
+                    <tr>
+                        <ng-container *ngFor="let col of columns" [ngSwitch]="col.field">
+                            <th *ngSwitchDefault>
+                                <p-columnFilter [field]="col.field" type="text" class="p-inputtext-sm"></p-columnFilter>
+                            </th>
+                        </ng-container>
+                        <th class="min-width-100"></th>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="body" let-survey let-columns="columns">
+                    <tr class="p-selectable-row">
+                        <ng-container *ngFor="let col of columns" [ngSwitch]="col.field">
+                            <td *ngSwitchCase="'text'">
+                                <span class="p-column-title">{{ col.header }}</span>
+                                {{ survey.name }}
+                            </td>
+                            <td *ngSwitchDefault>
+                                <span class="p-column-title">{{ col.header }}</span>
+                                {{ survey.description }}
+                            </td>
+                        </ng-container>
+                        <td>
+                            <div class="flex justify-content-center">
+                                <button
+                                    pButton
+                                    pRipple
+                                    pTooltip="Edit survey"
+                                    tooltipPosition="top"
+                                    class="p-button-rounded p-button-outlined p-button-success"
+                                    icon="pi pi-pencil"
+                                    type="button">
+                                </button>
+                                <button
+                                    pButton
+                                    pRipple
+                                    pTooltip="Delete survey"
+                                    tooltipPosition="top"
+                                    class="p-button-rounded p-button-outlined ml-1 p-button-danger"
+                                    icon="pi pi-trash"
+                                    type="button">
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="emptymessage">
+                    <tr>
+                        <td colspan="100%">No standard surveys found.</td>
+                    </tr>
+                </ng-template>
+
+            </p-table>
+        </div>
+    </div>
+</div>
+
+<p-confirmPopup key="ConfirmPopup"></p-confirmPopup>
+<p-confirmDialog key="ConfirmDialog"></p-confirmDialog>

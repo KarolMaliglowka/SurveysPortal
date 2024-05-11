@@ -53,12 +53,14 @@ export class StandardQuestionsListComponent implements OnInit {
 
     ngOnInit(): void {
         this.tableColumns = [
-            {field: 'text', header: 'Question'},
+            {field: 'question', header: 'Question'},
             {field: 'required', header: 'Required'},
         ];
 
-        this.standardQuestionsService.GetAllStandardQuestions().then((value) => {
-            this.standardQuestions = value as unknown as Question[];
-        });
+        this.standardQuestionsService
+            .GetAllStandardQuestions()
+            .then((value) => {
+                this.standardQuestions = value as unknown as Question[];
+            });
     }
 }

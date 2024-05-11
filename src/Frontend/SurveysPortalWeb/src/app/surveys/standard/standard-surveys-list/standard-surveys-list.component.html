@@ -8,10 +8,10 @@
                 <ng-template pTemplate="left">
                     <button pButton
                             pRipple
-                            label="Add question"
+                            label="Add survey"
                             class="p-button-outlined mr-2 p-button-sm p-button-success"
                             icon="pi pi-plus"
-                            pTooltip="Add standard question"
+                            pTooltip="Add standard survey"
                             tooltipPosition="top"
                             type="button"
                             [routerLink]="'../standard-survey-add'">
@@ -37,7 +37,7 @@
                 [value]="standardSurveys"
                 [tableStyle]="{ 'min-width': '50rem' }"
                 styleClass="p-datatable-sm"
-                [globalFilterFields]="['text', 'required']"
+                [globalFilterFields]="['name', 'description', 'introduction']"
                 [totalRecords]="standardSurveys.length"
                 [filterDelay]="0"
                 [reorderableColumns]="true"
@@ -51,12 +51,6 @@
                 <ng-template pTemplate="header" let-columns>
                     <tr>
                         <ng-container *ngFor="let col of columns" [ngSwitch]="col.field">
-                            <th pReorderableColumn>
-                                {{ col.header }}
-                            </th>
-                            <th *ngSwitchCase="'isActive'" class="w-6rem" pReorderableColumn>
-                                {{ col.header }}
-                            </th>
                             <th *ngSwitchDefault [pSortableColumn]="col.field" pReorderableColumn>
                                 {{ col.header }}
                                 <p-sortIcon [field]="col.field"></p-sortIcon>
@@ -76,13 +70,9 @@
                 <ng-template pTemplate="body" let-survey let-columns="columns">
                     <tr class="p-selectable-row">
                         <ng-container *ngFor="let col of columns" [ngSwitch]="col.field">
-                            <td *ngSwitchCase="'text'">
-                                <span class="p-column-title">{{ col.header }}</span>
-                                {{ survey.name }}
-                            </td>
                             <td *ngSwitchDefault>
                                 <span class="p-column-title">{{ col.header }}</span>
-                                {{ survey.description }}
+                                {{ survey[col.field] }}
                             </td>
                         </ng-container>
                         <td>
@@ -114,7 +104,6 @@
                         <td colspan="100%">No standard surveys found.</td>
                     </tr>
                 </ng-template>
-
             </p-table>
         </div>
     </div>

@@ -23,10 +23,10 @@
                             <span class="p-input-icon-left ml-auto">
                                 <i class="pi pi-search"></i>
                                 <input
-                                       pInputText type="text"
-                                       placeholder="Search keyword"
-                                       pTooltip="Searches for users"
-                                       tooltipPosition="top" class="p-inputtext-sm"/>
+                                    pInputText type="text"
+                                    placeholder="Search keyword"
+                                    pTooltip="Searches for users"
+                                    tooltipPosition="top" class="p-inputtext-sm"/>
                             </span>
                             <button pButton
                                     pRipple
@@ -40,7 +40,6 @@
                         </div>
                     </div>
                 </ng-template>
-
                 <ng-template pTemplate="header" let-columns>
                     <tr>
                         <ng-container *ngFor="let col of columns" [ngSwitch]="col.field">
@@ -60,17 +59,23 @@
                     <tr>
                         <ng-container *ngFor="let col of columns" [ngSwitch]="col.field">
                             <th *ngSwitchCase="'isActive'" class="text-center clear-button-hidden">
-                                <p-columnFilter field="isActive" type="boolean"
-                                                pStyleClass="clear-width"></p-columnFilter>
+                                <p-columnFilter
+                                    field="isActive"
+                                    type="boolean"
+                                    pStyleClass="clear-width">
+                                </p-columnFilter>
                             </th>
                             <th *ngSwitchDefault>
-                                <p-columnFilter [field]="col.field" type="text" class="p-inputtext-sm"></p-columnFilter>
+                                <p-columnFilter
+                                    [field]="col.field"
+                                    type="text"
+                                    class="p-inputtext-sm">
+                                </p-columnFilter>
                             </th>
                         </ng-container>
                         <th class="min-width-100"></th>
                     </tr>
                 </ng-template>
-
                 <ng-template pTemplate="body" let-user let-columns="columns">
                     <tr class="p-selectable-row">
                         <ng-container *ngFor="let col of columns" [ngSwitch]="col.field">
@@ -78,10 +83,6 @@
                                 <span class="p-column-title">Is active</span>
                                 <i [ngClass]="{'pi-check-circle': user.isActive, 'pi-times-circle': !user.isActive}"
                                    class="pi"></i>
-                            </td>
-                            <td *ngSwitchCase="'groupRolesNames'">
-                                <span class="p-column-title">{{ col.header }}</span>
-                                {{ user[col.field].join(', ') }}
                             </td>
                             <td *ngSwitchDefault>
                                 <span class="p-column-title">{{ col.header }}</span>

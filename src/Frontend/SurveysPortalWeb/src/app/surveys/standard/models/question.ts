@@ -1,4 +1,4 @@
 ﻿export interface Question {
-    text: string;
+    question: string;
     required: boolean;
 }

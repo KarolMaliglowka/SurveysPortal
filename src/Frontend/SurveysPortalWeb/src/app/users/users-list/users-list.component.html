@@ -7,7 +7,7 @@
             <p-table id="dataTable" dataKey="id" [rowHover]="true" [value]="users"
                      [tableStyle]="{ 'min-width': '50rem' }"
                      styleClass="p-datatable-sm"
-                     [globalFilterFields]="['displayName', 'firstName', 'lastName', 'email', 'groupRolesNames']"
+                     [globalFilterFields]="['displayName', 'firstName', 'lastName', 'email']"
                      [totalRecords]="users.length"
                      [filterDelay]="0"
                      [reorderableColumns]="true"
@@ -43,12 +43,6 @@
                 <ng-template pTemplate="header" let-columns>
                     <tr>
                         <ng-container *ngFor="let col of columns" [ngSwitch]="col.field">
-                            <th *ngSwitchCase="'groupRolesNames'" pReorderableColumn>
-                                {{ col.header }}
-                            </th>
-                            <th *ngSwitchCase="'isActive'" class="w-6rem" pReorderableColumn>
-                                {{ col.header }}
-                            </th>
                             <th *ngSwitchDefault [pSortableColumn]="col.field" pReorderableColumn>
                                 {{ col.header }}
                                 <p-sortIcon [field]="col.field"></p-sortIcon>

@@ -6,38 +6,38 @@ import {ApiRequestData} from "../../domain/api.request.data";
 @Injectable({
     providedIn: 'root'
 })
-export class StandardQuestionsService {
-    private url = 'standardQuestion';
+export class StandardSurveysService {
+    private url = 'standardSurvey';
 
     constructor(private httpService: ApiService) {
     }
 
-    GetAllStandardQuestions() {
+    GetAllStandardSurveys() {
         let apiRequest = <ApiRequestData>{
             Url: `${this.url}/all`
         };
         return firstValueFrom(this.httpService.get(apiRequest));
     }
 
-    GetStandardQuestionById(id: string) {
+    GetStandardSurveyById(id: string) {
         let apiRequest = <ApiRequestData>{
-            Url: `${this.url}/getQuestionById/${id}`,
+            Url: `${this.url}/getSurveyById/${id}`,
             RequestBody: id
         };
         return firstValueFrom(this.httpService.put(apiRequest));
     }
 
-    DeleteStandardQuestion(id: string) {
+    DeleteStandardSurvey(id: string) {
         let apiRequest = <ApiRequestData>{
-            Url: `${this.url}/deleteQuestion/${id}`,
+            Url: `${this.url}/deleteSurvey/${id}`,
             RequestBody: id
         };
         return firstValueFrom(this.httpService.put(apiRequest));
     }
 
-    UpdateStandardQuestion(id: string) {
+    UpdateStandardSurvey(id: string) {
         let apiRequest = <ApiRequestData>{
-            Url: `${this.url}/updateQuestion/${id}`,
+            Url: `${this.url}/updateSurvey/${id}`,
             RequestBody: id
         };
         return firstValueFrom(this.httpService.put(apiRequest));

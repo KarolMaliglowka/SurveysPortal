@@ -37,7 +37,7 @@
                 [value]="standardQuestions"
                 [tableStyle]="{ 'min-width': '50rem' }"
                 styleClass="p-datatable-sm"
-                [globalFilterFields]="['text', 'required']"
+                [globalFilterFields]="['question', 'required']"
                 [totalRecords]="standardQuestions.length"
                 [filterDelay]="0"
                 [reorderableColumns]="true"
@@ -51,12 +51,6 @@
                 <ng-template pTemplate="header" let-columns>
                     <tr>
                         <ng-container *ngFor="let col of columns" [ngSwitch]="col.field">
-                            <th *ngSwitchCase="'groupRolesNames'" pReorderableColumn>
-                                {{ col.header }}
-                            </th>
-                            <th *ngSwitchCase="'isActive'" class="w-6rem" pReorderableColumn>
-                                {{ col.header }}
-                            </th>
                             <th *ngSwitchDefault [pSortableColumn]="col.field" pReorderableColumn>
                                 {{ col.header }}
                                 <p-sortIcon [field]="col.field"></p-sortIcon>
@@ -76,13 +70,9 @@
                 <ng-template pTemplate="body" let-question let-columns="columns">
                     <tr class="p-selectable-row">
                         <ng-container *ngFor="let col of columns" [ngSwitch]="col.field">
-                            <td *ngSwitchCase="'text'">
-                                <span class="p-column-title">{{ col.header }}</span>
-                                {{ question.question }}
-                            </td>
                             <td *ngSwitchDefault>
                                 <span class="p-column-title">{{ col.header }}</span>
-                                {{ question.required }}
+                                {{ question[col.field] }}
                             </td>
                         </ng-container>
                         <td>

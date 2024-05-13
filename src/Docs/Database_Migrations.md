@@ -24,8 +24,7 @@ dotnet ef migrations add <migrationName> --startup-project <startUpProjectName> 
 ```bash
 dotnet ef database update <migrationName> --startup-project <startUpProjectName> --project <proejctName> --context <contextName>
 ```
-
-e.g. 
+e.g. :
 
 for users
 ```bash
@@ -44,8 +43,6 @@ dotnet ef migrations add InitialMigration --startup-project ..\..\..\..\Bootstra
 ```bash
 dotnet ef database update --startup-project ..\..\..\..\Bootstrapper\SurveysPortal.Bootstrapper\SurveysPortal.Bootstrapper.csproj --project .\SurveysPortal.Modules.Surveys.Standard.Infrastructure.csproj --context StandardSurveysDbContext
 ```
-
-
 
 Information from [entityframeworktutorial.net](https://www.entityframeworktutorial.net/efcore/cli-commands-for-ef-core-migration.aspx).
 

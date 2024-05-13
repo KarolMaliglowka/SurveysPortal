@@ -16,7 +16,8 @@ public class StandardSurveyController(IDispatcher dispatcher) : ControllerBase
     [ProducesResponseType(typeof(void), StatusCodes.Status401Unauthorized)]
     [ProducesResponseType(typeof(string), StatusCodes.Status500InternalServerError)]
     [ProducesResponseType(typeof(string), StatusCodes.Status404NotFound)]
-    public async Task<ActionResult<List<SurveyDto>>> GetAllSurveys() => Ok(await dispatcher.QueryAsync(new GetAllSurveys()));
+    public async Task<ActionResult<List<SurveyDto>>> GetAllSurveys() => 
+        Ok(await dispatcher.QueryAsync(new GetAllSurveys()));
 
     [HttpGet("getSurveyById/{surveyId:int}")]
     [ProducesResponseType(typeof(QuestionDto), StatusCodes.Status200OK)]

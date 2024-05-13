@@ -89,7 +89,7 @@ public class AccountRepository : IUserAccount
         }
     }
 
-    public async Task<ServiceResponses.LoginResponse> LoginAccount(LoginDto loginDto)
+    public async Task<ServiceResponses.LoginResponse> LoginAccount(LoginDto? loginDto)
     {
         if (loginDto == null)
             return new ServiceResponses.LoginResponse

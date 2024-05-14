@@ -33,4 +33,19 @@ public static class ServicesRegistration
 
         await service.SeedStandardQuestions();
     }
+    
+    public static async Task SeedStandardSurveysData(this IHost app)
+    {
+        var scopedFactory = app.Services.GetService<IServiceScopeFactory>();
+
+        using var scope = scopedFactory?.CreateScope();
+        var service = scope?.ServiceProvider.GetService<DefaultSurveys>();
+        if (service is null)
+        {
+            throw new InvalidOperationException
+                ("Could not seed data due to issue with resolving service DefaultStandardSurveys");
+        }
+
+        await service.SeedStandardSurveys();
+    }
 }

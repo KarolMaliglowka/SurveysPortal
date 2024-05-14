@@ -53,7 +53,8 @@ public static class QueryExtensions
             {
                 SurveyId = x.Id,
                 Name = x.Name,
-                Description = x.Description
+                Description = x.Description,
+                Introduction = x.Introduction
             })
             .ToList();
     }
@@ -71,11 +72,11 @@ public static class QueryExtensions
             {
                 SurveyId = survey.Id,
                 Name = survey.Name,
-                Description = survey.Description
+                Description = survey.Description,
+                Introduction = survey.Introduction
             };
         }
 
         return null;
     }
-    
 }

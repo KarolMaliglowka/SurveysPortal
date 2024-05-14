@@ -83,6 +83,7 @@ builder.Services.AddAuthentication(options =>
 var app = builder.Build();
 await app.SeedUsersData();
 await app.SeedStandardQuestionsData();
+await app.SeedStandardSurveysData();
 if (app.Environment.IsDevelopment() || app.Environment.IsProduction())
 {
     app.UseSwagger();

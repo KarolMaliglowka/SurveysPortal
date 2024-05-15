@@ -15,4 +15,22 @@ public class SurveyRepository(StandardSurveysDbContext context) : ISurveyReposit
     
     public Task<StandardSurvey?> GetStandardSurveyById(int id)
         => context.StandardSurveys.SingleOrDefaultAsync(x => x.Id == id);
+    
+    public async Task Create(StandardSurvey survey)
+    {
+        await context.StandardSurveys.AddAsync(survey);
+        await context.SaveChangesAsync();
+    }
+
+    public async Task Update(StandardSurvey survey)
+    {
+        context.StandardSurveys.Update(survey);
+        await context.SaveChangesAsync();
+    }
+
+    public async Task Delete(StandardSurvey survey)
+    {
+        survey.MarkAsDeleted();
+        await Update(survey);
+    }
 }

@@ -43,18 +43,17 @@ public class StandardSurvey
             throw new ArgumentException("Name of the survey cannot be empty.", nameof(name));
         }
         
-        if (name.Length < 3)
+        switch (name.Length)
         {
-            throw new ArgumentException("Name length requires minimum 3 characters.", nameof(name));
+            case < 3:
+                throw new ArgumentException("Name length requires minimum 3 characters.", nameof(name));
+            case > 100:
+                throw new ArgumentException("Name length requires maximum 100 characters.", nameof(name));
+            default:
+                Name = name;
+                UpdatedAt = DateTime.UtcNow;
+                break;
         }
-        
-        if (name.Length > 100)
-        {
-            throw new ArgumentException("Name length requires maximum 100 characters.", nameof(name));
-        }
-
-        Name = name;
-        UpdatedAt = DateTime.UtcNow;
     }
 
     public void SetDescription(string description)

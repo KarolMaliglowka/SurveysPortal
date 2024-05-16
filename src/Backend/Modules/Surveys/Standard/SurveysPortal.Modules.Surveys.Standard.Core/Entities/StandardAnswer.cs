@@ -8,9 +8,7 @@ public class StandardAnswer
     private const string NotRequired = "Question was not required.";
 
     [ExcludeFromCodeCoverage]
-    public StandardAnswer()
-    {
-    }
+    public StandardAnswer() { }
 
     public StandardAnswer(StandardSurveyUser standardSurveyUser, StandardQuestion standardQuestion)
     {
@@ -20,9 +18,9 @@ public class StandardAnswer
             "Question cannot be null.");
     }
 
-    public int Id { get; set; }
-    public Guid UserId { get; set; }
-    public int StandardSurveyUserId { get; set; }
+    public int Id { get; init; }
+    public Guid UserId { get; init; }
+    public int StandardSurveyUserId { get; init; }
     public StandardSurveyUser StandardSurveyUser { get; }
     public StandardQuestion StandardQuestion { get; }
     public string Answer { get; private set; }

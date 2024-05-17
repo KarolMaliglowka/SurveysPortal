@@ -8,16 +8,17 @@ using SurveysPortal.Shared.Abstractions.Queries;
 namespace SurveysPortal.Shared.Infrastructure.Dispatchers;
 
 [Injectable(ServiceLifetime.Scoped)]
-
 internal sealed class Dispatcher : IDispatcher
 {
     private readonly ICommandDispatcher _commandDispatcher;
     private readonly IEventDispatcher _eventDispatcher;
     private readonly IQueryDispatcher _queryDispatcher;
 
-    public Dispatcher(ICommandDispatcher commandDispatcher,
+    public Dispatcher(
+        ICommandDispatcher commandDispatcher,
         IEventDispatcher eventDispatcher,
-        IQueryDispatcher queryDispatcher)
+        IQueryDispatcher queryDispatcher
+    )
     {
         _commandDispatcher = commandDispatcher;
         _eventDispatcher = eventDispatcher;

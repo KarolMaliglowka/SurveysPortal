@@ -13,6 +13,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\Users\SurveysPortal.Modules.Users.Application\SurveysPortal.Modules.Users.Application.csproj" />
     <ProjectReference Include="..\SurveysPortal.Modules.Notifications.Application\SurveysPortal.Modules.Notifications.Application.csproj" />
   </ItemGroup>
 

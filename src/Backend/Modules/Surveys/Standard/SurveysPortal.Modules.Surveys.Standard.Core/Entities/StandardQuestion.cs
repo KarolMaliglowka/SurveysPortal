@@ -21,7 +21,7 @@ public class StandardQuestion
 
     [ExcludeFromCodeCoverage] public Guid UserId { get; set; }
     public string? Text { get; private set; }
-    public bool Required { get; private set; }
+    public bool Required { get; set; }
     public bool IsDeleted { get; private set; }
     public bool IsOfferedAnswers { get; set; }
     public IReadOnlyCollection<string> OfferedAnswers => _offeredAnswers.AsReadOnly();
@@ -29,7 +29,7 @@ public class StandardQuestion
     public DateTime UpdatedAt { get; private set; }
     public IReadOnlyCollection<StandardSurveyQuestion> StandardSurveyQuestions => _standardSurveyQuestions.AsReadOnly();
 
-    private void SetQuestion(string text)
+    public void SetQuestion(string text)
     {
         if (string.IsNullOrWhiteSpace(text))
         {

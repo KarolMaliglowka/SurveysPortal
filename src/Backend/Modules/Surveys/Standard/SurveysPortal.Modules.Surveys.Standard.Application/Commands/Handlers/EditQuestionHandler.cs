@@ -22,13 +22,16 @@ public class EditQuestionHandler : ICommandHandler<EditQuestion>
     {
         if (command.Question != null)
         {
-            var question = await _questionRepository.GetStandardQuestionById(command!.Question.Id);
+            var question = await _questionRepository.GetStandardQuestionById(command!.QuestionId);
             if (question is null)
             {
-                throw new QuestionNotFoundException(command.Question.Id);
+                throw new QuestionNotFoundException(command.QuestionId);
             }
-        }
 
-        await _questionRepository.Update(command.Question);
+            question.SetQuestion(command.Question.Question!);
+            question.Required = command.Question.Required;
+            
+            await _questionRepository.Update(question);
+        }
     }
 }

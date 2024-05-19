@@ -7,23 +7,26 @@ public class DefaultQuestions(StandardSurveysDbContext context)
 {
     public async Task SeedStandardQuestions()
     {
-        var questions = new List<StandardQuestion>
+        if (!context.StandardQuestions.Any())
         {
-            new("First question", true),
-            new("Second question", false)
-        };
+            var questions = new List<StandardQuestion>
+            {
+                new("First question", true),
+                new("Second question", false)
+            };
 
-        foreach (var question in questions)
-        {
-            var dbQuestion = await context.StandardQuestions
-                .FirstOrDefaultAsync(x => x.Text == question.Text);
-            if (dbQuestion is not null) continue;
-            await context.StandardQuestions.AddAsync(question);
-        }
+            foreach (var question in questions)
+            {
+                var dbQuestion = await context.StandardQuestions
+                    .FirstOrDefaultAsync(x => x.Text == question.Text);
+                if (dbQuestion is not null) continue;
+                await context.StandardQuestions.AddAsync(question);
+            }
 
-        if (context.ChangeTracker.HasChanges())
-        {
-            await context.SaveChangesAsync();
+            if (context.ChangeTracker.HasChanges())
+            {
+                await context.SaveChangesAsync();
+            }
         }
     }
 }

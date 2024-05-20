@@ -85,6 +85,7 @@ A place to store documentation.
 ### Dependence
 
 ### Clone from GitHub
+First, check if you have GIT installed. If not, go to: [Git installation](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git).
 
 ## License
 This project is licensed under the [MIT License](License). Feel free to use, modify, and distribute as per the terms of the license.

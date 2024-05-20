@@ -20,7 +20,8 @@ public class DeleteQuestionHandler : ICommandHandler<DeleteQuestion>
 
     public async Task HandleAsync(DeleteQuestion command, CancellationToken cancellationToken = default)
     {
-        var question = await _questionRepository.GetStandardQuestionById(command.QuestionId);
+        var question = await _questionRepository
+            .GetStandardQuestionById(command.QuestionId);
         if (question is null)
         {
             throw new QuestionNotFoundException(command.QuestionId);

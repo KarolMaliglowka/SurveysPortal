@@ -20,7 +20,7 @@ public class CreateQuestionHandler : ICommandHandler<CreateQuestion>
 
     public async Task HandleAsync(CreateQuestion command, CancellationToken cancellationToken = default)
     {
-        var question = new StandardQuestion(command.Question, command.Require);
+        var question = new StandardQuestion(command.Question!, command.Require);
         await _questionRepository.Create(question);
     }
 }

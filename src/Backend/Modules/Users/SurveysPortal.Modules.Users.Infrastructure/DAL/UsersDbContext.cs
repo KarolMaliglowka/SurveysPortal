@@ -5,12 +5,9 @@ using SurveysPortal.Modules.Users.Core.Entities;
 
 namespace SurveysPortal.Modules.Users.Infrastructure.DAL;
 
-public class UsersDbContext : IdentityDbContext<User, IdentityRole<Guid>, Guid>
+public class UsersDbContext(DbContextOptions<UsersDbContext> options)
+    : IdentityDbContext<User, IdentityRole<Guid>, Guid>(options)
 {
-    public UsersDbContext(DbContextOptions<UsersDbContext> options) : base(options)
-    {
-    }
-
     public DbSet<User> Users { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)

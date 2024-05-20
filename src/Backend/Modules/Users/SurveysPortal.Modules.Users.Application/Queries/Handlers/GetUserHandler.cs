@@ -22,7 +22,7 @@ internal sealed class GetUserHandler : IQueryHandler<GetUser, UserDto>
         _userRepository = userRepository;
     }
 
-    public async Task<UserDto?> HandleAsync(GetUser query, CancellationToken cancellationToken = default)
+    public async Task<UserDto> HandleAsync(GetUser query, CancellationToken cancellationToken = default)
     {
         var user = await _userRepository.GetAsync(query.UserId);
 

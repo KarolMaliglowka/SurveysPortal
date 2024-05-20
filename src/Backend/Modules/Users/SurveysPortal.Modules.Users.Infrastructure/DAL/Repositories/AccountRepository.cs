@@ -19,9 +19,7 @@ public class AccountRepository : IUserAccount
     private readonly RoleManager<IdentityRole> _roleManager;
     private readonly IConfiguration _config;
 
-    public AccountRepository(UserManager<User> userManager,
-        RoleManager<IdentityRole> roleManager,
-        IConfiguration config)
+    public AccountRepository(UserManager<User> userManager, RoleManager<IdentityRole> roleManager, IConfiguration config)
     {
         _userManager = userManager;
         _roleManager = roleManager;
@@ -110,7 +108,7 @@ public class AccountRepository : IUserAccount
             };
                 //(false, null!, "User not found");
 
-        bool checkUserPasswords = await _userManager.CheckPasswordAsync(getUser, loginDto.Password);
+        var checkUserPasswords = await _userManager.CheckPasswordAsync(getUser, loginDto.Password);
         if (!checkUserPasswords)
             return new ServiceResponses.LoginResponse
             {
@@ -129,7 +127,7 @@ public class AccountRepository : IUserAccount
             Role = getUserRole.First()
         };
             //( getUser.Id.ToString(), getUser.FirstName, getUser.Email, getUserRole.First());
-        string token = GenerateToken(userSession);
+        var token = GenerateToken(userSession);
         return new ServiceResponses.LoginResponse
         {
             Flag = false,

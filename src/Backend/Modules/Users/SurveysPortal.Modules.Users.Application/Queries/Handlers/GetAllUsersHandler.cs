@@ -21,10 +21,11 @@ public class GetAllUsersHandler : IQueryHandler<GetAllUsers, IEnumerable<UserDto
         _userRepository = userRepository;
     }
 
-    public async Task<IEnumerable<UserDto>?> HandleAsync(GetAllUsers query,
-        CancellationToken cancellationToken = default)
+    public async Task<IEnumerable<UserDto>> HandleAsync(GetAllUsers query, CancellationToken cancellationToken = default)
     {
-        var usersList = await _userRepository.GetAllUsers();
-        return usersList.ToUsersListDto();
+        var usersList = await _userRepository
+            .GetAllUsers();
+        return usersList
+            .ToUsersListDto();
     }
 }

@@ -42,4 +42,12 @@ export class StandardSurveysService {
         };
         return firstValueFrom(this.httpService.put(apiRequest));
     }
+
+    CreateStandardSurvey(survey: any) {
+        let apiRequest = <ApiRequestData>{
+            Url: `${this.url}/updateSurvey}`,
+            RequestBody: survey
+        };
+        return firstValueFrom(this.httpService.post(apiRequest));
+    }
 }

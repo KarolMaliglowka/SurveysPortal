@@ -42,4 +42,12 @@ export class StandardQuestionsService {
         };
         return firstValueFrom(this.httpService.put(apiRequest));
     }
+
+    CreateStandardQuestion(question: any) {
+        let apiRequest = <ApiRequestData>{
+            Url: `${this.url}/createQuestion/`,
+            RequestBody: question
+        };
+        return firstValueFrom(this.httpService.post(apiRequest));
+    }
 }

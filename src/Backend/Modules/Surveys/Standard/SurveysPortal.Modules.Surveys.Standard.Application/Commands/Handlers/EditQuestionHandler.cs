@@ -11,7 +11,9 @@ public class EditQuestionHandler : ICommandHandler<EditQuestion>
 {
     private readonly IQuestionRepository _questionRepository;
 
-    public EditQuestionHandler() {}
+    public EditQuestionHandler()
+    {
+    }
 
     public EditQuestionHandler(IQuestionRepository questionRepository)
     {
@@ -31,7 +33,7 @@ public class EditQuestionHandler : ICommandHandler<EditQuestion>
 
             question.SetQuestion(command.Question.Question!);
             question.Required = command.Question.Required;
-            
+
             await _questionRepository.Update(question);
         }
     }

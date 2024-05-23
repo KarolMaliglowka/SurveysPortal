@@ -6,5 +6,5 @@ namespace SurveysPortal.Modules.Surveys.Standard.Application.Commands;
 public class EditQuestion : ICommand
 {
     public int QuestionId { get; set; }
-    public QuestionDto? Question { get; set; }
+    public NewQuestion? Question { get; set; }
 }

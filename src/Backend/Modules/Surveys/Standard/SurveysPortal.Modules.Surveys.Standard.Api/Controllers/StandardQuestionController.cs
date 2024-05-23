@@ -48,7 +48,7 @@ public class StandardQuestionController(IDispatcher dispatcher) : ControllerBase
     [ProducesResponseType(typeof(void), StatusCodes.Status401Unauthorized)]
     [ProducesResponseType(typeof(string), StatusCodes.Status500InternalServerError)]
     [ProducesResponseType(typeof(string), StatusCodes.Status404NotFound)]
-    public async Task<ActionResult> CreateQuestion([FromBody] QuestionDto command)
+    public async Task<ActionResult> CreateQuestion([FromBody] NewQuestion command)
     {
         await dispatcher.SendAsync(new CreateQuestion
         {
@@ -64,7 +64,7 @@ public class StandardQuestionController(IDispatcher dispatcher) : ControllerBase
     [ProducesResponseType(typeof(void), StatusCodes.Status401Unauthorized)]
     [ProducesResponseType(typeof(string), StatusCodes.Status500InternalServerError)]
     [ProducesResponseType(typeof(string), StatusCodes.Status404NotFound)]
-    public async Task<ActionResult> UpdateQuestion(int questionId, [FromBody] QuestionDto question)
+    public async Task<ActionResult> UpdateQuestion(int questionId, [FromBody] NewQuestion question)
     {
         await dispatcher.SendAsync(new EditQuestion
         {

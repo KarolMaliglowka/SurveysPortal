@@ -6,7 +6,7 @@ import {UserDetailsComponent} from "./users/user-details/user-details.component"
 import {
     StandardQuestionsListComponent
 } from "./surveys/standard/standard-questions-list/standard-questions-list.component";
-import {StandardQuestionAddComponent} from "./surveys/standard/standard-question-add/standard-question-add.component";
+import {StandardQuestionDetailsComponent} from "./surveys/standard/standard-question-details/standard-question-details.component";
 import {StandardSurveysListComponent} from "./surveys/standard/standard-surveys-list/standard-surveys-list.component";
 
 @NgModule({
@@ -18,7 +18,7 @@ import {StandardSurveysListComponent} from "./surveys/standard/standard-surveys-
                     {path: 'users-list', component: UsersListComponent},
                     {path: 'user-details', component: UserDetailsComponent},
                     {path: 'standard-questions-list', component: StandardQuestionsListComponent},
-                    {path: 'standard-question-add', component: StandardQuestionAddComponent},
+                    {path: 'standard-question-add', component: StandardQuestionDetailsComponent},
                     {path: 'standard-surveys-list', component: StandardSurveysListComponent},
                 ]
             },

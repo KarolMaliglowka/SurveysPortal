@@ -40,8 +40,8 @@ public class StandardQuestion
         {
             case > 1000:
                 throw new ArgumentException("Question cannot be longer than 1000 characters.");
-            case < 2:
-                throw new ArgumentException("Question cannot be shorter than 2 characters.");
+            case < 10:
+                throw new ArgumentException("Question cannot be shorter than 10 characters.");
             default:
                 Text = text;
                 UpdateAt();

@@ -1,22 +1,26 @@
-<p>standard-question-add works!</p>
-<p-dialog [(visible)]="standardQuestionDialog" [style]="{ width: '450px' }" header="Question Details" [modal]="true"
-          styleClass="p-fluid">
+<p-dialog
+    standardQuestionDialog
+    [(visible)]="standardQuestionDialog"
+    [style]="{ width: '450px' }"
+    header="Question Details"
+    [modal]="true"
+    styleClass="p-fluid">
     <ng-template pTemplate="content">
         <div class="field">
             <label for="name">Name</label>
-            <input type="text" pInputText id="name" [(ngModel)]="question.question" required autofocus/>
+            <input type="text" pInputText id="name"
+                   required autofocus/>
             <small class="p-error" *ngIf="submitted && !question.question">Question is required.</small>
         </div>
-        <div class="field">
-            <label for="description">Required</label>
-            <textarea id="description" pInputTextarea [(ngModel)]="question.required" required rows="3"
-                      cols="20"></textarea>
+        <div class="flex align-items-center">
+            <p-checkbox
+                label="Required"
+             />
         </div>
-
-<!--        <ng-template pTemplate="footer">-->
-<!--            <button pButton pRipple label="Cancel" icon="pi pi-times" class="p-button-text"></button>-->
-<!--            <button pButton pRipple label="Save" icon="pi pi-check" class="p-button-text"></button>-->
-<!--        </ng-template>-->
+    </ng-template>
+    <ng-template pTemplate="footer">
+        <button pButton pRipple label="Cancel" icon="pi pi-times" class="p-button-text"></button>
+        <button pButton pRipple label="Save" icon="pi pi-check" class="p-button-text"></button>
     </ng-template>
 </p-dialog>
 

@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {BehaviorSubject} from "rxjs";
 import {ConfirmationService} from "primeng/api";
 import {Question} from "../models/question";
@@ -15,6 +15,7 @@ import {ToastModule} from "primeng/toast";
 import {ToolbarModule} from "primeng/toolbar";
 import {FileUploadModule} from "primeng/fileupload";
 import {RouterLink} from "@angular/router";
+import {StandardQuestionDetailsComponent} from '../standard-question-details/standard-question-details.component'
 
 @Component({
     selector: 'app-standard-questions-list',
@@ -33,7 +34,8 @@ import {RouterLink} from "@angular/router";
         ToastModule,
         ToolbarModule,
         FileUploadModule,
-        RouterLink
+        RouterLink,
+        StandardQuestionDetailsComponent
     ],
     templateUrl: './standard-questions-list.component.html',
     styleUrl: './standard-questions-list.component.scss'
@@ -44,6 +46,8 @@ export class StandardQuestionsListComponent implements OnInit {
     standardQuestions: Question[] = [];
     isLoading$ = new BehaviorSubject(false);
     standardQuestion: Question;
+
+    @ViewChild('standardQuestionDialog') standardQuestionDialog: StandardQuestionDetailsComponent;
 
     constructor(
         public standardQuestionsService: StandardQuestionsService,
@@ -62,5 +66,10 @@ export class StandardQuestionsListComponent implements OnInit {
             .then((value) => {
                 this.standardQuestions = value as unknown as Question[];
             });
+    }
+
+    openNew() {
+        this.standardQuestionDialog.submitted = false;
+        this.standardQuestionDialog.standardQuestionDialog = true;
     }
 }

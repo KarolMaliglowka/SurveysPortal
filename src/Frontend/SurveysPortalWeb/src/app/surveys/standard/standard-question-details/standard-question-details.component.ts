@@ -7,6 +7,7 @@ import {Question} from "../models/question";
 import {RippleModule} from "primeng/ripple";
 import {InputTextareaModule} from "primeng/inputtextarea";
 import {NgIf} from "@angular/common";
+import {CheckboxModule} from "primeng/checkbox";
 
 @Component({
   selector: 'app-standard-question-details',
@@ -18,7 +19,8 @@ import {NgIf} from "@angular/common";
         FormsModule,
         RippleModule,
         InputTextareaModule,
-        NgIf
+        NgIf,
+        CheckboxModule
     ],
   templateUrl: './standard-question-details.component.html',
   styleUrl: './standard-question-details.component.scss'
@@ -27,5 +29,6 @@ export class StandardQuestionDetailsComponent {
     standardQuestionDialog: boolean;
     question: Question;
     submitted: boolean;
+    mode: string;
 
 }

@@ -14,7 +14,8 @@
                             pTooltip="Add standard question"
                             tooltipPosition="top"
                             type="button"
-                            [routerLink]="'../standard-question-add'">
+                            (click)="openNew()">
+                    <!--                            [routerLink]="'../standard-question-add'"-->
                     </button>
                 </ng-template>
                 <ng-template pTemplate="right">
@@ -104,7 +105,6 @@
                         <td colspan="100%">No standard questions found.</td>
                     </tr>
                 </ng-template>
-
             </p-table>
         </div>
     </div>
@@ -112,3 +112,5 @@
 
 <p-confirmPopup key="ConfirmPopup"></p-confirmPopup>
 <p-confirmDialog key="ConfirmDialog"></p-confirmDialog>
+<app-standard-question-details #standardQuestionDialog></app-standard-question-details>
+

@@ -29,6 +29,4 @@ export class StandardQuestionDetailsComponent {
     standardQuestionDialog: boolean;
     question: Question;
     submitted: boolean;
-    mode: string;
-
 }

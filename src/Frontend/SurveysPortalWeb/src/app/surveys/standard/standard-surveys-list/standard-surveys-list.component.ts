@@ -45,8 +45,7 @@ export class StandardSurveysListComponent implements OnInit {
     standardSurvey: Survey;
 
     constructor(
-        public standardSurveysService: StandardSurveysService,
-        private confirmationService: ConfirmationService,
+        public standardSurveysService: StandardSurveysService
     ) {
     }
 

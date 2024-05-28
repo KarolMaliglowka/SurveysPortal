@@ -20,12 +20,12 @@ builder.Services
     .AddEndpointsApiExplorer()
     .AddSwaggerGen(options =>
     {
-          options.AddSecurityDefinition("oauth2", new OpenApiSecurityScheme
-          {
-              In = ParameterLocation.Header,
-              Name = "Authorization",
-              Type = SecuritySchemeType.ApiKey
-          });
+        options.AddSecurityDefinition("oauth2", new OpenApiSecurityScheme
+        {
+            In = ParameterLocation.Header,
+            Name = "Authorization",
+            Type = SecuritySchemeType.ApiKey
+        });
         options.OperationFilter<SecurityRequirementsOperationFilter>();
         options.SwaggerDoc("v1", new OpenApiInfo
         {
@@ -53,7 +53,8 @@ builder.Services
     .AddJsonOptions(options => { options.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter()); });
 
 //add identity and JWT authentication
-builder.Services.AddIdentity<User, IdentityRole<Guid>>()
+builder.Services
+    .AddIdentity<User, IdentityRole<Guid>>()
     .AddEntityFrameworkStores<UsersDbContext>()
     .AddSignInManager()
     .AddRoles<IdentityRole<Guid>>();

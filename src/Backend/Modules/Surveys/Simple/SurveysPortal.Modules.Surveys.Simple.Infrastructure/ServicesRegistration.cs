@@ -11,7 +11,7 @@ public static class ServicesRegistration
             .FromCallingAssembly()
             .AddClasses()
             .InjectableAttributes());
-        
+
         return services;
     }
 }

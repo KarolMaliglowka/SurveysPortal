@@ -11,7 +11,7 @@ public static class DependencyInjection
             .FromCallingAssembly()
             .AddClasses()
             .InjectableAttributes());
-        
+
         return services;
     }
 }

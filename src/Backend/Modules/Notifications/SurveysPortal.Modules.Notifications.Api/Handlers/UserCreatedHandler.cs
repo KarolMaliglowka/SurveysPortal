@@ -15,6 +15,6 @@ public class UserCreatedHandler : IEventHandler<UserCreated>
         _emailSender = emailSender;
     }
 
-    public Task HandleAsync(UserCreated @event, CancellationToken cancellationToken = default) => 
+    public Task HandleAsync(UserCreated @event, CancellationToken cancellationToken = default) =>
         _emailSender.SendAsync(@event.Email!, "NewUser");
 }

@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import {DialogModule} from "primeng/dialog";
 import {ConfirmDialogModule} from "primeng/confirmdialog";
 import {InputTextModule} from "primeng/inputtext";
-import {FormsModule} from "@angular/forms";
+import {FormBuilder, FormsModule, Validators} from "@angular/forms";
 import {Question} from "../models/question";
 import {RippleModule} from "primeng/ripple";
 import {InputTextareaModule} from "primeng/inputtextarea";
@@ -29,4 +29,16 @@ export class StandardQuestionDetailsComponent {
     standardQuestionDialog: boolean;
     question: Question;
     submitted: boolean;
+    mode: string;
+
+    questionForm: any;
+
+    constructor(private formBuilder: FormBuilder) {}
+
+    ngOnInit(): void {
+        this.questionForm = this.formBuilder.group({
+            question: ['', Validators.required],
+            required: [true]
+        })
+    }
 }

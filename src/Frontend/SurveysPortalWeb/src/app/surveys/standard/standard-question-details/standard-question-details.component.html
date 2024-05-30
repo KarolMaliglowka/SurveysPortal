@@ -1,27 +1,48 @@
 <p-dialog
-    standardQuestionDialog
-    [(visible)]="standardQuestionDialog"
+    [(visible)]="isVisible"
     [style]="{ width: '450px' }"
-    header="Question Details"
+    header="Product Details"
     [modal]="true"
     styleClass="p-fluid">
+
     <ng-template pTemplate="content">
         <div class="field">
-            <label for="name">Name</label>
-            <input type="text" pInputText id="name"
-                   required autofocus/>
-            <small class="p-error" *ngIf="submitted && !question.question">Question is required.</small>
+            <label for="question">question</label>
+            <input
+                type="text"
+                pInputText
+                id="question"
+                required
+                [(ngModel)]="question.question"
+                autofocus/>
         </div>
-        <div class="flex align-items-center">
-            <p-checkbox
-                label="Required"
-             />
+        <div class="field">
+            <label for="description">Description</label>
+            <textarea
+                id="description"
+                pInputTextarea
+                [(ngModel)]="question.required"
+                required
+                rows="3"
+                cols="20">
+                    </textarea>
         </div>
     </ng-template>
     <ng-template pTemplate="footer">
-        <button pButton pRipple label="Cancel" icon="pi pi-times" class="p-button-text"></button>
-        <button pButton pRipple label="Save" icon="pi pi-check" class="p-button-text"></button>
+        <p-button
+            pRipple
+            label="Cancel"
+            icon="pi pi-times"
+            [text]="true"
+            (click)="hideDialog()"/>
+        <p-button
+            pRipple
+            label="Save"
+            icon="pi pi-check"
+            [text]="true"
+            (click)="submitForm()"/>
     </ng-template>
+
 </p-dialog>
 
-<p-confirmDialog [style]="{ width: '450px' }"></p-confirmDialog>
+<p-confirmDialog [style]="{ width: '450px' }"/>

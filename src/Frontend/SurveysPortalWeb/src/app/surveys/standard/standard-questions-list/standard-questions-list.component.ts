@@ -1,6 +1,4 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
-import {BehaviorSubject} from "rxjs";
-import {ConfirmationService} from "primeng/api";
 import {Question} from "../models/question";
 import {TableModule} from "primeng/table";
 import {NgForOf, NgSwitch, NgSwitchCase, NgSwitchDefault} from "@angular/common";
@@ -44,14 +42,13 @@ export class StandardQuestionsListComponent implements OnInit {
 
     tableColumns: TableStructure<Question>[] = [];
     standardQuestions: Question[] = [];
-    isLoading$ = new BehaviorSubject(false);
-    standardQuestion: Question;
+    standardQuestion!: Question;
+    submitted: boolean = false;
 
     @ViewChild('standardQuestionDialog') standardQuestionDialog: StandardQuestionDetailsComponent;
 
     constructor(
-        public standardQuestionsService: StandardQuestionsService,
-        private confirmationService: ConfirmationService,
+        public standardQuestionsService: StandardQuestionsService
     ) {
     }
 
@@ -69,7 +66,8 @@ export class StandardQuestionsListComponent implements OnInit {
     }
 
     openNew() {
-        this.standardQuestionDialog.submitted = false;
-        this.standardQuestionDialog.standardQuestionDialog = true;
+        this.standardQuestionDialog.question = {};
+        this.submitted = false;
+        this.standardQuestionDialog.isVisible = true;
     }
 }

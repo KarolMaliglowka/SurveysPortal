@@ -45,7 +45,7 @@ export class StandardQuestionsService {
 
     CreateStandardQuestion(question: any) {
         let apiRequest = <ApiRequestData>{
-            Url: `${this.url}/createQuestion/`,
+            Url: `${this.url}/createQuestion`,
             RequestBody: question
         };
         return firstValueFrom(this.httpService.post(apiRequest));

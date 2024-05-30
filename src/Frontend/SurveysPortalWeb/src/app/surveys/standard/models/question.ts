@@ -1,4 +1,4 @@
 ﻿export interface Question {
-    question: string;
-    required: boolean;
+    question?: string;
+    required?: boolean;
 }

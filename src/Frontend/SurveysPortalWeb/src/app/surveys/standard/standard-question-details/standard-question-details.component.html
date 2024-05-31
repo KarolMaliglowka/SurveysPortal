@@ -8,20 +8,24 @@
     <ng-template pTemplate="content">
         <div class="field">
             <label for="question">Question</label>
-            <input
+            <textarea
                 type="text"
-                pInputText
+                pInputTextarea
                 id="question"
                 required
                 [(ngModel)]="question.question"
-                autofocus/>
+                rows="3"
+                cols="20"
+                autofocus>
+            </textarea>
+
         </div>
         <div class="field">
             <label for="required">Required</label>
-
-            <p-inputSwitch [(ngModel)]="question.required" id="required" />
-
-
+            <p-inputSwitch
+                [(ngModel)]="question.required"
+                id="required"
+            />
         </div>
     </ng-template>
     <ng-template pTemplate="footer">

@@ -9,6 +9,7 @@ import {InputTextareaModule} from "primeng/inputtextarea";
 import {NgIf} from "@angular/common";
 import {CheckboxModule} from "primeng/checkbox";
 import {StandardQuestionsService} from "../standard-questions.service";
+import {InputSwitchModule} from "primeng/inputswitch";
 
 @Component({
     selector: 'app-standard-question-details',
@@ -22,7 +23,8 @@ import {StandardQuestionsService} from "../standard-questions.service";
         InputTextareaModule,
         NgIf,
         CheckboxModule,
-        ReactiveFormsModule
+        ReactiveFormsModule,
+        InputSwitchModule
     ],
     templateUrl: './standard-question-details.component.html',
     styleUrl: './standard-question-details.component.scss'
@@ -40,9 +42,9 @@ export class StandardQuestionDetailsComponent {
     }
 
     submitForm(): void {
-        console.log('Form data:', this.question.question);
-        this.question.required = true;
-        this.standardQuestionsService.CreateStandardQuestion(this.question).then(r => console.log(r));
+        this.standardQuestionsService
+            .CreateStandardQuestion(this.question)
+            .then(r => console.log(r));
         this.isVisible = false;
     }
 

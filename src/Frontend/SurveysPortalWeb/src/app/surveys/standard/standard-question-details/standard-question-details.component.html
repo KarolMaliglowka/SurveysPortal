@@ -7,7 +7,7 @@
 
     <ng-template pTemplate="content">
         <div class="field">
-            <label for="question">question</label>
+            <label for="question">Question</label>
             <input
                 type="text"
                 pInputText
@@ -17,15 +17,11 @@
                 autofocus/>
         </div>
         <div class="field">
-            <label for="description">Description</label>
-            <textarea
-                id="description"
-                pInputTextarea
-                [(ngModel)]="question.required"
-                required
-                rows="3"
-                cols="20">
-                    </textarea>
+            <label for="required">Required</label>
+
+            <p-inputSwitch [(ngModel)]="question.required" id="required" />
+
+
         </div>
     </ng-template>
     <ng-template pTemplate="footer">

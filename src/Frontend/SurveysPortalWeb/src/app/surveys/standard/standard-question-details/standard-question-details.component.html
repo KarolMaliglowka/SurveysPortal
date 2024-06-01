@@ -6,6 +6,7 @@
     styleClass="p-fluid">
 
     <ng-template pTemplate="content">
+        <form [formGroup]="questionForm" (ngSubmit)="submitForm($event)">
         <div class="field">
             <label for="question">Question</label>
             <textarea
@@ -13,7 +14,7 @@
                 pInputTextarea
                 id="question"
                 required
-                [(ngModel)]="question.question"
+                [formControl]="questionForm.controls.question"
                 rows="3"
                 cols="20"
                 autofocus>
@@ -23,10 +24,11 @@
         <div class="field">
             <label for="required">Required</label>
             <p-inputSwitch
-                [(ngModel)]="question.required"
+                [formControl]="questionForm.controls.required"
                 id="required"
             />
         </div>
+        </form>
     </ng-template>
     <ng-template pTemplate="footer">
         <p-button
@@ -37,10 +39,11 @@
             (click)="hideDialog()"/>
         <p-button
             pRipple
+            type="submit"
             label="Save"
             icon="pi pi-check"
             [text]="true"
-            (click)="submitForm()"/>
+            (click)="formDirective.onSubmit($event)"/>
     </ng-template>
 
 </p-dialog>

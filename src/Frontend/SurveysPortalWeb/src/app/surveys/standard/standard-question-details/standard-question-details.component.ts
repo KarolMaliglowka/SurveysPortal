@@ -1,8 +1,8 @@
-import {Component, Input} from '@angular/core';
+import {Component, EventEmitter, Input, Output, ViewChild} from '@angular/core';
 import {DialogModule} from "primeng/dialog";
 import {ConfirmDialogModule} from "primeng/confirmdialog";
 import {InputTextModule} from "primeng/inputtext";
-import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import {FormControl, FormGroup, FormGroupDirective, FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {Question} from "../models/question";
 import {RippleModule} from "primeng/ripple";
 import {InputTextareaModule} from "primeng/inputtextarea";
@@ -30,6 +30,14 @@ import {InputSwitchModule} from "primeng/inputswitch";
     styleUrl: './standard-question-details.component.scss'
 })
 export class StandardQuestionDetailsComponent {
+    questionForm = new FormGroup({
+        question: new FormControl<string>(''),
+        required: new FormControl<boolean>(false)
+    })
+    @Output() isVisibleChange: EventEmitter<boolean> = new EventEmitter<boolean>();
+    @Output() success: EventEmitter<boolean> = new EventEmitter<boolean>();
+    @ViewChild(FormGroupDirective) formDirective: FormGroupDirective;
+
     question: Question;
     visible: boolean = false;
     @Input() isVisible = false;
@@ -41,14 +49,22 @@ export class StandardQuestionDetailsComponent {
 
     }
 
-    submitForm(): void {
-        this.standardQuestionsService
-            .CreateStandardQuestion(this.question)
-            .then(r => console.log(r));
+    hideDialog() {
+        this.isVisibleChange.emit(false);
+        this.formDirective?.resetForm();
+        this.questionForm.reset();
         this.isVisible = false;
     }
 
-    hideDialog() {
-        this.isVisible = false;
+    submitForm(_event: any) {
+        if (this.questionForm.invalid) {
+            return;
+        }
+        console.log(this.questionForm.value);
+        this.standardQuestionsService
+                .CreateStandardQuestion(this.questionForm.value)
+                .then(r => console.log(r));
+        this.success.emit(true);
+        this.hideDialog();
     }
 }

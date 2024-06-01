@@ -1,4 +1,4 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
+import {Component, OnChanges, OnInit, ViewChild} from '@angular/core';
 import {Question} from "../models/question";
 import {TableModule} from "primeng/table";
 import {NgForOf, NgSwitch, NgSwitchCase, NgSwitchDefault} from "@angular/common";
@@ -58,16 +58,20 @@ export class StandardQuestionsListComponent implements OnInit {
             {field: 'required', header: 'Required'},
         ];
 
-        this.standardQuestionsService
-            .GetAllStandardQuestions()
-            .then((value) => {
-                this.standardQuestions = value as unknown as Question[];
-            });
+        this.getAllQuestions();
     }
 
     openNew() {
         this.standardQuestionDialog.question = {};
         this.submitted = false;
         this.standardQuestionDialog.isVisible = true;
+    }
+
+    getAllQuestions() {
+        this.standardQuestionsService
+            .GetAllStandardQuestions()
+            .then((value) => {
+                this.standardQuestions = value as unknown as Question[];
+            });
     }
 }

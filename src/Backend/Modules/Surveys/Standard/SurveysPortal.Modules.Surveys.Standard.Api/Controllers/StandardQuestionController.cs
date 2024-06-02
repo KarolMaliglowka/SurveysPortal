@@ -30,8 +30,8 @@ public class StandardQuestionController(IDispatcher dispatcher) : ControllerBase
     {
         return await dispatcher.QueryAsync(new GetQuestion { QuestionId = questionId });
     }
-    
-    [HttpGet("deleteQuestion/{questionId:int}")]
+
+    [HttpPut("deleteQuestion/{questionId:int}")]
     [ProducesResponseType(typeof(QuestionDto), StatusCodes.Status200OK)]
     [ProducesResponseType(typeof(string), StatusCodes.Status400BadRequest)]
     [ProducesResponseType(typeof(void), StatusCodes.Status401Unauthorized)]
@@ -41,9 +41,9 @@ public class StandardQuestionController(IDispatcher dispatcher) : ControllerBase
     {
         await dispatcher.SendAsync(new DeleteQuestion{ QuestionId = questionId });
     }
-    
+
     [HttpPost("createQuestion")]
-    [ProducesResponseType(typeof(NewQuestion), StatusCodes.Status200OK)]
+    [ProducesResponseType(typeof(NewQuestion), StatusCodes.Status201Created)]
     [ProducesResponseType(typeof(string), StatusCodes.Status400BadRequest)]
     [ProducesResponseType(typeof(void), StatusCodes.Status401Unauthorized)]
     [ProducesResponseType(typeof(string), StatusCodes.Status500InternalServerError)]
@@ -56,19 +56,19 @@ public class StandardQuestionController(IDispatcher dispatcher) : ControllerBase
         });
         return Created();
     }
-    
+
     [HttpPut("updateQuestion/{questionId:int}")]
     [ProducesResponseType(typeof(NewQuestion), StatusCodes.Status200OK)]
     [ProducesResponseType(typeof(string), StatusCodes.Status400BadRequest)]
     [ProducesResponseType(typeof(void), StatusCodes.Status401Unauthorized)]
     [ProducesResponseType(typeof(string), StatusCodes.Status500InternalServerError)]
     [ProducesResponseType(typeof(string), StatusCodes.Status404NotFound)]
-    public async Task<ActionResult> UpdateQuestion(int questionId, [FromBody] NewQuestion question)
+    public async Task<ActionResult> UpdateQuestion(int questionId, [FromBody] NewQuestion command)
     {
         await dispatcher.SendAsync(new EditQuestion
         {
             QuestionId = questionId,
-            Question = question
+            Question = command
         });
         return Ok();
     }

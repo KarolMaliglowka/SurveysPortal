@@ -16,11 +16,11 @@ public class StandardSurveyController(IDispatcher dispatcher) : ControllerBase
     [ProducesResponseType(typeof(void), StatusCodes.Status401Unauthorized)]
     [ProducesResponseType(typeof(string), StatusCodes.Status500InternalServerError)]
     [ProducesResponseType(typeof(string), StatusCodes.Status404NotFound)]
-    public async Task<ActionResult<List<SurveyDto>>> GetAllSurveys() => 
+    public async Task<ActionResult<List<SurveyDto>>> GetAllSurveys() =>
         Ok(await dispatcher.QueryAsync(new GetAllSurveys()));
 
     [HttpGet("getSurveyById/{surveyId:int}")]
-    [ProducesResponseType(typeof(QuestionDto), StatusCodes.Status200OK)]
+    [ProducesResponseType(typeof(SurveyDto), StatusCodes.Status200OK)]
     [ProducesResponseType(typeof(string), StatusCodes.Status400BadRequest)]
     [ProducesResponseType(typeof(void), StatusCodes.Status401Unauthorized)]
     [ProducesResponseType(typeof(string), StatusCodes.Status500InternalServerError)]
@@ -28,5 +28,45 @@ public class StandardSurveyController(IDispatcher dispatcher) : ControllerBase
     public async Task<ActionResult<SurveyDto>> GetQuestion(int surveyId)
     {
         return await dispatcher.QueryAsync(new GetSurvey { SurveyId = surveyId });
+    }
+
+    [HttpPut("deleteSurvey/{surveyId:int}")]
+    [ProducesResponseType(typeof(SurveyDto), StatusCodes.Status200OK)]
+    [ProducesResponseType(typeof(string), StatusCodes.Status400BadRequest)]
+    [ProducesResponseType(typeof(void), StatusCodes.Status401Unauthorized)]
+    [ProducesResponseType(typeof(string), StatusCodes.Status500InternalServerError)]
+    [ProducesResponseType(typeof(string), StatusCodes.Status404NotFound)]
+    public async Task DeleteSurvey(int surveyId)
+    {
+        await dispatcher.SendAsync(new DeleteSurvey{ SurveyId = surveyId });
+    }
+    [HttpPost("createSurvey")]
+    [ProducesResponseType(typeof(NewSurvey), StatusCodes.Status201Created)]
+    [ProducesResponseType(typeof(string), StatusCodes.Status400BadRequest)]
+    [ProducesResponseType(typeof(void), StatusCodes.Status401Unauthorized)]
+    [ProducesResponseType(typeof(string), StatusCodes.Status500InternalServerError)]
+    public async Task<ActionResult> CreateSurvey([FromBody] NewSurvey command)
+    {
+        await dispatcher.SendAsync(new CreateSurvey
+        {
+            Survey = command.Survey!
+        });
+        return Created();
+    }
+
+    [HttpPut("updateSurvey/{surveyId:int}")]
+    [ProducesResponseType(typeof(NewSurvey), StatusCodes.Status200OK)]
+    [ProducesResponseType(typeof(string), StatusCodes.Status400BadRequest)]
+    [ProducesResponseType(typeof(void), StatusCodes.Status401Unauthorized)]
+    [ProducesResponseType(typeof(string), StatusCodes.Status500InternalServerError)]
+    [ProducesResponseType(typeof(string), StatusCodes.Status404NotFound)]
+    public async Task<ActionResult> UpdateSurvey(int surveyId, [FromBody] NewSurvey command)
+    {
+        await dispatcher.SendAsync(new EditSurvey
+        {
+            SurveyId = surveyId,
+            Survey = survey
+        });
+        return Ok();
     }
 }

@@ -26,7 +26,7 @@ public class DeleteSurveyHandler : ICommandHandler<DeleteSurvey>
             throw new SurveyNotFoundException(command.SurveyId);
         }
 
-        survey.MarkAsDeleted();
+        survey.SetAsDeleted();
         await _surveyRepository.Update(survey);
     }
 }

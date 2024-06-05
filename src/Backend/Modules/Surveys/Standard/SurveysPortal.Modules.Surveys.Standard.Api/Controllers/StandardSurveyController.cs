@@ -66,7 +66,7 @@ public class StandardSurveyController(IDispatcher dispatcher) : ControllerBase
         await dispatcher.SendAsync(new EditSurvey
         {
             SurveyId = surveyId,
-            Survey = survey
+            Survey = command
         });
         return Ok();
     }

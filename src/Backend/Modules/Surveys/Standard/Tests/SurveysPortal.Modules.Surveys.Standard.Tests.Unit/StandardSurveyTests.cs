@@ -64,7 +64,7 @@ public class StandardSurveyTests
         var standardSurvey = new StandardSurvey(someStandardSurveyName,
             someStandardSurveyDescription,
             someStandardSurveyIntroduction);
-        standardSurvey.MarkAsDeleted();
+        standardSurvey.SetAsDeleted();
 
         //assert
         standardSurvey.IsDeleted.Should().BeTrue();

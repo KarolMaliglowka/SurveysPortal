@@ -25,7 +25,7 @@ public class StandardSurvey
     public int Id { get; }
     public Guid UserId { get; set; }
     public string Name { get; set; }
-    public string Description { get; private set; }
+    public string Description { get;  set; }
     public string Introduction { get; set; }
     public DateTime CreatedAt { get; set; }
     public DateTime UpdatedAt { get; private set; }
@@ -36,7 +36,7 @@ public class StandardSurvey
 
     public IReadOnlyCollection<StandardSurveyQuestion> StandardSurveyQuestions => 
         _standardSurveyQuestions.AsReadOnly();
-    private void SetName(string name)
+    public void SetName(string name)
     {
         if (string.IsNullOrWhiteSpace(name))
         {
@@ -55,12 +55,12 @@ public class StandardSurvey
                 break;
         }
     }
-    private void SetDescription(string description)
+    public void SetDescription(string description)
     {
         Description = description;
         UpdatedAt = DateTime.UtcNow;
     }
-    private void SetIntroduction(string introduction)
+    public void SetIntroduction(string introduction)
     {
         Introduction = introduction;
         UpdatedAt = DateTime.UtcNow;

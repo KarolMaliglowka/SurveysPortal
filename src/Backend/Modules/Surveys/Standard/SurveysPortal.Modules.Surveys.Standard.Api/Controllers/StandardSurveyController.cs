@@ -50,7 +50,9 @@ public class StandardSurveyController(IDispatcher dispatcher) : ControllerBase
     {
         await dispatcher.SendAsync(new CreateSurvey
         {
-            Survey = command.Survey!
+            Survey = command.Survey!,
+            Description = command.Description!,
+            Introduction = command.Introduction!
         });
         return Created();
     }

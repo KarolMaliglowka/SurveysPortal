@@ -30,7 +30,7 @@ public class SurveyRepository(StandardSurveysDbContext context) : ISurveyReposit
 
     public async Task Delete(StandardSurvey survey)
     {
-        survey.MarkAsDeleted();
+        survey.SetAsDeleted();
         await Update(survey);
     }
 }

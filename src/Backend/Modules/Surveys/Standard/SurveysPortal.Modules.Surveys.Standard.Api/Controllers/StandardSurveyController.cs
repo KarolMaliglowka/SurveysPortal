@@ -37,10 +37,12 @@ public class StandardSurveyController(IDispatcher dispatcher) : ControllerBase
     [ProducesResponseType(typeof(void), StatusCodes.Status401Unauthorized)]
     [ProducesResponseType(typeof(string), StatusCodes.Status500InternalServerError)]
     [ProducesResponseType(typeof(string), StatusCodes.Status404NotFound)]
-    public async Task DeleteSurvey(int surveyId)
+    public async Task<ActionResult> DeleteSurvey(int surveyId)
     {
         await dispatcher.SendAsync(new DeleteSurvey{ SurveyId = surveyId });
+        return Ok();
     }
+    
     [HttpPost("createSurvey")]
     [ProducesResponseType(typeof(NewSurvey), StatusCodes.Status201Created)]
     [ProducesResponseType(typeof(string), StatusCodes.Status400BadRequest)]

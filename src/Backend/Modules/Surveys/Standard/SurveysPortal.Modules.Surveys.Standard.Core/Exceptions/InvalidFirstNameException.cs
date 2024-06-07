@@ -6,10 +6,10 @@ namespace SurveysPortal.Modules.Surveys.Standard.Core.Exceptions;
 public class InvalidFirstNameException : CustomException
 {
     public InvalidFirstNameException() : base(null!) {}
-    public InvalidFirstNameException(FirstName firstName) : base($"First name: '{firstName}' is invalid.")
+    public InvalidFirstNameException(Question question) : base($"First name: '{question}' is invalid.")
     {
-        LastName = firstName;
+        LastName = question;
     }
 
-    public FirstName LastName { get; }
+    public Question LastName { get; }
 }

@@ -14,7 +14,8 @@ public class QuestionRepository(StandardSurveysDbContext context) : IQuestionRep
             .ToListAsync();
 
     public Task<StandardQuestion?> GetStandardQuestionById(int id)
-        => context.StandardQuestions.SingleOrDefaultAsync(x => x.Id == id);
+        => context.StandardQuestions
+            .SingleOrDefaultAsync(x => x.Id == id);
     
     public async Task Create(StandardQuestion question)
     {

@@ -1,4 +1,5 @@
 using System.Diagnostics.CodeAnalysis;
+using SurveysPortal.Modules.Surveys.Standard.Core.ValueObjects;
 
 namespace SurveysPortal.Modules.Surveys.Standard.Core.Entities;
 
@@ -20,7 +21,7 @@ public class StandardQuestion
     [ExcludeFromCodeCoverage] public int Id { get; set; }
 
     [ExcludeFromCodeCoverage] public Guid UserId { get; set; }
-    public string? Text { get; private set; }
+    public Question Text { get; private set; }
     public bool Required { get; set; }
     public bool IsDeleted { get; private set; }
     public bool IsOfferedAnswers { get; set; }

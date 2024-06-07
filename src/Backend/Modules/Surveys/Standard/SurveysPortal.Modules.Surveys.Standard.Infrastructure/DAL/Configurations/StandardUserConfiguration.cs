@@ -12,9 +12,9 @@ public class StandardUserConfiguration : IEntityTypeConfiguration<StandardUser>
         builder
             .HasKey(x => x.Id);
         builder
-            .Property(x => x.FirstName)
-            .HasConversion(x => x.Value,
-                x => new FirstName(x));
+            .Property(x => x.Question)
+            .HasConversion(x => x.StandardQuestion,
+                x => new Question(x));
         builder
             .Property(x => x.LastName)
             .HasConversion(x => x.Value,

@@ -11,24 +11,24 @@ public class StandardUser
     public StandardUser() {}
     public StandardUser
     (
-        FirstName firstName,
+        Question question,
         LastName lastName,
         Username userName,
         Email email,
         string displayName
     )
     {
-        SetFirstName(firstName);
+        SetFirstName(question);
         SetLastName(lastName);
         SetUsername(userName);
         SetEmail(email);
         DisplayName = displayName.IsNotEmpty()
             ? displayName
-            : $"{firstName} {lastName}";
+            : $"{question} {lastName}";
     }
 
     public Guid Id { get; set; }
-    public FirstName FirstName { get; set; }
+    public Question Question { get; set; }
     public LastName LastName { get; set; }
     public string DisplayName { get; set; }
     public Username UserName { get; set; }
@@ -46,7 +46,7 @@ public class StandardUser
         Update();
     }
 
-    public string GetFullName() => FirstName + " " + LastName;
+    public string GetFullName() => Question + " " + LastName;
 
     private void SetEmail(Email email)
     {
@@ -54,9 +54,9 @@ public class StandardUser
         Update();
     }
 
-    private void SetFirstName(FirstName firstName)
+    private void SetFirstName(Question question)
     {
-        FirstName = firstName;
+        Question = question;
         Update();
     }
 

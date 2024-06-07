@@ -14,7 +14,8 @@ public class SurveyRepository(StandardSurveysDbContext context) : ISurveyReposit
             .ToListAsync();
     
     public Task<StandardSurvey?> GetStandardSurveyById(int id)
-        => context.StandardSurveys.SingleOrDefaultAsync(x => x.Id == id);
+        => context.StandardSurveys
+            .SingleOrDefaultAsync(x => x.Id == id);
     
     public async Task Create(StandardSurvey survey)
     {

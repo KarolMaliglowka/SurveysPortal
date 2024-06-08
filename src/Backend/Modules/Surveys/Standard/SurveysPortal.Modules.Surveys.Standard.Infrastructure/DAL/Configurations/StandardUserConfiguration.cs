@@ -16,9 +16,9 @@ public class StandardUserConfiguration : IEntityTypeConfiguration<StandardUser>
             .HasConversion(x => x.StandardQuestion,
                 x => new Question(x));
         builder
-            .Property(x => x.LastName)
+            .Property(x => x.SurveyName)
             .HasConversion(x => x.Value,
-                x => new LastName(x));
+                x => new SurveyName(x));
         builder
             .Property(x => x.Email)
             .HasConversion(x => x.Value,

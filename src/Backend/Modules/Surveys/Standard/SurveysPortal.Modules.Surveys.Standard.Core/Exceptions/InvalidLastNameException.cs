@@ -9,10 +9,10 @@ public class InvalidLastNameException : CustomException
     {
     }
 
-    public InvalidLastNameException(LastName lastName) : base($"Last name: '{lastName}' is invalid.")
+    public InvalidLastNameException(SurveyName surveyName) : base($"Last name: '{surveyName}' is invalid.")
     {
-        LastName = lastName;
+        SurveyName = surveyName;
     }
 
-    public LastName LastName { get; }
+    public SurveyName SurveyName { get; }
 }

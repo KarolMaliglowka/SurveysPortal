@@ -37,10 +37,14 @@ public class StandardQuestionTests
         standardQuestion?.Text
             .Should()
             .NotBeNull();
-        standardQuestion?.Text.Length
+        standardQuestion?.Text
+            .ToString()
+            .Length
             .Should()
             .BeGreaterThan(10);
-        standardQuestion?.Text.Length
+        standardQuestion?.Text
+            .ToString()
+            .Length
             .Should()
             .BeLessThan(1000);
         standardQuestion?.OfferedAnswers
@@ -71,10 +75,14 @@ public class StandardQuestionTests
         standardQuestion.Text
             .Should()
             .NotBeNull();
-        standardQuestion.Text.Length
+        standardQuestion.Text
+            .ToString()
+            .Length
             .Should()
             .BeGreaterThan(10);
-        standardQuestion.Text.Length
+        standardQuestion.Text
+            .ToString()
+            .Length
             .Should()
             .BeLessThan(1000);
         standardQuestion.OfferedAnswers

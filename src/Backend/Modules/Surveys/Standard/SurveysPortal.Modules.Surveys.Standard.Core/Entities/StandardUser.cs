@@ -12,24 +12,24 @@ public class StandardUser
     public StandardUser
     (
         Question question,
-        LastName lastName,
+        SurveyName surveyName,
         Username userName,
         Email email,
         string displayName
     )
     {
         SetFirstName(question);
-        SetLastName(lastName);
+        SetLastName(surveyName);
         SetUsername(userName);
         SetEmail(email);
         DisplayName = displayName.IsNotEmpty()
             ? displayName
-            : $"{question} {lastName}";
+            : $"{question} {surveyName}";
     }
 
     public Guid Id { get; set; }
     public Question Question { get; set; }
-    public LastName LastName { get; set; }
+    public SurveyName SurveyName { get; set; }
     public string DisplayName { get; set; }
     public Username UserName { get; set; }
     public Email Email { get; set; }
@@ -46,7 +46,7 @@ public class StandardUser
         Update();
     }
 
-    public string GetFullName() => Question + " " + LastName;
+    public string GetFullName() => Question + " " + SurveyName;
 
     private void SetEmail(Email email)
     {
@@ -60,9 +60,9 @@ public class StandardUser
         Update();
     }
 
-    private void SetLastName(LastName lastName)
+    private void SetLastName(SurveyName surveyName)
     {
-        LastName = lastName;
+        SurveyName = surveyName;
         Update();
     }
 }

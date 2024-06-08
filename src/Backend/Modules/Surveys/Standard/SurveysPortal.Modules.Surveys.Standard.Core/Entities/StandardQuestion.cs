@@ -9,7 +9,9 @@ public class StandardQuestion
     private List<string> _offeredAnswers = [];
 
     [ExcludeFromCodeCoverage]
-    public StandardQuestion() {}
+    public StandardQuestion()
+    {
+    }
 
     public StandardQuestion(string text, bool required)
     {
@@ -32,22 +34,8 @@ public class StandardQuestion
 
     public void SetQuestion(string text)
     {
-        if (string.IsNullOrWhiteSpace(text))
-        {
-            throw new ArgumentNullException(nameof(text), "Question cannot be empty.");
-        }
-
-        switch (text.Length)
-        {
-            case > 1000:
-                throw new ArgumentException("Question cannot be longer than 1000 characters.");
-            case < 10:
-                throw new ArgumentException("Question cannot be shorter than 10 characters.");
-            default:
-                Text = text;
-                UpdateAt();
-                break;
-        }
+        Text = text;
+        UpdateAt();
     }
 
     private void UpdateAt()

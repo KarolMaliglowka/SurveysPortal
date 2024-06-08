@@ -1,3 +1,6 @@
+using System.Net.Mime;
+using SurveysPortal.Modules.Surveys.Standard.Core.ValueObjects;
+
 namespace SurveysPortal.Modules.Surveys.Standard.Core.Entities;
 
 public class StandardSurvey
@@ -24,7 +27,7 @@ public class StandardSurvey
 
     public int Id { get; }
     public Guid UserId { get; set; }
-    public string Name { get; set; }
+    public SurveyName Name { get; set; }
     public string Description { get;  set; }
     public string Introduction { get; set; }
     public DateTime CreatedAt { get; set; }
@@ -38,22 +41,8 @@ public class StandardSurvey
         _standardSurveyQuestions.AsReadOnly();
     public void SetName(string name)
     {
-        if (string.IsNullOrWhiteSpace(name))
-        {
-            throw new ArgumentException("Name of the survey cannot be empty.", nameof(name));
-        }
-        
-        switch (name.Length)
-        {
-            case < 3:
-                throw new ArgumentException("Name length requires minimum 3 characters.", nameof(name));
-            case > 100:
-                throw new ArgumentException("Name length requires maximum 100 characters.", nameof(name));
-            default:
-                Name = name;
-                UpdatedAt = DateTime.UtcNow;
-                break;
-        }
+        Name = name;
+        UpdateAt();
     }
     public void SetDescription(string description)
     {

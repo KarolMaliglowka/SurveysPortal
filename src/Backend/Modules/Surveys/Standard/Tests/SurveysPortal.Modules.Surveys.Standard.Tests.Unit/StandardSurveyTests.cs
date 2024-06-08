@@ -31,10 +31,10 @@ public class StandardSurveyTests
         standardSurvey?.Name
             .Should()
             .NotBeNull();
-        standardSurvey?.Name.Length
+        standardSurvey?.Name.ToString().Length
             .Should()
             .BeGreaterThan(3);
-        standardSurvey?.Name.Length
+        standardSurvey?.Name.ToString().Length
             .Should()
             .BeLessThan(100);
 

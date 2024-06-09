@@ -18,7 +18,7 @@ public class DefaultQuestions(StandardSurveysDbContext context)
             foreach (var question in questions)
             {
                 var dbQuestion = await context.StandardQuestions
-                    .FirstOrDefaultAsync(x => x.Text == question.Text);
+                    .FirstOrDefaultAsync(x => x.Question == question.Question);
                 if (dbQuestion is not null) continue;
                 await context.StandardQuestions.AddAsync(question);
             }

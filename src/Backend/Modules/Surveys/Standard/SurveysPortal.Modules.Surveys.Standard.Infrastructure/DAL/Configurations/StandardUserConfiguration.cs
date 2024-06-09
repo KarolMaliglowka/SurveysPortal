@@ -13,7 +13,7 @@ public class StandardUserConfiguration : IEntityTypeConfiguration<StandardUser>
             .HasKey(x => x.Id);
         builder
             .Property(x => x.Question)
-            .HasConversion(x => x.StandardQuestion,
+            .HasConversion(x => x.Value,
                 x => new Question(x));
         builder
             .Property(x => x.SurveyName)

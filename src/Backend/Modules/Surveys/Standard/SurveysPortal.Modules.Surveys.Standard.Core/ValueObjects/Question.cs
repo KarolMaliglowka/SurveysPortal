@@ -5,7 +5,7 @@ namespace SurveysPortal.Modules.Surveys.Standard.Core.ValueObjects;
 
 public record Question
 {
-    public string StandardQuestion { get; }
+    public string Value { get; }
 
     [ExcludeFromCodeCoverage]
     public Question()
@@ -26,23 +26,19 @@ public record Question
             throw new ArgumentNullException(nameof(question), "Question cannot be empty.");
         }
 
-        switch (question.Length)
+        Value = question.Length switch
         {
-            case > 1000:
-                throw new ArgumentException("Question cannot be longer than 1000 characters.");
-            case < 10:
-                throw new ArgumentException("Question cannot be shorter than 10 characters.");
-            default:
-                StandardQuestion = question;
-                break;
-        }
-            
-        StandardQuestion = question;
+            > 1000 => throw new ArgumentException("Question cannot be longer than 1000 characters."),
+            < 10 => throw new ArgumentException("Question cannot be shorter than 10 characters."),
+            _ => question
+        };
+
+        Value = question;
     }
 
     public static implicit operator Question(string value) => new(value);
 
-    public static implicit operator string(Question value) => value.StandardQuestion;
+    public static implicit operator string(Question value) => value.Value;
 
-    public override string ToString() => StandardQuestion;
+    public override string ToString() => Value;
 }

@@ -29,7 +29,7 @@ public record FirstName
         Value = firstName;
     }
 
-    public static implicit operator FirstName(string value) => new FirstName(value);
+    public static implicit operator FirstName(string value) => new (value);
 
     public static implicit operator string(FirstName value) => value.Value;
 

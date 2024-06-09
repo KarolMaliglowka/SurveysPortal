@@ -34,15 +34,15 @@ public class StandardQuestionTests
         standardQuestion
             .Should()
             .NotBeNull();
-        standardQuestion?.Text
+        standardQuestion?.Question
             .Should()
             .NotBeNull();
-        standardQuestion?.Text
+        standardQuestion?.Question
             .ToString()
             .Length
             .Should()
             .BeGreaterThan(10);
-        standardQuestion?.Text
+        standardQuestion?.Question
             .ToString()
             .Length
             .Should()
@@ -72,15 +72,15 @@ public class StandardQuestionTests
         standardQuestion
             .Should()
             .NotBeNull();
-        standardQuestion.Text
+        standardQuestion.Question
             .Should()
             .NotBeNull();
-        standardQuestion.Text
+        standardQuestion.Question
             .ToString()
             .Length
             .Should()
             .BeGreaterThan(10);
-        standardQuestion.Text
+        standardQuestion.Question
             .ToString()
             .Length
             .Should()

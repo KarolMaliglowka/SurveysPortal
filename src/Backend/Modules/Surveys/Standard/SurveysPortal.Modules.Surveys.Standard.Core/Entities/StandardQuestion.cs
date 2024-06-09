@@ -13,7 +13,7 @@ public class StandardQuestion
     {
     }
 
-    public StandardQuestion(string text, bool required)
+    public StandardQuestion(Question text, bool required)
     {
         SetQuestion(text);
         Required = required;
@@ -23,7 +23,7 @@ public class StandardQuestion
     [ExcludeFromCodeCoverage] public int Id { get; set; }
 
     [ExcludeFromCodeCoverage] public Guid UserId { get; set; }
-    public Question Text { get; private set; }
+    public Question Question { get; set; }
     public bool Required { get; set; }
     public bool IsDeleted { get; private set; }
     public bool IsOfferedAnswers { get; set; }
@@ -32,9 +32,9 @@ public class StandardQuestion
     public DateTime UpdatedAt { get; private set; }
     public IReadOnlyCollection<StandardSurveyQuestion> StandardSurveyQuestions => _standardSurveyQuestions.AsReadOnly();
 
-    public void SetQuestion(string text)
+    public void SetQuestion(Question question)
     {
-        Text = text;
+        Question = question;
         UpdateAt();
     }
 
@@ -74,6 +74,6 @@ public class StandardQuestion
 
     public void ClearOfferedAnswers()
     {
-        _offeredAnswers = new List<string>();
+        _offeredAnswers = [];
     }
 }

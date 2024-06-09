@@ -1,4 +1,3 @@
-using System.Net.Mime;
 using SurveysPortal.Modules.Surveys.Standard.Core.ValueObjects;
 
 namespace SurveysPortal.Modules.Surveys.Standard.Core.Entities;

@@ -48,8 +48,7 @@ public class StandardUser
 
     public string GetFullName() => Question + " " + SurveyName;
 
-    private void SetEmail(Email email)
-    {
+    private void SetEmail(Email email) {
         Email = email;
         Update();
     }

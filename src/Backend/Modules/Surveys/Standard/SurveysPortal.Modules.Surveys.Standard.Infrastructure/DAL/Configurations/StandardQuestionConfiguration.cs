@@ -1,6 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using SurveysPortal.Modules.Surveys.Standard.Core.Entities;
+using SurveysPortal.Modules.Surveys.Standard.Core.ValueObjects;
 
 namespace SurveysPortal.Modules.Surveys.Standard.Infrastructure.DAL.Configurations;
 
@@ -13,7 +14,9 @@ public class StandardQuestionConfiguration : IEntityTypeConfiguration<StandardQu
         builder
             .HasKey(question => question.Id);
         builder
-            .Property(x => x.Text);
+            .Property(x => x.Question)
+            .HasConversion(x => x.Value,
+                x => new Question(x));
         builder
             .Property(x => x.Required);
         builder

@@ -1,5 +1,3 @@
-using System.ComponentModel.DataAnnotations;
-
 namespace SurveysPortal.Modules.Surveys.Standard.Core.Entities;
 
 public class StandardQuestionOrder

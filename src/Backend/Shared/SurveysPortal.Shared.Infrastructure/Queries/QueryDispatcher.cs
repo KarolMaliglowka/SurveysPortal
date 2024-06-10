@@ -4,7 +4,7 @@ using SurveysPortal.Shared.Abstractions.Queries;
 
 namespace SurveysPortal.Shared.Infrastructure.Queries;
 
-[Injectable(ServiceLifetime.Transient)]
+[Injectable]
 internal sealed class QueryDispatcher(IServiceProvider serviceProvider) : IQueryDispatcher
 {
     public async Task<TResult> QueryAsync<TResult>(IQuery<TResult> query, CancellationToken cancellationToken = default)

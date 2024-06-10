@@ -50,7 +50,7 @@ public class AccountRepository : IUserAccount
             Message = "User registered already"
         };
 
-        var createUser = await _userManager.CreateAsync(newUser!, userDto.Password);
+        var createUser = await _userManager.CreateAsync(newUser, userDto.Password);
         if (!createUser.Succeeded)
             return new ServiceResponses.GeneralResponse
             {

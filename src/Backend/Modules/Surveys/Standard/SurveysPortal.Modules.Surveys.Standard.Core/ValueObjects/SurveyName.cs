@@ -1,5 +1,4 @@
 using System.Diagnostics.CodeAnalysis;
-using SurveysPortal.Modules.Surveys.Standard.Core.Exceptions;
 
 namespace SurveysPortal.Modules.Surveys.Standard.Core.ValueObjects;
 
@@ -18,22 +17,18 @@ public class SurveyName
         {
             throw new ArgumentException("Name of the survey cannot be empty.", nameof(value));
         }
-        
-        switch (value.Length)
+
+        Value = value.Length switch
         {
-            case < 3:
-                throw new ArgumentException("Name length requires minimum 3 characters.", nameof(value));
-            case > 100:
-                throw new ArgumentException("Name length requires maximum 100 characters.", nameof(value));
-            default:
-                Value = value;
-                break;
-        }
-            
+            < 3 => throw new ArgumentException("Name length requires minimum 3 characters.", nameof(value)),
+            > 100 => throw new ArgumentException("Name length requires maximum 100 characters.", nameof(value)),
+            _ => value
+        };
+
         Value = value;
     }
 
-    public static implicit operator SurveyName(string value) => new SurveyName(value);
+    public static implicit operator SurveyName(string value) => new (value);
 
     public static implicit operator string(SurveyName value) => value.Value;
 

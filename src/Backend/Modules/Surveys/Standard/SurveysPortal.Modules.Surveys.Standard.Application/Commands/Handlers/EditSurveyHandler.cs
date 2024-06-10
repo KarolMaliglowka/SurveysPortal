@@ -25,7 +25,7 @@ public class EditSurveyHandler : ICommandHandler<EditSurvey>
         if (command.Survey != null)
         {
             var survey = await _surveyRepository
-                .GetStandardSurveyById(command!.SurveyId);
+                .GetStandardSurveyById(command.SurveyId);
             if (survey is null)
             {
                 throw new SurveyNotFoundException(command.SurveyId);

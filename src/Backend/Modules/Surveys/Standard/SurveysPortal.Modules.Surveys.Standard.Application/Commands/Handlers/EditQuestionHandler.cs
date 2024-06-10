@@ -25,7 +25,7 @@ public class EditQuestionHandler : ICommandHandler<EditQuestion>
         if (command.Question != null)
         {
             var question = await _questionRepository
-                .GetStandardQuestionById(command!.QuestionId);
+                .GetStandardQuestionById(command.QuestionId);
             if (question is null)
             {
                 throw new QuestionNotFoundException(command.QuestionId);

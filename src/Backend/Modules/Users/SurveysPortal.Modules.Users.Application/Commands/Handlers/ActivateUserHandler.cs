@@ -19,7 +19,7 @@ public class ActivateUserHandler : ICommandHandler<ActivateUser>
         _userRepository = userRepository;
     }
 
-    public async Task HandleAsync(ActivateUser command, CancellationToken cancellationToken = default)
+    public async Task HandleAsync(ActivateUser command, CancellationToken cancellationToken)
     {
         var user = await _userRepository.GetAsync(command.UserId);
         if (user is null)

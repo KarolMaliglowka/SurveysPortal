@@ -5,7 +5,7 @@ namespace SurveysPortal.Modules.Surveys.Standard.Core.Entities;
 
 public class StandardQuestion
 {
-    private List<StandardSurveyQuestion> _standardSurveyQuestions = [];
+    private readonly List<StandardSurveyQuestion> _standardSurveyQuestions = [];
     private List<string> _offeredAnswers = [];
 
     [ExcludeFromCodeCoverage]

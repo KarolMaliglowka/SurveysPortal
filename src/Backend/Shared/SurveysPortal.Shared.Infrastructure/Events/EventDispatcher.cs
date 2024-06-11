@@ -33,7 +33,7 @@ internal sealed class EventDispatcher(IServiceProvider serviceProvider) : IEvent
             throw new InvalidOperationException($"Event handler for '{@event.GetType().Name}' is invalid.");
         }
 
-        var tasks = handlers.Select(x => (Task)method.Invoke(x, new object[] { @event, cancellationToken }));
+        var tasks = handlers.Select(x => (Task)method.Invoke(x, [@event, cancellationToken]));
         await Task.WhenAll(tasks);
     }
 }

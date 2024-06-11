@@ -5,16 +5,10 @@ namespace SurveysPortal.Modules.Notifications.Api.Services;
 public class EmailSender : IEmailSender
 {
     private readonly ILogger<EmailSender> _logger;
-    //private readonly IMailService _mailService;
 
-    public EmailSender(
-        ILogger<EmailSender> logger
-        //,
-        // IMailService mailService
-    )
+    public EmailSender(ILogger<EmailSender> logger)
     {
         _logger = logger;
-        // _mailService = mailService;
     }
 
     public EmailSender()

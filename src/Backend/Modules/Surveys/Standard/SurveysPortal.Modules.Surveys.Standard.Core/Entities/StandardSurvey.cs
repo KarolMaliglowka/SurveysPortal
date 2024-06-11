@@ -24,8 +24,8 @@ public class StandardSurvey
         CreatedAt = DateTime.UtcNow;
     }
 
-    public int Id { get; }
-    public Guid UserId { get; set; }
+    public int Id { get; init; }
+    public Guid UserId { get; init; }
     public SurveyName Name { get; set; }
     public string Description { get;  set; }
     public string Introduction { get; set; }

@@ -30,7 +30,7 @@ public class StandardAnswer
     {
         var isList = StandardQuestion.OfferedAnswers.Count != 0;
         var isUserAnswerInOfferedAnswers =
-            StandardQuestion.OfferedAnswers.Any(x => x.Trim() == userAnswer?.Trim());
+            StandardQuestion.OfferedAnswers.Any(x => x.Trim() == userAnswer.Trim());
         var isRequired = StandardQuestion.Required;
         switch (isSubmitted)
         {

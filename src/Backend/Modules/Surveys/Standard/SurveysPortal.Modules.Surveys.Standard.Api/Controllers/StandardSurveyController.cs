@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using SurveysPortal.Modules.Surveys.Standard.Application.Commands;
 using SurveysPortal.Modules.Surveys.Standard.Application.DTO;
 using SurveysPortal.Modules.Surveys.Standard.Application.Queries;
@@ -71,6 +72,16 @@ public class StandardSurveyController(IDispatcher dispatcher) : ControllerBase
         {
             SurveyId = surveyId,
             Survey = command
+        });
+        return Ok();
+    }
+
+    public async Task<ActionResult> Assign(int surveyId, [FromBody] AssignUser command)
+    {
+        await dispatcher.SendAsync(new AssignUser
+        {
+            SurveyId = surveyId,
+            AssignUser = command
         });
         return Ok();
     }

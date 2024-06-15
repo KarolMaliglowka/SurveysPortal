@@ -1,6 +1,5 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 using SurveysPortal.Modules.Surveys.Standard.Application.Commands;
 using SurveysPortal.Modules.Surveys.Standard.Application.DTO;
 using SurveysPortal.Modules.Surveys.Standard.Application.Queries;
@@ -43,7 +42,7 @@ public class StandardSurveyController(IDispatcher dispatcher) : ControllerBase
         await dispatcher.SendAsync(new DeleteSurvey{ SurveyId = surveyId });
         return Ok();
     }
-    
+
     [HttpPost("createSurvey")]
     [ProducesResponseType(typeof(NewSurvey), StatusCodes.Status201Created)]
     [ProducesResponseType(typeof(string), StatusCodes.Status400BadRequest)]

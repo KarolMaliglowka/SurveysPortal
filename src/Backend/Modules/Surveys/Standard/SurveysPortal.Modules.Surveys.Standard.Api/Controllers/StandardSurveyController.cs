@@ -1,6 +1,5 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 using SurveysPortal.Modules.Surveys.Standard.Application.Commands;
 using SurveysPortal.Modules.Surveys.Standard.Application.DTO;
 using SurveysPortal.Modules.Surveys.Standard.Application.Queries;

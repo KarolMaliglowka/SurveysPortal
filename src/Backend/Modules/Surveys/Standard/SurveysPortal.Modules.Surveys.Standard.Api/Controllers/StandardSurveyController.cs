@@ -77,10 +77,10 @@ public class StandardSurveyController(IDispatcher dispatcher) : ControllerBase
 
     public async Task<ActionResult> Assign(int surveyId, [FromBody] AssignUser command)
     {
-        await dispatcher.SendAsync(new AssignUser
+        await dispatcher.SendAsync(new AssignUsersToSurvey
         {
             SurveyId = surveyId,
-            AssignUser = command
+            AssignUser = command.Users
         });
         return Ok();
     }

@@ -42,7 +42,7 @@ public class StandardSurveyController(IDispatcher dispatcher) : ControllerBase
         await dispatcher.SendAsync(new DeleteSurvey{ SurveyId = surveyId });
         return Ok();
     }
-    
+
     [HttpPost("createSurvey")]
     [ProducesResponseType(typeof(NewSurvey), StatusCodes.Status201Created)]
     [ProducesResponseType(typeof(string), StatusCodes.Status400BadRequest)]

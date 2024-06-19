@@ -2,7 +2,7 @@ using Microsoft.EntityFrameworkCore.ChangeTracking;
 using System.Text.Json;
 using JsonSerializer = System.Text.Json.JsonSerializer;
 
-namespace SurveysPortal.Modules.Surveys.Standard.Infrastructure.DAL.Configurations;
+namespace SurveysPortal.Modules.Surveys.Standard.Infrastructure.DAL.Configurations.Services;
 
 public static class ValueComparers
 {

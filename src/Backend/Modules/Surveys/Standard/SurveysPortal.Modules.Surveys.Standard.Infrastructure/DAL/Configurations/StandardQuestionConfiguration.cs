@@ -2,6 +2,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using SurveysPortal.Modules.Surveys.Standard.Core.Entities;
 using SurveysPortal.Modules.Surveys.Standard.Core.ValueObjects;
+using SurveysPortal.Modules.Surveys.Standard.Infrastructure.DAL.Configurations.Services;
 
 namespace SurveysPortal.Modules.Surveys.Standard.Infrastructure.DAL.Configurations;
 

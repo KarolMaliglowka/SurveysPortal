@@ -1,7 +1,7 @@
 using System.Text.Json;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
-namespace SurveysPortal.Modules.Surveys.Standard.Infrastructure.DAL.Configurations;
+namespace SurveysPortal.Modules.Surveys.Standard.Infrastructure.DAL.Configurations.Services;
 
 public static class ValueConverters
 {

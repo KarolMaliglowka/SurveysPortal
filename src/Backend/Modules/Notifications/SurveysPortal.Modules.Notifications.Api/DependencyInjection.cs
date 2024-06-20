@@ -11,8 +11,7 @@ public static class DependencyInjection
         services.AddTransient<INotificationsModuleApi, NotificationsModuleApi>();
         services.AddSingleton<IEmailSender, EmailSender>();
 
-        services
-            .AddNotificationsApplicationLayer();
+        services.AddNotificationsApplicationLayer();
 
         return services;
     }

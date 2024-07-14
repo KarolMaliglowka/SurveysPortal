@@ -10,12 +10,12 @@ public class StandardQuestionTests
     private const bool IsOfferedAnswers = true;
     private const bool IsntOfferedAnswers = false;
 
-    private readonly List<string> _someOfferedAnswersList = new()
-    {
+    private readonly List<string> _someOfferedAnswersList =
+    [
         "Answer no 1",
         "Answer no 2",
         "Answer no 3"
-    };
+    ];
 
     [Test]
     public void GivenExampleValues_WhenCreatingTextStandardQuestion_ThenSucceeds()
@@ -52,10 +52,10 @@ public class StandardQuestionTests
             .BeEmpty();
         standardQuestion?.CreatedAt
             .Should()
-            .BeCloseTo(DateTime.UtcNow, FluentTimeSpanExtensions.Seconds(5));
+            .BeCloseTo(DateTime.UtcNow, 5.Seconds());
         standardQuestion?.UpdatedAt
             .Should()
-            .BeCloseTo(DateTime.UtcNow, FluentTimeSpanExtensions.Seconds(5));
+            .BeCloseTo(DateTime.UtcNow, 5.Seconds());
     }
 
     [Test]

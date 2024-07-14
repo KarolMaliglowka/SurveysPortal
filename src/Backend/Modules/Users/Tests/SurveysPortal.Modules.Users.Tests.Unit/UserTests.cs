@@ -10,6 +10,7 @@ public class UserTests
     [Fact]
     public void GivenValidData_WhenCreatingUser_ThenSucceeds()
     {
+
         //Arrange
 
         //Act
@@ -159,12 +160,12 @@ public class UserTests
     public void GivenValidData_WhenDeactivateUser_ThenSuccess()
     {
         //Arrange
-    
+
         //Act
         var newUser = UsersMockData.CreateUser;
         newUser.Invoke()
             .Deactivate();
-    
+
         //Assert
         Assert.True(newUser.Invoke().IsActive);
 

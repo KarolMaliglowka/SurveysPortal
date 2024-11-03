@@ -4,7 +4,7 @@
 Survey's Portal
 ===
 
-![image](additionals\survey.png)
+![image](./additionals/survey.png)
 
 A survey is one of the most popular sources of data collection. A set of survey questions is sent to users who can answer the questions. Users receive online surveys through various media, such as e-mail or by sending a link.
 What is the purpose of conducting online surveys? Online surveys are conducted to obtain feedback, both positive and negative, from current or potential customers, employees and users.

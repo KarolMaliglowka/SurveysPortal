@@ -25,7 +25,7 @@ It can be carried out, for example, on: introducing new products or services, ch
 - [License](#License)
 
 ## About application
-The application allows you to send the created survey to users registered in the system. You can use [Google](http://google.pl), [LinkedIn](https://linkedin.com) or [Facebook](https://facebook.com) authentication to log in. You can create two types of surveys (eventually more): simple (yes, no) and those requiring a longer, descriptive answer. The person creating and sending the surveys may receive responses after some time.
+The application allows you to send the created survey to users registered in the system. You can use [Google](http://google.pl) or [Facebook](https://facebook.com) authentication to log in. You can create two types of surveys (eventually more): simple (yes, no) and those requiring a longer, descriptive answer. The person creating and sending the surveys may receive responses after some time.
 
 ## Used technologies
 

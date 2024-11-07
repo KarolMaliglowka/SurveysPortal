@@ -10,7 +10,7 @@ public static class Extensions
         CancellationToken cancellationToken = default)
         => data.PaginateAsync(query.Page, query.Results, cancellationToken);
 
-    public static async Task<Paged<T>> PaginateAsync<T>(this IQueryable<T> data, int page, int results,
+    private static async Task<Paged<T>> PaginateAsync<T>(this IQueryable<T> data, int page, int results,
         CancellationToken cancellationToken = default)
     {
         if (page <= 0)
@@ -25,7 +25,7 @@ public static class Extensions
             _ => results
         };
 
-        var totalResults = await data.CountAsync();
+        var totalResults = await data.CountAsync(cancellationToken: cancellationToken);
         var totalPages = totalResults <= results ? 1 : (int) Math.Floor((double) totalResults / results);
         var result = await data.Skip((page - 1) * results).Take(results).ToListAsync(cancellationToken);
 
@@ -59,5 +59,4 @@ public static class Extensions
 
         return services;
     }
-
 }

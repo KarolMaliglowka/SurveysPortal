@@ -2,12 +2,14 @@ using System.Text;
 using System.Text.Json.Serialization;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using SurveysPortal.Modules.Notifications.Api;
 using SurveysPortal.Modules.Surveys.Simple.Api;
 using SurveysPortal.Modules.Surveys.Standard.Api;
 using SurveysPortal.Modules.Surveys.Standard.Infrastructure;
+using SurveysPortal.Modules.Surveys.Standard.Infrastructure.DAL;
 using SurveysPortal.Modules.Users.Api;
 using SurveysPortal.Modules.Users.Core.Entities;
 using SurveysPortal.Modules.Users.Infrastructure;
@@ -83,6 +85,8 @@ builder.Services.AddAuthentication(options =>
 
 var app = builder.Build();
 
+ApplyMigration();
+
 await app.SeedUsersData();
 await app.SeedStandardQuestionsData();
 await app.SeedStandardSurveysData();
@@ -105,3 +109,26 @@ app.MapControllers();
 app.UsePathBase("/");
 
 app.Run();
+
+return;
+
+void ApplyMigration()
+{
+    using var scope = app.Services
+        .CreateScope();
+
+    var contextTypes = builder.Services
+        .Where(sd => sd.ServiceType.IsAssignableTo(typeof(DbContext)))
+        .Select(sd => sd.ServiceType);
+
+    foreach (var contextType in contextTypes)
+    {
+        var dbContext = (DbContext)scope.ServiceProvider
+            .GetRequiredService(contextType);
+
+        if (dbContext.Database.GetPendingMigrations().Any())
+        {
+            dbContext.Database.Migrate();
+        }
+    }
+}

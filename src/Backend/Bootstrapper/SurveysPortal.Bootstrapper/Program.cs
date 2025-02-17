@@ -36,6 +36,13 @@ builder.Services
         });
     });
 
+builder.Services.AddSwaggerGen(c => {
+    c.ResolveConflictingActions(apiDescriptions => apiDescriptions.First());
+    c.IgnoreObsoleteActions();
+    c.IgnoreObsoleteProperties();
+    c.CustomSchemaIds(type => type.FullName);
+});
+
 builder.Services.AddCors(options => options.AddPolicy("ApiCorsPolicy",
     corsPolicyBuilder =>
     {

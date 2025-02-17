@@ -8,7 +8,7 @@ using UserDto = SurveysPortal.Modules.Users.Application.DTO.UserDto;
 namespace SurveysPortal.Modules.Users.Api.Controllers;
 
 [ApiController]
-[Route("[controller]")]
+[Route("api/[controller]")]
 public class UsersController(IDispatcher dispatcher) : ControllerBase
 {
     [HttpGet("all")]

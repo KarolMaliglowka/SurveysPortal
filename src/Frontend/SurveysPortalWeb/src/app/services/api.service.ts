@@ -10,7 +10,7 @@ export class ApiService {
   protected baseUrl: string;
 
   constructor(private httpClient: HttpClient) {
-    this.baseUrl = environment.baseUrl;
+    this.baseUrl = environment.baseUrl + '/api';
   }
 
   private handleError(error: HttpErrorResponse) {

@@ -52,7 +52,7 @@ public static class QueryExtensions
             .Select(x => new SurveyDto
             {
                 SurveyId = x.Id,
-                Survey = x.Name,
+                Name = x.Name,
                 Description = x.Description,
                 Introduction = x.Introduction
             })
@@ -71,7 +71,7 @@ public static class QueryExtensions
             return new SurveyDto
             {
                 SurveyId = survey.Id,
-                Survey = survey.Name,
+                Name = survey.Name,
                 Description = survey.Description,
                 Introduction = survey.Introduction
             };

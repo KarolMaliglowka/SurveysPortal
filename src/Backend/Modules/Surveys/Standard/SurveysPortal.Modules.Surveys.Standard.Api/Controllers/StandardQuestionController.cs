@@ -8,7 +8,7 @@ using SurveysPortal.Shared.Abstractions.Dispatchers;
 namespace SurveysPortal.Modules.Surveys.Standard.Api.Controllers;
 
 [ApiController]
-[Route("[controller]")]
+[Route("api/[controller]")]
 public class StandardQuestionController(IDispatcher dispatcher) : ControllerBase
 {
     [HttpGet("all")]

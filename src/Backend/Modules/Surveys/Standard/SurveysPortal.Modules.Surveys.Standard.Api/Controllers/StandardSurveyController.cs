@@ -8,7 +8,7 @@ using SurveysPortal.Shared.Abstractions.Dispatchers;
 namespace SurveysPortal.Modules.Surveys.Standard.Api.Controllers;
 
 [ApiController]
-[Route("[controller]")]
+[Route("api/[controller]")]
 public class StandardSurveyController(IDispatcher dispatcher) : ControllerBase
 {
     [HttpGet("all")]
@@ -75,6 +75,12 @@ public class StandardSurveyController(IDispatcher dispatcher) : ControllerBase
         return Ok();
     }
 
+    [HttpPut("assign/{surveyId:int}")]
+    [ProducesResponseType(typeof(NewSurvey), StatusCodes.Status200OK)]
+    [ProducesResponseType(typeof(string), StatusCodes.Status400BadRequest)]
+    [ProducesResponseType(typeof(void), StatusCodes.Status401Unauthorized)]
+    [ProducesResponseType(typeof(string), StatusCodes.Status500InternalServerError)]
+    [ProducesResponseType(typeof(string), StatusCodes.Status404NotFound)]
     public async Task<ActionResult> Assign(int surveyId, [FromBody] AssignUser command)
     {
         await dispatcher.SendAsync(new AssignUsersToSurvey

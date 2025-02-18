@@ -6,8 +6,13 @@ import {UserDetailsComponent} from "./users/user-details/user-details.component"
 import {
     StandardQuestionsListComponent
 } from "./surveys/standard/standard-questions-list/standard-questions-list.component";
-import {StandardQuestionDetailsComponent} from "./surveys/standard/standard-question-details/standard-question-details.component";
+import {
+    StandardQuestionDetailsComponent
+} from "./surveys/standard/standard-question-details/standard-question-details.component";
 import {StandardSurveysListComponent} from "./surveys/standard/standard-surveys-list/standard-surveys-list.component";
+import {
+    StandardSurveyDetailsComponent
+} from "./surveys/standard/standard-survey-details/standard-survey-details.component";
 
 @NgModule({
     imports: [
@@ -20,6 +25,7 @@ import {StandardSurveysListComponent} from "./surveys/standard/standard-surveys-
                     {path: 'standard-questions-list', component: StandardQuestionsListComponent},
                     {path: 'standard-question-add', component: StandardQuestionDetailsComponent},
                     {path: 'standard-surveys-list', component: StandardSurveysListComponent},
+                    {path: 'standard-surveys-add', component: StandardSurveyDetailsComponent}
                 ]
             },
             //{path: 'notfound', component: NotfoundComponent},
@@ -28,5 +34,6 @@ import {StandardSurveysListComponent} from "./surveys/standard/standard-surveys-
     ],
     exports: [RouterModule]
 })
+
 export class AppRoutingModule {
 }

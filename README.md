@@ -33,7 +33,7 @@ in backend:
 
 | Technology                                      | Version |
 |-------------------------------------------------|---------|
-| [`DOTNET`](https://dotnet.microsoft.com/en-us/) | 8.0.100 |
+| [`DOTNET`](https://dotnet.microsoft.com/en-us/) | 9.0 |
 | [`Postgresql`](https://www.postgresql.org.pl/)  | x.x.x   |
 | [`Docker`](https://www.docker.com/)             | x.x.x   |
 | [`RabbitMQ`](https://www.rabbitmq.com/)         | x.x.x   |

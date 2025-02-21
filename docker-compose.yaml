@@ -1,0 +1,36 @@
+services:
+  SurveysPortal-db:
+    image: postgres
+    restart: always
+    container_name: SurveysPortal-DB
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=SurveysPortalDB
+    ports:
+      - "5432:5432"
+
+  SurveysPortal-api:
+    image:  surveys-portal:latest
+    tty: true
+    container_name: SurveysPortal-api
+    build:
+     context: .
+     dockerfile: src/Backend/Dockerfile
+    ports:
+    - "4040:4040"
+    depends_on:
+      - SurveysPortal-db
+    environment:
+      - POSTGRES__CONNECTIONSTRING=Host=SurveysPortal-DB;Database=SurveysPortalDB;Username=postgres;Password=postgres
+        
+  SurveysPortal-web:
+    image: surveys-portal:latest
+    container_name: SurveysPortal-web
+    build:
+      #context: .
+      dockerfile: src/Frontend/SurveysPortalWeb/Dockerfile
+    ports:
+      - "4200:4200"
+    depends_on:
+      - SurveysPortal-api

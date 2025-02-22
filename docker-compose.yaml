@@ -25,8 +25,8 @@ services:
     depends_on:
       SurveysPortal-DB:
         condition: service_started
-    healthcheck:
-      test: curl --fail https://localhost:4040/api/users/all || exit 1
+#    healthcheck:
+#      test: curl --fail https://localhost:4040/api/users/all || exit 1
     environment:
       - POSTGRES__CONNECTIONSTRING=Host=SurveysPortal-DB;Database=SurveysPortalDB;Username=postgres;Password=postgres
 
@@ -39,6 +39,6 @@ services:
       dockerfile: src/Frontend/SurveysPortalWeb/Dockerfile
     ports:
       - "4200:4200"
-    depends_on:
-      SurveysPortal-API:
-        condition: service_healthy
+#    depends_on:
+#      SurveysPortal-API:
+#        condition: service_healthy

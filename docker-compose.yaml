@@ -21,7 +21,8 @@ services:
     ports:
     - "4040:4040"
     depends_on:
-      - SurveysPortal-DB
+      SurveysPortal-DB:
+        condition: service_healthy
     environment:
       - POSTGRES__CONNECTIONSTRING=Host=SurveysPortal-DB;Database=SurveysPortalDB;Username=postgres;Password=postgres
         
@@ -35,4 +36,5 @@ services:
     ports:
       - "4200:4200"
     depends_on:
-      - SurveysPortal-API
+      SurveysPortal-API:
+        condition: service_healthy

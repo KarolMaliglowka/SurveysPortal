@@ -10,7 +10,7 @@ services:
     ports:
       - "5432:5432"
     healthcheck:
-      test: pg_isready -U postgres
+      test: ["CMD-SHELL", "psql -U ${DB_USER} -d ${DB_MAIN} -c 'SELECT 1' || exit 1"]
 
   SurveysPortal-API:
     image:  surveys-portal:latest

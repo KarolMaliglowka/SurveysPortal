@@ -18,6 +18,8 @@ using SurveysPortal.Shared.Infrastructure;
 using Swashbuckle.AspNetCore.Filters;
 
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddHealthChecks();
 builder.Services
     .AddEndpointsApiExplorer()
     .AddSwaggerGen(options =>
@@ -110,6 +112,7 @@ app.UseAuthorization();
 app.UseCors("ApiCorsPolicy");
 
 app.UseHttpsRedirection();
+app.MapHealthChecks( "/health" );
 app.UseExceptionHandler("/error");
 app.UseRouting();
 app.MapControllers();

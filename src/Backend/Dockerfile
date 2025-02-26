@@ -1,6 +1,8 @@
 FROM mcr.microsoft.com/dotnet/aspnet:9.0 AS base
 EXPOSE 4040
 ENV ASPNETCORE_URLS=http://*:4040
+RUN apt-get update && apt-get upgrade -y
+RUN apt-get install curl -y
 
 FROM mcr.microsoft.com/dotnet/sdk:9.0 AS build
 ARG BUILD_CONFIGURATION=Release

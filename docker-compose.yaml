@@ -10,24 +10,30 @@ services:
     ports:
       - "5432:5432"
     healthcheck:
-      test: /usr/bin/pg_isready
+      test: [ "CMD-SHELL", "pg_isready -U postgres" ]
       interval: 5s
-      timeout: 10s
-      retries: 120
+      timeout: 5s
+      retries: 5
 
   SurveysPortal-API:
     image:  surveys-portal:latest
     restart: unless-stopped
     tty: true
+    depends_on:
+      SurveysPortal-DB:
+        condition: service_healthy
     container_name: SurveysPortal-API
     build:
      context: .
      dockerfile: src/Backend/Dockerfile
     ports:
     - "4040:4040"
-    depends_on:
-      SurveysPortal-DB:
-        condition: service_healthy
+    healthcheck:
+      #test: [ "CMD-SHELL", "wget --spider --tries=1 --no-verbose http://localhost:4040/health || exit 1" ]
+      test: [ "CMD-SHELL", "curl -f http://localhost:4040/health || exit 1" ]
+      #test: curl -f http://localhost:4040/health || exit 1
+      start_period: 30s
+      interval: 5s
     environment:
       - POSTGRES__CONNECTIONSTRING=Host=SurveysPortal-DB;Database=SurveysPortalDB;Username=postgres;Password=postgres
 

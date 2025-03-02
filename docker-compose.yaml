@@ -16,13 +16,13 @@ services:
       retries: 5
 
   SurveysPortal-API:
+    container_name: SurveysPortal-API
     image:  surveys-portal:latest
     restart: unless-stopped
     tty: true
     depends_on:
       SurveysPortal-DB:
         condition: service_healthy
-    container_name: SurveysPortal-API
     build:
      context: .
      dockerfile: src/Backend/Dockerfile
@@ -36,14 +36,15 @@ services:
       - POSTGRES__CONNECTIONSTRING=Host=SurveysPortal-DB;Database=SurveysPortalDB;Username=postgres;Password=postgres
 
   SurveysPortal-WEB:
-    restart: unless-stopped
-    image: surveys-portal:latest
     container_name: SurveysPortal-WEB
+    image: surveys-portal:latest
+    restart: unless-stopped
+    tty: true
+    depends_on:
+      SurveysPortal-API:
+        condition: service_healthy
     build:
       context: .
       dockerfile: src/Frontend/SurveysPortalWeb/Dockerfile
     ports:
       - "4200:4200"
-    depends_on:
-      SurveysPortal-API:
-        condition: service_healthy

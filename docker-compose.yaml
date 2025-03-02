@@ -29,9 +29,7 @@ services:
     ports:
     - "4040:4040"
     healthcheck:
-      #test: [ "CMD-SHELL", "wget --spider --tries=1 --no-verbose http://localhost:4040/health || exit 1" ]
       test: [ "CMD-SHELL", "curl -f http://localhost:4040/health || exit 1" ]
-      #test: curl -f http://localhost:4040/health || exit 1
       start_period: 30s
       interval: 5s
     environment:

@@ -21,7 +21,8 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddHealthChecks();
 builder.Services
-    .AddEndpointsApiExplorer()
+    .AddEndpointsApiExplorer();
+builder.Services
     .AddSwaggerGen(options =>
     {
         options.AddSecurityDefinition("oauth2", new OpenApiSecurityScheme
@@ -36,14 +37,11 @@ builder.Services
             Title = "Survey's Portal API",
             Version = "v1"
         });
+        options.ResolveConflictingActions(apiDescriptions => apiDescriptions.First());
+        options.IgnoreObsoleteActions();
+        options.IgnoreObsoleteProperties();
+        options.CustomSchemaIds(type => type.FullName);
     });
-
-builder.Services.AddSwaggerGen(c => {
-    c.ResolveConflictingActions(apiDescriptions => apiDescriptions.First());
-    c.IgnoreObsoleteActions();
-    c.IgnoreObsoleteProperties();
-    c.CustomSchemaIds(type => type.FullName);
-});
 
 builder.Services.AddCors(options => options.AddPolicy("ApiCorsPolicy",
     corsPolicyBuilder =>
@@ -103,7 +101,12 @@ await app.SeedStandardSurveysData();
 if (app.Environment.IsDevelopment() || app.Environment.IsProduction())
 {
     app.UseSwagger();
-    app.UseSwaggerUI();
+
+    app.UseSwaggerUI(options =>
+    {
+        options.SwaggerEndpoint("/swagger/v1/swagger.json", "v1");
+        options.RoutePrefix = string.Empty;
+    });
 }
 
 app.UseAuthentication();
@@ -112,7 +115,7 @@ app.UseAuthorization();
 app.UseCors("ApiCorsPolicy");
 
 app.UseHttpsRedirection();
-app.MapHealthChecks( "/health" );
+app.MapHealthChecks("/health");
 app.UseExceptionHandler("/error");
 app.UseRouting();
 app.MapControllers();

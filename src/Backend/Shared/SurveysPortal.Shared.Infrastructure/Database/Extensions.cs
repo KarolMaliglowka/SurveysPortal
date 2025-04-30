@@ -55,7 +55,7 @@ public static class Extensions
         var options = services.GetOptions<PostgresOptions>("postgres");
         services.AddDbContext<T>(x => 
             x.UseNpgsql(options.ConnectionString ??
-                        throw new InvalidOperationException("Connection string is not found")));
+                        throw new InvalidOperationException("Connection string is not found")), ServiceLifetime.Transient);
 
         return services;
     }

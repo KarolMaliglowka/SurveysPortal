@@ -1,6 +1,7 @@
 using System.Text;
 using System.Text.Json.Serialization;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Http.Features;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
@@ -15,9 +16,25 @@ using SurveysPortal.Modules.Users.Core.Entities;
 using SurveysPortal.Modules.Users.Infrastructure;
 using SurveysPortal.Modules.Users.Infrastructure.DAL;
 using SurveysPortal.Shared.Infrastructure;
+using SurveysPortal.Shared.Infrastructure.Exceptions;
 using Swashbuckle.AspNetCore.Filters;
 
 var builder = WebApplication.CreateBuilder(args);
+
+
+builder.Services.AddProblemDetails();
+// builder.Services.AddProblemDetails(options =>
+//     options.CustomizeProblemDetails = context =>
+//     {
+//         context.ProblemDetails.Instance = $"{context.HttpContext.Request.Method}:{context.HttpContext.Request.Path}";
+//         context.ProblemDetails.Extensions.TryAdd("requestId", context.HttpContext.TraceIdentifier);
+//         var activity = context.HttpContext.Features.Get<IHttpActivityFeature>()?.Activity;
+//         context.ProblemDetails.Extensions.TryAdd("activity", activity?.Id);
+//     });
+builder.Services.AddExceptionHandler<GlobalExceptionHandler>();
+
+
+
 
 builder.Services.AddHealthChecks();
 builder.Services
@@ -101,12 +118,11 @@ await app.SeedStandardSurveysData();
 if (app.Environment.IsDevelopment() || app.Environment.IsProduction())
 {
     app.UseSwagger();
-
     app.UseSwaggerUI(options =>
-    {
-        options.SwaggerEndpoint("/swagger/v1/swagger.json", "v1");
-        options.RoutePrefix = string.Empty;
-    });
+        {
+            options.SwaggerEndpoint("/swagger/v1/swagger.json", "v1");
+            options.RoutePrefix = string.Empty;
+        });
 }
 
 app.UseAuthentication();
@@ -115,12 +131,18 @@ app.UseAuthorization();
 app.UseCors("ApiCorsPolicy");
 
 app.UseHttpsRedirection();
+
+
 app.MapHealthChecks("/health");
-app.UseExceptionHandler("/error");
+//app.UseExceptionHandler("/error");
+
+
+
 app.UseRouting();
 app.MapControllers();
 app.UsePathBase("/");
-
+//app.UseStatusCodePages();
+app.UseExceptionHandler();
 app.Run();
 
 return;

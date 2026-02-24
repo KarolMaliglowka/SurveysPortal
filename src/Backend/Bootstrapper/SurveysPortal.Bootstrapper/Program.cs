@@ -31,7 +31,7 @@ builder.Services.AddProblemDetails();
 //         var activity = context.HttpContext.Features.Get<IHttpActivityFeature>()?.Activity;
 //         context.ProblemDetails.Extensions.TryAdd("activity", activity?.Id);
 //     });
-builder.Services.AddExceptionHandler<GlobalExceptionHandler>();
+//builder.Services.AddExceptionHandler<GlobalExceptionHandler>();
 
 
 
